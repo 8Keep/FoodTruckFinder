@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    android:theme="@style/Base.AlertDialog.AppCompat.Light"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="216dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/asap_bold"
+        android:text="@string/welcome_to_poop"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="22sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="259dp"
+        android:layout_height="248dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/poopicon" />
+
+    <Button
+        android:id="@+id/ft"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginEnd="63dp"
+        android:background="@drawable/btn_rnd"
+        android:text="@string/food_truck"
+        app:layout_constraintBottom_toTopOf="@+id/vendor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+
+    <Button
+        android:id="@+id/vendor"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="63dp"
+        android:background="@drawable/btn_rnd"
+        android:text="@string/vendors"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ft" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="68dp"
+        android:layout_height="21dp"
+        android:fontFamily="@font/asap_bold"
+        android:text="@string/login_as"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toTopOf="@+id/ft"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="113dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="73dp"
+        android:layout_marginEnd="73dp"
+        android:fontFamily="@font/asap_bold"
+        android:text="@string/new_to_poop"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/creAcc"
+        app:layout_constraintStart_toStartOf="@+id/vendor"
+        app:layout_constraintTop_toBottomOf="@+id/vendor"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/creAcc"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="62dp"
+        android:layout_marginEnd="62dp"
+        android:layout_marginBottom="73dp"
+        android:background="@drawable/btn_rnd"
+        android:text="@string/create_account"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.0" />
+
+</android.support.constraint.ConstraintLayout>
