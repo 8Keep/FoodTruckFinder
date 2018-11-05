@@ -1,0 +1,38 @@
+This README provides file paths for certain functionalities in this API.
+
+
+******************** FOOD TRUCK FUNCTIONALITIES ********************
+
+REGISTER a foodtruck (this function requires "username" and "password" as JSON data):
+    api/users/foodtrucks/create.php
+
+AUTHENTICATE a foodtruck (this function requires "username" and "password" as JSON data):
+    api/users/foodtrucks/authenticate.php
+
+EDIT a foodtruck (this function requires "truck_name", "city", "state", "zip" as JSON data):
+    api/foodtrucks/edit.php
+
+SEARCH a foodtruck (this function requires "keyword" as JSON data):
+    api/foodtrucks/search.php
+
+DELETE a foodtruck (this function requires "keyword" as JSON data):
+    api/foodtrucks/delete.php
+
+
+
+******************** VENDOR FUNCTIONALITIES ********************
+
+REGISTER a vendor (this function requires "username" and "password" as JSON data):
+    api/users/vendors/create.php
+
+AUTHENTICATE a vendor (this function requires "username" and "password" as JSON data):
+    api/users/vendors/authenticate.php
+
+EDIT a vendor (this function requires "name", "address", "city", "state", "zip" as JSON data):
+    api/vendors/edit.php
+
+SEARCH a vendor (this function requires "keyword" as JSON data:
+    api/vendors/search.php
+
+DELETE a vendor (this function requires "keyword" as JSON data:
+    api/vendors/delete.php
