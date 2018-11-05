@@ -3,4 +3,5 @@
     <color name="colorPrimary">#560031</color>
     <color name="colorPrimaryDark">#450055</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="chosenEntity">#9af293</color>
 </resources>

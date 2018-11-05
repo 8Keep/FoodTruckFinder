@@ -15,32 +15,31 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class Create3 extends CreateActivity {
-    private String gEmail,gPhone;
-    private boolean isVendor;
+public class Create4v5 extends CreateActivity{
+    private String gCity,gState,gZip;
     Bundle bundle;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create3);
+        setContentView(R.layout.activity_create4v5);
         bundle = getIntent().getExtras();
-        isVendor = bundle.getBoolean("isVendor");
         for (String key : bundle.keySet())
         {
             Log.d("Bundle Debug", key + " = \"" + bundle.get(key) + "\"");
         }
-        email = (EditText) findViewById(R.id.email);
-        phone = (EditText) findViewById(R.id.phone);
-        DoneCheck = (EditText) findViewById(R.id.phone);
-        email.requestFocus();
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+        city = (EditText) findViewById(R.id.password);
+        state = (EditText) findViewById(R.id.state);
+        zip = (EditText) findViewById(R.id.zip);
+        DoneCheck = (EditText) findViewById(R.id.zip);
         next = (Button) findViewById(R.id.next);
         next.setEnabled(false);
         next.setVisibility(View.GONE);
-        email.addTextChangedListener(emptyCheck);
-        phone.addTextChangedListener(emptyCheck);
+        city.requestFocus();
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+        city.addTextChangedListener(emptyCheck);
+        state.addTextChangedListener(emptyCheck);
+        zip.addTextChangedListener(emptyCheck);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,21 +49,13 @@ public class Create3 extends CreateActivity {
     }
     public void sendToNext()
     {
-        Intent intent1 = new Intent(Create3.this,Create4.class);
-        Intent intent2 = new Intent(Create3.this,Create4v5.class);
-        bundle.putString("gEmail", gEmail);
-        bundle.putString("gPhone", gPhone);
-        if(isVendor) {
-            intent1.putExtras(bundle);
-            startActivity(intent1);
-        }
-        else {
-            intent2.putExtras(bundle);
-            startActivity(intent2);
-        }
+        Intent intent = new Intent(Create4v5.this,Create5.class);
+        bundle.putString("gCity", gCity);
+        bundle.putString("gState", gState);
+        bundle.putString("gZip", gZip);
+        startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
     }
-
     @Override
     public void finish() {
         super.finish();
@@ -83,18 +74,21 @@ public class Create3 extends CreateActivity {
     private TextWatcher emptyCheck = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+            sendToNext();
         }
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            gEmail = email.getText().toString();
-            gPhone = phone.getText().toString();
-            if(TextUtils.isEmpty(gEmail))
-                email.setError("Please enter your email");
-            if(TextUtils.isEmpty(gPhone))
-                phone.setError("Please enter your phone number");
-            if(!TextUtils.isEmpty(gEmail) && !TextUtils.isEmpty(gPhone))
+            gCity = city.getText().toString();
+            gState = state.getText().toString();
+            gZip = zip.getText().toString();
+            if(TextUtils.isEmpty(gCity))
+                city.setError("Please enter your city");
+            if(TextUtils.isEmpty(gState))
+                state.setError("Please enter your state");
+            if(TextUtils.isEmpty(gZip))
+                zip.setError("Please enter your zip");
+            if(!TextUtils.isEmpty(gCity) && !TextUtils.isEmpty(gState) && !TextUtils.isEmpty(gZip))
             {
                 next.setVisibility(View.VISIBLE);
                 next.setEnabled(true);

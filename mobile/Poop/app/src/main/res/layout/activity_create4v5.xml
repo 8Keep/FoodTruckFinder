@@ -12,45 +12,28 @@
         android:layout_width="132dp"
         android:layout_height="38dp"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginTop="44dp"
         android:fontFamily="@font/asap_bold"
         android:text="@string/city"
         android:textAlignment="textStart"
         android:textColor="#ffffff"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/password"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="226dp"
-        android:layout_height="64dp"
+        android:layout_height="66dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/asap_bold"
-        android:text="@string/address"
+        android:text="@string/ftArea"
         android:textColor="#ffffff"
         android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="108dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/asap_bold"
-        android:text="@string/street"
-        android:textAlignment="textStart"
-        android:textColor="#ffffff"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/username"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <EditText
         android:id="@+id/password"
@@ -66,30 +49,9 @@
         android:labelFor="@id/password"
         android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        tools:targetApi="o" />
-
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:autofillHints=""
-        android:backgroundTint="#ffffff"
-        android:ems="10"
-        android:fontFamily="@font/asap_bold"
-        android:inputType="text|textPersonName"
-        android:labelFor="@id/username"
-        android:textColor="#ffffff"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
         tools:targetApi="o" />
 
     <TextView
@@ -152,7 +114,7 @@
         android:maxLength="5"
         android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/state"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
         tools:targetApi="o" />

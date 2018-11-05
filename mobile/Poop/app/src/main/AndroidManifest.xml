@@ -21,11 +21,12 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".Create1" />
         <activity android:name=".Create2" />
-        <activity android:name=".Create5" />
         <activity android:name=".Create3" />
-        <activity android:name=".Create4"></activity>
+        <activity android:name=".Create5" />
+        <activity android:name=".Create4" />
+        <activity android:name=".Create1" />
+        <activity android:name=".Create4v5"></activity>
     </application>
 
 </manifest>
