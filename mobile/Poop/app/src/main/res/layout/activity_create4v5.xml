@@ -25,14 +25,12 @@
         android:id="@+id/textView2"
         android:layout_width="226dp"
         android:layout_height="66dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
         android:fontFamily="@font/asap_bold"
         android:text="@string/ftArea"
         android:textColor="#ffffff"
         android:textSize="22sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="28dp" />
 
 
     <EditText

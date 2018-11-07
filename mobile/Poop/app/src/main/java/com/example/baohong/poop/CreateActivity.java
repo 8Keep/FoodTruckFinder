@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.provider.ContactsContract;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -17,7 +18,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class CreateActivity extends AppCompatActivity {
-    protected EditText fname, lname, DoneCheck, phone, email, street, city, state, zip, username, password;
+    protected EditText fname, lname, DoneCheck, phone, email, street, city, state, zip, username;
+    protected TextInputEditText password;
 //    protected String gfname, glname, gEmail, gPhone, gStreet, gCity, gState, gZip, gUsername, gPassword;
     protected Button next;
 
