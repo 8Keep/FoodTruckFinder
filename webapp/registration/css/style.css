@@ -1,0 +1,21 @@
+
+h1
+{
+	font-size: 500%;
+	background: #000;
+	color: #eee;
+	margin: 0;
+	padding-bottom: 10px;
+	padding-top: 10px;
+
+}
+
+.EmailAddress
+{
+	text-align: left;
+}
+
+.PasswordInput
+{
+	text-align: left;
+}
