@@ -10,14 +10,22 @@
         #backbox
         {
             position: fixed;
+/*
             padding-right: 50px;
             padding-left: 50px;
             padding-bottom: 50px;
             padding-top: 0px;
-            background-color: #C0C0C0;
+*/
+            padding: 50px;
+            background-color: #A9A9A9;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            border: 5px solid #000;
+            margin: center;
+            color: black;
+            border-radius: 15px;
+            opacity: 0.8;
         }
         
 		#box1
@@ -25,9 +33,10 @@
 			height: 150px;
 			width: 200px;
 			background-color: #808080;
-            border: 10px solid #000;
-			float: left;
+            border: 5px solid #000;
+			float: up;
             margin: 20px;
+            border-radius: 15px;
 		}
 
 		#box2
@@ -35,10 +44,25 @@
 			height: 150px;
 			width: 200px;
 			background-color: #808080;
-            border: 10px solid #000;
-			float: right;
+            border: 5px solid #000;
+			float: down;
             margin: 20px;
+            border-radius: 15px;
 		}
+        
+        .btn
+        {
+            border: none;
+            width: 100%;
+            background-color: inherit;
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+            display: inline-block;
+        }
+        
+        .btn:hover {background: #eee;}
+        .select {color: white;}       
         
 	</style>
 
@@ -48,15 +72,19 @@
     
     <div class="container">
         
-        <div class="container" id="backbox">
+        <img src="foodtruck1.jpg" alt="Food Truck" width="100%" height="auto">
+        
+        <div class="containment" id="backbox">
             <h1><center>Create Account</center></h1>
         
             <div class="side" id="box1">
                 <h2><center>Vendor</center></h2>
+                <button class="btn select">Select</button>
             </div>
             
             <div class="side" id="box2">
                 <h2><center>Food Truck</center></h2>
+                <button class="btn select">Select</button>
             </div>
 
         </div>
