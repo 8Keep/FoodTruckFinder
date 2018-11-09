@@ -1,21 +1,103 @@
-
-h1
+/*block*/
+#backbox
 {
-	font-size: 500%;
-	background: #000;
-	color: #eee;
-	margin: 0;
-	padding-bottom: 10px;
-	padding-top: 10px;
-
+    position: fixed;
+    padding-right: 100px;
+    padding-left: 100px;
+    padding-bottom: 50px;
+    padding-top: 50px;
+    padding: 50px;
+    background-color: #A9A9A9;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid #000;
+    margin: center;
+    color: black;
+    border-radius: 15px;
+    opacity: 0.8;
+}
+        
+#box1
+{
+    height: 120px;
+    width: 250px;
+    background-color: #808080;
+    border: 5px solid #000;
+    float: up;
+    margin: 20px;
+    border-radius: 15px;
 }
 
-.EmailAddress
+#box2
 {
-	text-align: left;
+    height: 120px;
+    width: 250px;
+    background-color: #808080;
+    border: 5px solid #000;
+    float: down;
+    margin: 20px;
+    border-radius: 15px;
 }
-
-.PasswordInput
+        
+.btn
 {
-	text-align: left;
+    border: none;
+    width: 100%;
+    background-color: inherit;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    display: inline-block;
+}
+        
+.btn:hover {background: aqua;}
+.select {color: white;}  
+
+
+/*registration*/
+.register-form
+{
+    text-align: center;
+    margin: 100px 50px;
+}
+        
+#mainbox
+{
+    position: fixed;
+    padding: 50px;
+    background-color: #A9A9A9;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid #000;
+    margin: center;
+    color: black;
+    border-radius: 15px;
+    opacity: 0.8;
+}
+        
+#registration
+{
+    width: 100%;
+    background-color: #051019;
+    padding: 50px 0px;
+}
+        
+#button
+{
+    width: 250px;
+    padding: 10px;
+    border-radius: 10px;
+    outline: 0px;
+}
+        
+#regisbutton
+{
+    width: 250px;
+    padding: 10px;
+    border-radius: 10px;
+    outline: 10px;
+    background-color: slategray;
+    font-size: 20px;
 }
