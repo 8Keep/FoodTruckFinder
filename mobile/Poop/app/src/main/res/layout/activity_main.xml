@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
     android:theme="@style/Base.AlertDialog.AppCompat.Light"
-    tools:context=".MainActivity">
+    tools:context=".FirstPage">
 
     <TextView
         android:id="@+id/textView"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
-    tools:context=".Create3">
+    tools:context=".CreateContactInfo">
 
     <TextView
         android:id="@+id/textView2"
@@ -28,6 +28,7 @@
         android:layout_marginTop="100dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/btn_toggle_sel"
+        android:textColor="@color/white"
         android:textOff="@string/vendors"
         android:textOn="@string/vendors"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,6 +43,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/btn_toggle_sel"
+        android:textColor="@color/white"
         android:textOff="@string/food_truck"
         android:textOn="@string/food_truck"
         app:layout_constraintEnd_toEndOf="parent"

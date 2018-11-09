@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".FirstPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,12 +21,12 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".Create2" />
-        <activity android:name=".Create3" />
-        <activity android:name=".Create5" />
-        <activity android:name=".Create4" />
-        <activity android:name=".Create1" />
-        <activity android:name=".Create4v5"></activity>
+        <activity android:name=".CreateName" />
+        <activity android:name=".CreateContactInfo" />
+        <activity android:name=".CreateUserPass" />
+        <activity android:name=".CreateVenAddress" />
+        <activity android:name=".CreateVenOrFT" />
+        <activity android:name=".CreateFTLocation"></activity>
     </application>
 
 </manifest>
