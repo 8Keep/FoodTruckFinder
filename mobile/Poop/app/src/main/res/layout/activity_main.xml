@@ -8,31 +8,16 @@
     android:theme="@style/Base.AlertDialog.AppCompat.Light"
     tools:context=".FirstPage">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="216dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/asap_bold"
-        android:text="@string/welcome_to_poop"
-        android:textAlignment="center"
-        android:textColor="#ffffff"
-        android:textSize="22sp"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="259dp"
-        android:layout_height="248dp"
-        android:layout_marginTop="48dp"
+        android:layout_height="244dp"
+        android:layout_marginTop="80dp"
         android:contentDescription="@string/todo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/poopicon" />
 
     <Button

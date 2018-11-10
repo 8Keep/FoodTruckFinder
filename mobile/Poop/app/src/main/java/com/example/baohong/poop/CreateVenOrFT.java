@@ -13,7 +13,7 @@ public class CreateVenOrFT extends CreateActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create1);
+        setContentView(R.layout.activity_createVenOrFT);
         vendor = (ToggleButton) findViewById(R.id.vendor);
         ft = (ToggleButton) findViewById(R.id.ft);
         next = (Button) findViewById(R.id.next);

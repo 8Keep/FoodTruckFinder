@@ -21,14 +21,14 @@ public class CreateVenAddress extends CreateActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create4);
+        setContentView(R.layout.activity_createVenAddress);
         bundle = getIntent().getExtras();
         for (String key : bundle.keySet())
         {
             Log.d("Bundle Debug", key + " = \"" + bundle.get(key) + "\"");
         }
         street = (EditText) findViewById(R.id.username);
-        city = (EditText) findViewById(R.id.password);
+        city = (EditText) findViewById(R.id.city);
         state = (EditText) findViewById(R.id.state);
         zip = (EditText) findViewById(R.id.zip);
         DoneCheck = (EditText) findViewById(R.id.zip);

@@ -21,13 +21,13 @@ public class CreateFTLocation extends CreateActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create4v5);
+        setContentView(R.layout.activity_createFTLocation);
         bundle = getIntent().getExtras();
         for (String key : bundle.keySet())
         {
             Log.d("Bundle Debug", key + " = \"" + bundle.get(key) + "\"");
         }
-        city = (EditText) findViewById(R.id.password);
+        city = (EditText) findViewById(R.id.city);
         state = (EditText) findViewById(R.id.state);
         zip = (EditText) findViewById(R.id.zip);
         DoneCheck = (EditText) findViewById(R.id.zip);
@@ -74,7 +74,7 @@ public class CreateFTLocation extends CreateActivity{
     private TextWatcher emptyCheck = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            sendToNext();
+
         }
 
         @Override

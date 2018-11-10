@@ -23,7 +23,7 @@ public class CreateContactInfo extends CreateActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create3);
+        setContentView(R.layout.activity_createContactInfo);
         bundle = getIntent().getExtras();
         isVendor = bundle.getBoolean("isVendor");
         for (String key : bundle.keySet())

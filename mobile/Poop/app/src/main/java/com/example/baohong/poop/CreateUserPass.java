@@ -1,26 +1,33 @@
 package com.example.baohong.poop;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CreateUserPass extends CreateActivity {
     private String gUsername,gPassword;
+
+    private TextView passHint, confirmErr;
     Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create5);
+        setContentView(R.layout.activity_createUserPass);
         bundle = getIntent().getExtras();
         username = (EditText) findViewById(R.id.username);
         password = findViewById(R.id.password1);
         confirm = findViewById(R.id.confirm1);
+        passHint = findViewById(R.id.passHint);
+        confirmErr = findViewById(R.id.confirmErr);
+        passHint.setVisibility(View.INVISIBLE);//hind the passhint
+        confirmErr.setVisibility(View.INVISIBLE);
         username.addTextChangedListener(emptyCheck);
         password.addTextChangedListener(emptyCheck);
         confirm.addTextChangedListener(emptyCheck);
@@ -67,25 +74,28 @@ public class CreateUserPass extends CreateActivity {
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             gUsername = username.getText().toString();
             gPassword = password.getText().toString();
+            if(password.isFocused())
+                passHint.setVisibility(View.VISIBLE);
             if(TextUtils.isEmpty(gUsername))
             {
 
             }
             if(!checkValid(gPassword))
             {
-                password.setError("Not Valid");
+                passHint.setTextColor(Color.RED);
             }
             else
             {
-                password.setError("Valid");
+                passHint.setVisibility(View.INVISIBLE);
             }
             if(!confirm.getText().toString().equals(gPassword))
             {
-                confirm.setError("Does not match");
+                confirmErr.setVisibility(View.VISIBLE);
+                confirmErr.setTextColor(Color.RED);
             }
             else
             {
-                confirm.setError("OK this is epic");
+                confirmErr.setVisibility(View.INVISIBLE);
             }
         }
 

@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">Poop</string>
-    <string name="welcome_to_poop">Welcome to POOP</string>
+    <string name="welcome_to_poop">PEOPLE ORDER OUR PATTY</string>
     <string name="todo">TODO</string>
     <string name="food_truck">Food Truck</string>
     <string name="vendors">VENDOR</string>
     <string name="login_as">Login as:</string>
-    <string name="create_account"><u>Register here</u></string>
+    <string name="create_account"><u>Register here.</u></string>
     <string name="create_your_account">Tell us your name</string>
     <string name="address">Where is your business?</string>
     <string name="ftArea">Available area</string>
@@ -25,6 +25,8 @@
     <string name="next">Next</string>
     <string name="zip">Zip Code</string>
     <string name="show">Show</string>
+    <string name="PassHint">At least 8 characters, one Uppercase, one lowercase, and one special character.</string>
+    <string name="ConfirmErr">Does not match</string>
 
 
 </resources>
