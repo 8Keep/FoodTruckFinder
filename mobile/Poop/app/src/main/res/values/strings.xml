@@ -27,6 +27,9 @@
     <string name="show">Show</string>
     <string name="PassHint">At least 8 characters, one Uppercase, one lowercase, and one special character.</string>
     <string name="ConfirmErr">Does not match</string>
+    <string name="FTname">Food Truck Name</string>
+    <string name="submit">Submit</string>
+
 
 
 </resources>

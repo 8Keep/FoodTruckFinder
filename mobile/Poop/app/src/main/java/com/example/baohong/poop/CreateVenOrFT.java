@@ -13,10 +13,10 @@ public class CreateVenOrFT extends CreateActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_createVenOrFT);
+        setContentView(R.layout.activity_createvenorft);
         vendor = (ToggleButton) findViewById(R.id.vendor);
         ft = (ToggleButton) findViewById(R.id.ft);
-        next = (Button) findViewById(R.id.next);
+        next = findViewById(R.id.next);
         if(!vendor.isChecked() && !ft.isChecked())
         {
             next.setEnabled(false);

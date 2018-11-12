@@ -8,7 +8,7 @@
     tools:context=".CreateContactInfo">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/NameHeader"
         android:layout_width="226dp"
         android:layout_height="64dp"
         android:layout_marginStart="16dp"
@@ -33,7 +33,7 @@
         android:textOn="@string/vendors"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/NameHeader" />
 
     <ToggleButton
         android:id="@+id/ft"
@@ -50,15 +50,17 @@
         app:layout_constraintHorizontal_bias="0.563"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vendor" />
-    <Button
+    <TextView
         android:id="@+id/next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/next"
+        android:layout_width="61dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/asap_bold"
         android:text="@string/next"
-        android:textAllCaps="false"
-        android:textColor="#ffffff"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorLink="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

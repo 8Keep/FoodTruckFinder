@@ -15,16 +15,24 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class CreateName extends CreateActivity {
-    private String gfname, glname;
+    private String gfname, glname, gFTname;
+    private TextView header, FTname;
+    private EditText FTEdit;
+    private boolean isVendor;
+    Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_createName);
-
+        setContentView(R.layout.activity_createname);
+        bundle = getIntent().getExtras();
         fname = (EditText) findViewById(R.id.fname);
         lname = (EditText) findViewById(R.id.lname);
         DoneCheck = (EditText) findViewById(R.id.lname);
-        next = (Button) findViewById(R.id.next);
+        isVendor = bundle.getBoolean("isVendor");
+        next = findViewById(R.id.next);
+        header = findViewById(R.id.NameHeader);
+        FTname = findViewById(R.id.FTView);
+        FTEdit = findViewById(R.id.FtEditText);
         next.setEnabled(false);
         next.setVisibility(View.GONE);
         fname.requestFocus();
@@ -39,6 +47,15 @@ public class CreateName extends CreateActivity {
 
             }
         });
+        if(isVendor)
+        {
+            FTEdit.setVisibility(View.INVISIBLE);
+            FTname.setVisibility(View.INVISIBLE);
+        }
+        else
+        {
+            header.setText("Tell us your name and Food Truck's name");
+        }
 
 
 
@@ -50,13 +67,15 @@ public class CreateName extends CreateActivity {
     public void sendToNext()
     {
         Intent intent = new Intent(CreateName.this,CreateContactInfo.class);
-        Bundle bundle = getIntent().getExtras();
-        for (String key : bundle.keySet())
-        {
-            Log.d("Bundle Debug", key + " = \"" + bundle.get(key) + "\"");
-        }
+
+//        for (String key : bundle.keySet())
+//        {
+//            Log.d("Bundle Debug", key + " = \"" + bundle.get(key) + "\"");
+//        }
         bundle.putString("fname", gfname);
         bundle.putString("lname", glname);
+        if(!isVendor)
+            bundle.putString("FTname", gFTname);
         intent.putExtras(bundle);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
@@ -83,6 +102,10 @@ public class CreateName extends CreateActivity {
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             gfname = fname.getText().toString();
             glname = lname.getText().toString();
+            if(!isVendor)
+            {
+                gFTname = FTEdit.getText().toString();
+            }
             if(TextUtils.isEmpty(gfname))
             {
                 fname.setError("Please enter your first name");

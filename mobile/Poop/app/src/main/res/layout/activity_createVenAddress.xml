@@ -23,7 +23,7 @@
         app:layout_constraintTop_toBottomOf="@+id/username" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/NameHeader"
         android:layout_width="226dp"
         android:layout_height="64dp"
         android:layout_marginStart="16dp"
@@ -50,7 +50,7 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/username"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/NameHeader" />
 
     <EditText
         android:id="@+id/city"
@@ -109,12 +109,14 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="184dp"
+        android:layout_marginStart="176dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
         android:fontFamily="@font/asap_bold"
         android:text="@string/zip"
         android:textColor="#ffffff"
         android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/city" />
 
@@ -156,16 +158,20 @@
         app:layout_constraintStart_toEndOf="@+id/state"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
         tools:targetApi="o" />
-    <Button
+
+    <TextView
         android:id="@+id/next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/next"
+        android:layout_width="61dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/asap_bold"
         android:text="@string/next"
-        android:textAllCaps="false"
-        android:textColor="#ffffff"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorLink="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>

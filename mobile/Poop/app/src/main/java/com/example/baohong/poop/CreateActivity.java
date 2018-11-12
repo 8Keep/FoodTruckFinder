@@ -21,7 +21,7 @@ public class CreateActivity extends AppCompatActivity {
     protected EditText fname, lname, DoneCheck, phone, email, street, city, state, zip, username;
     protected TextInputEditText password, confirm;
 //    protected String gfname, glname, gEmail, gPhone, gStreet, gCity, gState, gZip, gUsername, gPassword;
-    protected Button next;
+    protected TextView next;
 
 
 

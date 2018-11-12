@@ -21,7 +21,7 @@ public class CreateVenAddress extends CreateActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_createVenAddress);
+        setContentView(R.layout.activity_createvenaddress);
         bundle = getIntent().getExtras();
         for (String key : bundle.keySet())
         {
@@ -32,7 +32,7 @@ public class CreateVenAddress extends CreateActivity {
         state = (EditText) findViewById(R.id.state);
         zip = (EditText) findViewById(R.id.zip);
         DoneCheck = (EditText) findViewById(R.id.zip);
-        next = (Button) findViewById(R.id.next);
+        next = findViewById(R.id.next);
         next.setEnabled(false);
         next.setVisibility(View.GONE);
         street.requestFocus();

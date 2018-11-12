@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
+import android.util.Patterns;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -14,6 +14,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.util.regex.Pattern;
 
 public class CreateContactInfo extends CreateActivity {
     private String gEmail,gPhone;
@@ -23,20 +25,20 @@ public class CreateContactInfo extends CreateActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_createContactInfo);
+        setContentView(R.layout.activity_createcontactinfo);
         bundle = getIntent().getExtras();
         isVendor = bundle.getBoolean("isVendor");
-        for (String key : bundle.keySet())
-        {
-            Log.d("Bundle Debug", key + " = \"" + bundle.get(key) + "\"");
-        }
+//        for (String key : bundle.keySet())
+//        {
+//            Log.d("Bundle Debug", key + " = \"" + bundle.get(key) + "\"");
+//        }
         email = (EditText) findViewById(R.id.email);
         phone = (EditText) findViewById(R.id.phone);
         DoneCheck = (EditText) findViewById(R.id.phone);
         email.requestFocus();
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
-        next = (Button) findViewById(R.id.next);
+        next = findViewById(R.id.next);
         next.setEnabled(false);
         next.setVisibility(View.GONE);
         email.addTextChangedListener(emptyCheck);
@@ -65,6 +67,12 @@ public class CreateContactInfo extends CreateActivity {
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
     }
 
+    private boolean isEmailValid(String email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+
+
     @Override
     public void finish() {
         super.finish();
@@ -92,9 +100,13 @@ public class CreateContactInfo extends CreateActivity {
             gPhone = phone.getText().toString();
             if(TextUtils.isEmpty(gEmail))
                 email.setError("Please enter your email");
+            if(!isEmailValid(gEmail))
+            {
+                email.setError("Email is not valid");
+            }
             if(TextUtils.isEmpty(gPhone))
                 phone.setError("Please enter your phone number");
-            if(!TextUtils.isEmpty(gEmail) && !TextUtils.isEmpty(gPhone))
+            if(!TextUtils.isEmpty(gEmail) && !TextUtils.isEmpty(gPhone) && isEmailValid(gEmail))
             {
                 next.setVisibility(View.VISIBLE);
                 next.setEnabled(true);
