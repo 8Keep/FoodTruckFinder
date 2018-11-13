@@ -37,7 +37,7 @@ public class CreateUserPass extends CreateActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_createuserpass);
+        setContentView(R.layout.activity_create_user_pass);
         bundle = getIntent().getExtras();
         for (String key : bundle.keySet())
         {

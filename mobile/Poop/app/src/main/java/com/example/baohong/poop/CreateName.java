@@ -23,7 +23,7 @@ public class CreateName extends CreateActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_createname);
+        setContentView(R.layout.activity_create_name);
         bundle = getIntent().getExtras();
         fname = (EditText) findViewById(R.id.fname);
         lname = (EditText) findViewById(R.id.lname);

@@ -21,7 +21,7 @@ public class CreateFTLocation extends CreateActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_createftlocation);
+        setContentView(R.layout.activity_create_ft_location);
         bundle = getIntent().getExtras();
         for (String key : bundle.keySet())
         {
