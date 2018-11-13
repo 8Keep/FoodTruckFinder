@@ -24,7 +24,6 @@ create database largeproject;
     `City` VARCHAR(50) NOT NULL DEFAULT '',
     `State` VARCHAR(25) NOT NULL DEFAULT '',
     `Zip` VARCHAR(5) NOT NULL DEFAULT '',
-    `Range` INT NOT NULL DEFAULT 10,
     `FTID` INT,
     FOREIGN KEY (`FTID`)
     REFERENCES `largeproject`.`loginFT`(`FTID`),
