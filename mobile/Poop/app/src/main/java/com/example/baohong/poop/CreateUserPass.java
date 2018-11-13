@@ -33,6 +33,7 @@ public class CreateUserPass extends CreateActivity {
 
     private TextView passHint, confirmErr;
     private boolean isVendor;
+    private String localhost_ip = "10.0.2.2";
     Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +68,7 @@ public class CreateUserPass extends CreateActivity {
                 try {
                     loginObject.put("username", gUsername);
                     loginObject.put("password", gPassword);
+
                     if(isVendor)
                     {
                         infoObject.put("name", bundle.getString("fname") + " " + bundle.getString("lname"));
@@ -90,13 +92,13 @@ public class CreateUserPass extends CreateActivity {
                 if(isVendor)
                 {
                     //10.0.2.2 only work on emulator. Need to change if work on real phone. Please google this.
-                    new HTTPAsyncTask().execute("http://10.0.2.2/api/users/vendors/create.php", loginObject.toString());
-                    new HTTPAsyncTask().execute("http://10.0.2.2/api/vendors/edit.php", infoObject.toString());
+                    new HTTPAsyncTask().execute("http://"+localhost_ip+"/api/users/vendors/create.php", loginObject.toString());
+                    new HTTPAsyncTask().execute("http://"+localhost_ip+"/api/vendors/edit.php", infoObject.toString());
                 }
                 else
                 {
-                    new HTTPAsyncTask().execute("http://10.0.2.2/api/users/foodtrucks/create.php", loginObject.toString());
-                    new HTTPAsyncTask().execute("http://10.0.2.2/api/foodtrucks/edit.php", infoObject.toString());
+                    new HTTPAsyncTask().execute("http://"+localhost_ip+"/api/users/foodtrucks/create.php", loginObject.toString());
+                    new HTTPAsyncTask().execute("http://"+localhost_ip+"/api/foodtrucks/edit.php", infoObject.toString());
                 }
 
             }
