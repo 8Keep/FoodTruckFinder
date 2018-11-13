@@ -29,6 +29,8 @@ public class CreateName extends CreateActivity {
         lname = (EditText) findViewById(R.id.lname);
         DoneCheck = (EditText) findViewById(R.id.lname);
         isVendor = bundle.getBoolean("isVendor");
+        if(!isVendor)
+            DoneCheck = findViewById(R.id.FtEditText);
         next = findViewById(R.id.next);
         header = findViewById(R.id.NameHeader);
         FTname = findViewById(R.id.FTView);
@@ -40,6 +42,7 @@ public class CreateName extends CreateActivity {
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
         fname.addTextChangedListener(emptyCheck);
         lname.addTextChangedListener(emptyCheck);
+        FTEdit.addTextChangedListener(emptyCheck);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

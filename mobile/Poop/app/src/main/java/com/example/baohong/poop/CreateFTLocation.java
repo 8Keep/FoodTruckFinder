@@ -53,6 +53,7 @@ public class CreateFTLocation extends CreateActivity{
         bundle.putString("gCity", gCity);
         bundle.putString("gState", gState);
         bundle.putString("gZip", gZip);
+        intent.putExtras(bundle);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
     }

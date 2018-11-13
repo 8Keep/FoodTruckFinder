@@ -23,10 +23,10 @@ public class CreateVenAddress extends CreateActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_createvenaddress);
         bundle = getIntent().getExtras();
-        for (String key : bundle.keySet())
-        {
-            Log.d("Bundle Debug", key + " = \"" + bundle.get(key) + "\"");
-        }
+//        for (String key : bundle.keySet())
+//        {
+//            Log.d("Bundle Debug", key + " = \"" + bundle.get(key) + "\"");
+//        }
         street = (EditText) findViewById(R.id.username);
         city = (EditText) findViewById(R.id.city);
         state = (EditText) findViewById(R.id.state);
@@ -56,6 +56,7 @@ public class CreateVenAddress extends CreateActivity {
         bundle.putString("gCity", gCity);
         bundle.putString("gState", gState);
         bundle.putString("gZip", gZip);
+        intent.putExtras(bundle);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
     }

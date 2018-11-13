@@ -29,7 +29,8 @@
     <string name="ConfirmErr">Does not match</string>
     <string name="FTname">Food Truck Name</string>
     <string name="submit">Submit</string>
-
+    <string name="createsuccess">Your account was successfully created!</string>
+    <string name="createfailure">Oops! Fail to create your account. Please check your connection and try again</string>
 
 
 </resources>

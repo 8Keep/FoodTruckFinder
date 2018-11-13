@@ -2,6 +2,7 @@ package com.example.baohong.poop;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,12 +32,18 @@ public class CreateUserPass extends CreateActivity {
     private String gUsername,gPassword;
 
     private TextView passHint, confirmErr;
+    private boolean isVendor;
     Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_createuserpass);
         bundle = getIntent().getExtras();
+        for (String key : bundle.keySet())
+        {
+            Log.d("Bundle Debug", key + " = \"" + bundle.get(key) + "\"");
+        }
+        isVendor = bundle.getBoolean("isVendor");
         username = (EditText) findViewById(R.id.username);
         password = findViewById(R.id.password1);
         confirm = findViewById(R.id.confirm1);
@@ -53,44 +61,72 @@ public class CreateUserPass extends CreateActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                JSONObject jsonObject = new JSONObject();
-                boolean connect = checkNetworkConnection();
+                JSONObject loginObject = new JSONObject();
+                JSONObject infoObject = new JSONObject();
+//              boolean connect = checkNetworkConnection();
                 try {
-                    jsonObject.put("username", gUsername);
-                    jsonObject.put("password", gPassword);
+                    loginObject.put("username", gUsername);
+                    loginObject.put("password", gPassword);
+                    if(isVendor)
+                    {
+                        infoObject.put("name", bundle.getString("fname") + " " + bundle.getString("lname"));
+                        infoObject.put("address", bundle.getString("gStreet"));
+                        infoObject.put("city", bundle.getString("gCity"));
+                        infoObject.put("state", bundle.getString("gState"));
+                        infoObject.put("zip", bundle.getString("gZip"));
+                    }
+                    else
+                    {
+                        infoObject.put("truck_name", bundle.getString("FTname"));
+                        infoObject.put("city", bundle.getString("gCity"));
+                        infoObject.put("state", bundle.getString("gState"));
+                        infoObject.put("zip", bundle.getString("gZip"));
+                        infoObject.put("range", "50-100");
+
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                new HTTPAsyncTask().execute("http://10.0.2.2/api/users/vendors/create.php");
+                if(isVendor)
+                {
+                    //10.0.2.2 only work on emulator. Need to change if work on real phone. Please google this.
+                    new HTTPAsyncTask().execute("http://10.0.2.2/api/users/vendors/create.php", loginObject.toString());
+                    new HTTPAsyncTask().execute("http://10.0.2.2/api/vendors/edit.php", infoObject.toString());
+                }
+                else
+                {
+                    new HTTPAsyncTask().execute("http://10.0.2.2/api/users/foodtrucks/create.php", loginObject.toString());
+                    new HTTPAsyncTask().execute("http://10.0.2.2/api/foodtrucks/edit.php", infoObject.toString());
+                }
 
             }
         });
 
     }
-    public boolean checkNetworkConnection() {
-        ConnectivityManager connMgr = (ConnectivityManager)
-                getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        boolean isConnected = false;
-        if (networkInfo != null && (isConnected = networkInfo.isConnected())) {
-            // show "Connected" & type of network "WIFI or MOBILE"
-            confirmErr.setVisibility(View.VISIBLE);
-            confirmErr.setText("Connected "+networkInfo.getTypeName());
-            // change background color to red
-            confirmErr.setBackgroundColor(0xFF7CCC26);
-
-
-        } else {
-            // show "Not Connected"
-            confirmErr.setVisibility(View.VISIBLE);
-            confirmErr.setText("Not Connected");
-            // change background color to green
-            confirmErr.setBackgroundColor(0xFFFF0000);
-        }
-
-        return isConnected;
-    }
+//    public boolean checkNetworkConnection() {
+//        ConnectivityManager connMgr = (ConnectivityManager)
+//                getSystemService(Context.CONNECTIVITY_SERVICE);
+//
+//        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+//        boolean isConnected = false;
+//        if (networkInfo != null && (isConnected = networkInfo.isConnected())) {
+//            // show "Connected" & type of network "WIFI or MOBILE"
+//            confirmErr.setVisibility(View.VISIBLE);
+//            confirmErr.setText("Connected "+networkInfo.getTypeName());
+//            // change background color to red
+//            confirmErr.setBackgroundColor(0xFF7CCC26);
+//
+//
+//        } else {
+//            // show "Not Connected"
+//            confirmErr.setVisibility(View.VISIBLE);
+//            confirmErr.setText("Not Connected");
+//            // change background color to green
+//            confirmErr.setBackgroundColor(0xFFFF0000);
+//        }
+//
+//        return isConnected;
+//    }
     @Override
     public void finish() {
         super.finish();
@@ -175,7 +211,7 @@ public class CreateUserPass extends CreateActivity {
 
             try {
                 try {
-                    return HttpPost(urls[0]);
+                    return HttpPost(urls[0], urls[1]);
                 } catch (JSONException e) {
                     e.printStackTrace();
                     return "Error!";
@@ -187,69 +223,62 @@ public class CreateUserPass extends CreateActivity {
         // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(String result) {
-            next.setError(result);
-            Log.d("Create:", result );
+            boolean isCreated = false;
+            ;
+            if(result.equals("OK"))
+            {
+                isCreated = true;
+            }
+            if(isCreated) {
+                Toast.makeText(CreateUserPass.this, "Your account was successfully created", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(CreateUserPass.this, FirstPage.class);
+                bundle.putBoolean("isCreated", isCreated);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+            else
+            {
+                Toast.makeText(CreateUserPass.this, "Your account was failed to create", Toast.LENGTH_LONG).show();
+            }
+
         }
-        private String HttpPost(String myUrl) throws IOException, JSONException {
+        private String HttpPost(String myUrl, String JSON) throws IOException, JSONException {
             String result = "";
 
             URL url = new URL(myUrl);
 
             // 1. create HttpURLConnection
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            Log.d("Response1", myUrl);
 
 
             conn.setRequestMethod("POST");
             conn.setRequestProperty("Content-Type", "application/json; charset=utf-8");
             conn.setDoOutput(true);
-            Log.d("Response2", myUrl);
             // 2. build JSON object
-            JSONObject jsonObject = buildJsonObject();
-            Log.d("Response3", myUrl);
             // 3. add JSON content to POST request body
-            setPostRequestContent(conn, jsonObject);
-            Log.d("Response4", myUrl);
+            setPostRequestContent(conn, JSON);
             // 4. make POST request to the given URL
             conn.connect();
-            Log.d("Response5", myUrl);
-            if(conn.getResponseCode() == 200)
-                Log.d("Response", "Connected");
-            else
-                Log.d("Response", "NotConnected");
-
-
 
             // 5. return response message
             return conn.getResponseMessage()+"";
 
         }
         private void setPostRequestContent(HttpURLConnection conn,
-                                           JSONObject jsonObject){
-            Log.d("URL1", jsonObject.toString());
+                                          String jsonObject){
             try {
                 OutputStream os = conn.getOutputStream();
-                Log.d("URL2", jsonObject.toString());
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-                Log.d("URL3", jsonObject.toString());
-                writer.write(jsonObject.toString());
-                Log.d("URL4", jsonObject.toString());
+                writer.write(jsonObject);
                 writer.flush();
-                Log.d("URL5", jsonObject.toString());
                 writer.close();
-                Log.d("URL6", jsonObject.toString());
                 os.close();
             } catch (Exception e){
                 e.printStackTrace();
             }
         }
-        private JSONObject buildJsonObject() throws JSONException {
 
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("username", gUsername);
-            jsonObject.put("password", gPassword);
-            return jsonObject;
-        }
 
     }
 
