@@ -9,7 +9,7 @@ REGISTER a foodtruck (this function requires "username" and "password" as JSON d
 AUTHENTICATE a foodtruck (this function requires "username" and "password" as JSON data):
     api/users/foodtrucks/authenticate.php
 
-EDIT a foodtruck (this function requires "truck_name", "city", "state", "zip" as JSON data):
+EDIT a foodtruck (this function requires "username", "truck_name", "city", "state", "zip" as JSON data):
     api/foodtrucks/edit.php
 
 SEARCH a foodtruck (this function requires "keyword" as JSON data):
@@ -30,7 +30,7 @@ REGISTER a vendor (this function requires "username" and "password" as JSON data
 AUTHENTICATE a vendor (this function requires "username" and "password" as JSON data):
     api/users/vendors/authenticate.php
 
-EDIT a vendor (this function requires "name", "address", "city", "state", "zip" as JSON data):
+EDIT a vendor (this function requires "username", "name", "address", "city", "state", "zip" as JSON data):
     api/vendors/edit.php
 
 SEARCH a vendor (this function requires "keyword" as JSON data:
