@@ -7,6 +7,7 @@ class FoodTruck{
     private $table_name = "FTinfo";
 
     // object properties
+    public $username;
     public $truck_name;
     public $city;
     public $state;
@@ -18,11 +19,11 @@ class FoodTruck{
         $this->conn = $db;
     }
 
-    // read contacts
-    function read($username){
+    // show user profile details
+    function show($username){
 
         // select all query
-        $query = "SELECT * FROM " . $this->table_name . " WHERE UserID = (SELECT UserID FROM login WHERE username = ?)";
+        $query = "SELECT * FROM " . $this->table_name . " WHERE FTID = (SELECT FTID from loginFT WHERE username = ?)";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
@@ -40,11 +41,11 @@ class FoodTruck{
         return $stmt;
     }
 
-  // create contact
-  function edit($truck_name, $city, $state, $zip, $range){
+  // edit user details
+  function edit($username, $truck_name, $city, $state, $zip){
 
-      // query to insert record
-      $query = "INSERT INTO " . $this->table_name . " (TruckName, City, State, Zip) VALUES (?,?,?,?)";
+      // query to insert user details
+      $query = "INSERT INTO " . $this->table_name . " (TruckName, City, State, Zip, FTID) VALUES (?,?,?,?, (SELECT FTID FROM loginFT WHERE username = ?))";
 
       // prepare query
       $stmt = $this->conn->prepare($query);
@@ -62,12 +63,15 @@ class FoodTruck{
       $zip=htmlspecialchars(strip_tags($zip));
       $zip = "{$zip}";
 
+      $username=htmlspecialchars(strip_tags($username));
+      $username = "{$username}";
+
       // bind
       $stmt->bindParam(1, $truck_name);
       $stmt->bindParam(2, $city);
       $stmt->bindParam(3, $state);
       $stmt->bindParam(4, $zip);
-
+      $stmt->bindParam(5, $username);
 
       // execute query
       if($stmt->execute()){
@@ -78,11 +82,11 @@ class FoodTruck{
 
   }
 
-  // delete contact
-  function delete($keyword){
+  // delete current food truck
+  function delete($keyword, $username){
 
       // delete query
-      $query = "DELETE FROM " . $this->table_name . " WHERE TruckName = ?";
+      $query = "DELETE FROM " . $this->table_name . " WHERE TruckName = ? AND FTID = (SELECT FTID FROM loginFT WHERE username = ?)";
 
       // prepare query
       $stmt = $this->conn->prepare($query);
@@ -91,8 +95,12 @@ class FoodTruck{
       $keyword=htmlspecialchars(strip_tags($keyword));
       $keyword = "{$keyword}";
 
+      $username=htmlspecialchars(strip_tags($username));
+      $username = "{$username}";
+
       // bind
       $stmt->bindParam(1, $keyword);
+      $stmt->bindParam(1, $username);
 
       // execute query
       if($stmt->execute() && $stmt->rowCount() > 0){
@@ -103,7 +111,7 @@ class FoodTruck{
 
   }
 
-  // search contacts
+  // search food trucks
   function search($keywords){
 
     // $regex = "/[\s]/";
@@ -132,18 +140,6 @@ class FoodTruck{
       $stmt->execute();
 
       return $stmt;
-  }
-
-  //A SMALL DISPLAY FUNCTION ADDED BY BAO (OF COURSE COPY AND PASTE FROM HUGH CODES)
-  function display($keywords){
-        $query = "SELECT * FROM " . $this->table_name . " WHERE id = ? ";
-        $stmt = $this->conn->prepare($query);
-
-        $keywords=htmlspecialchars(strip_tags($keywords));
-        $keywords = "{$keywords}";
-        $stmt->bindParam(1, $keywords);
-        $stmt->execute();
-        return $stmt;
   }
 }
 ?>

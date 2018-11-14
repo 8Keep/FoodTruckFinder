@@ -14,6 +14,7 @@ class Vendor{
     private $table_name = "ETinfo";
 
     // object properties
+    public $username;
     public $name;
     public $address;
     public $city;
@@ -25,11 +26,11 @@ class Vendor{
         $this->conn = $db;
     }
 
-    // read contacts
-    function read($username){
+    // show user profile details
+    function show($username){
 
         // select all query
-        $query = "SELECT * FROM " . $this->table_name . " WHERE UserID = (SELECT UserID FROM login WHERE username = ?)";
+        $query = "SELECT * FROM " . $this->table_name . " WHERE ETID = (SELECT ETID from loginET WHERE username = ?)";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
@@ -47,16 +48,19 @@ class Vendor{
         return $stmt;
     }
 
-  // create contact
-  function edit($name, $address, $city, $state, $zip){
+  // edit vendor details
+  function edit($username, $name, $address, $city, $state, $zip){
 
-      // query to insert record
-      $query = "INSERT INTO " . $this->table_name . " (EntertainerName, address, city, state, zip) VALUES (?,?,?,?,?)";
+      // query to insert vendor details
+      $query = "INSERT INTO " . $this->table_name . " (EntertainerName, address, city, state, zip, ETID) VALUES (?,?,?,?,?, (SELECT ETID from loginET WHERE username = ?))";
 
       // prepare query
       $stmt = $this->conn->prepare($query);
 
       // sanitize
+      $username=htmlspecialchars(strip_tags($username));
+      $username = "{$username}";
+
       $name=htmlspecialchars(strip_tags($name));
       $name = "{$name}";
 
@@ -79,6 +83,7 @@ class Vendor{
       $stmt->bindParam(3, $city);
       $stmt->bindParam(4, $state);
       $stmt->bindParam(5, $zip);
+      $stmt->bindParam(6, $username);
 
 
       // execute query
@@ -90,11 +95,11 @@ class Vendor{
 
   }
 
-  // delete contact
-  function delete($keywords){
+  // delete current vendor
+  function delete($keywords, $username){
 
       // delete query
-      $query = "DELETE FROM " . $this->table_name . " WHERE EntertainerName = ?";
+      $query = "DELETE FROM " . $this->table_name . " WHERE EntertainerName = ? AND FTID = (SELECT FTID FROM loginFT WHERE username = ?)";
 
       // prepare query
       $stmt = $this->conn->prepare($query);
@@ -103,8 +108,12 @@ class Vendor{
       $keywords=htmlspecialchars(strip_tags($keywords));
       $keywords = "{$keywords}";
 
+      $username=htmlspecialchars(strip_tags($username));
+      $username = "{$username}";
+
       // bind
       $stmt->bindParam(1, $keywords);
+      $stmt->bindParam(1, $username);
 
       // execute query
       if($stmt->execute() && $stmt->rowCount() > 0){
@@ -115,7 +124,7 @@ class Vendor{
 
   }
 
-  // search contacts
+  // search vendors
   function search($keywords){
 
     // $regex = "/[\s]/";
@@ -144,18 +153,6 @@ class Vendor{
       $stmt->execute();
 
       return $stmt;
-  }
-
-  //A SMALL DISPLAY FUNCTION ADDED BY BAO (OF COURSE COPY AND PASTE FROM HUGH CODES)
-  function display($keywords){
-        $query = "SELECT * FROM " . $this->table_name . " WHERE id = ? ";
-        $stmt = $this->conn->prepare($query);
-
-        $keywords=htmlspecialchars(strip_tags($keywords));
-        $keywords = "{$keywords}";
-        $stmt->bindParam(1, $keywords);
-        $stmt->execute();
-        return $stmt;
   }
 }
 ?>

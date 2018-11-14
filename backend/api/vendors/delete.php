@@ -15,25 +15,26 @@ include_once '../objects/vendors/functions.php';
 $database = new Database();
 $db = $database->getConnection();
 
-// prepare contact object
+// prepare vendor object
 $et = new Vendor($db);
 
-// get contact info to be deleted
+// get vendor info to be deleted
 $data = json_decode(file_get_contents("php://input"));
 $keyword = $data->keyword;
+$username = $data->username;
 
 // get keywords from url query string
 //$contact->id=$_GET["id"];
 //$contact->username=$_GET["username"];
 
-// delete the contact
-if($et->delete($keyword)){
+// delete the vendor
+if($et->delete($keyword, $username)){
     echo json_encode(
         array("message" => "Vendor was deleted.")
     );
 }
 
-// if unable to delete the contact
+// if unable to delete the vendor
 else{
     echo json_encode(
         array("message" => "Unable to delete vendor.")

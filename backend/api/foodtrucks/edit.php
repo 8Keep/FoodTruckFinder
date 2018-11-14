@@ -30,6 +30,7 @@ $ft = new FoodTruck($db);
 // get keywords from url query string
 //$keywords=isset($_GET["s"]) ? $_GET["s"] : "";
 $data = json_decode(file_get_contents("php://input", true));
+$ft->username = $data->username;
 $ft->truck_name = $data->truck_name;
 $ft->city = $data->city;
 $ft->state = $data->state;
@@ -38,7 +39,7 @@ $ft->range = $data->range;
 
 
 // create the food truck
-if($ft->edit($ft->truck_name, $ft->city, $ft->state, $ft->zip, $ft->range)){
+if($ft->edit($ft->username, $ft->truck_name, $ft->city, $ft->state, $ft->zip)){
     echo json_encode(
         array("message" => "Food Truck was edited.")
     );

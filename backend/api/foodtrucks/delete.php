@@ -32,6 +32,7 @@ $ft = new FoodTruck($db);
 // get food truck info to be deleted
 $data = json_decode(file_get_contents("php://input"));
 $keyword = $data->keyword;
+$username = $data->username;
 
 
 // get keywords from url query string
@@ -39,7 +40,7 @@ $keyword = $data->keyword;
 //$ft->username=$_GET["username"];
 
 // delete the food truck
-if($ft->delete($keyword)){
+if($ft->delete($keyword, $username)){
     echo json_encode(
         array("message" => "Food Truck was deleted.")
     );
