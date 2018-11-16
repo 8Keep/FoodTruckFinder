@@ -1,0 +1,14 @@
+Cities
+---------------------------
+New York
+Los Angeles
+Chicago
+Orlando
+
+
+states
+------------------------
+New York
+California
+Illinois
+Florida
