@@ -35,7 +35,6 @@ $ft->truck_name = $data->truck_name;
 $ft->city = $data->city;
 $ft->state = $data->state;
 $ft->zip = $data->zip;
-$ft->range = $data->range;
 
 
 // create the food truck
