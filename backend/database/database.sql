@@ -3,7 +3,6 @@ create database largeproject;
   CREATE TABLE `largeproject`.`loginFT` (
     `FTID` INT NOT NULL AUTO_INCREMENT,
     `username` VARCHAR(50) NOT NULL DEFAULT '' UNIQUE,
-    `email` VARCHAR(50) NOT NULL DEFAULT '' UNIQUE,
     `password` VARCHAR(50) NOT NULL DEFAULT '',
     PRIMARY KEY (`FTID`)
   );
