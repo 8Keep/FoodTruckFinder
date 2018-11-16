@@ -14,93 +14,11 @@
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 <link rel="shortcut icon" type="image/x-icon" href="/favicon48-48.jpg">
 
-<style>
-@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
-
-.btn, .btn:hover, .btn:active, .btn:visited {
-    background: #c94b4b !important;
-    border-color: #8064A2;
-    color: #FFFFFF;
-}
- 
-.btn:focus, .btn:active:focus, .btn.active:focus {
-    outline: 0 none;
-    outline: none !important;
-    box-shadow: none;
-}
- 
-.btn-primary {
-    background: #c94b4b;
-    color: #ffffff;
-}
- 
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
-    background: #c94b4bc;
-}
- 
-.btn-primary:active, .btn-primary.active {
-    background: #c94b4b;
-}
-
-
-.navbar {
-    background-color: #450055 !important;
-}
-
-body { 
-    padding-top: 65px; 
-}
-
-.navbar-icon-top .navbar-nav .nav-link > .fa {
-  position: relative;
-  width: 36px;
-  font-size: 24px;
-}
-
-.navbar-icon-top .navbar-nav .nav-link > .fa > .badge {
-  font-size: 0.75rem;
-  position: absolute;
-  right: 0;
-  font-family: sans-serif;
-}
-
-.navbar-icon-top .navbar-nav .nav-link > .fa {
-  top: 3px;
-  line-height: 12px;
-}
-
-.navbar-icon-top .navbar-nav .nav-link > .fa > .badge {
-  top: -10px;
-}
-
-.card-img-wrap {
-  overflow: hidden;
-  position: relative;
-}
-.card-img-wrap:after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(255,255,255,0.3);
-  opacity: 0;
-  transition: opacity .25s;
-}
-.card-img-wrap img {
-  transition: transform .25s;
-  width: 100%;
-}
-.card-img-wrap:hover img {
-  transform: scale(1.2);
-}
-.card-img-wrap:hover:after {
-  opacity: 1;
-}
-
-   
-</style>
+<script type="text/javascript" src="js/main.js"></script>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/main2.css">
 
 </head>
-
 
 <body>
 <nav class="navbar navbar-icon-top fixed-top navbar-expand-lg navbar-dark bg-dark">
@@ -157,7 +75,7 @@ body {
             
         </div>
         
-        <button class="btn m-2 m-sm-0" type="submit" data-toggle="modal" data-target="#addPopup">Register</button>
+        <button id="regbtn" class="btn m-2 m-sm-0" type="submit" data-toggle="modal" data-target="#addPopup">Register</button>
         
     </div>
 </nav>
@@ -236,29 +154,87 @@ body {
         <div class="modal-dialog vertical-align-center">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Add</h4>
+                    <h4 class="modal-title">Register</h4>
                     <button type="button" class="close" data-dismiss="modal" onclick="dismissErr();" >
                         <span aria-hidden="true">&times;</span>
                         <span class="sr-only">Close</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form class="form">
+                <div class="modal-body container">
+                    <div id="firstchoice" class="row align-items-center h-100 justify-content-center">
+                        <button id="ft" class="btn btn-lg m-4" >Food Truck</button>
+                        <button id="ven" class="btn btn-lg m-4" >Vender</button>
+                    </div>
+                    
+                    
+                <h5>Sign up to connect with other users.</h5>
+                    <form class="" method="post" action="#">
+                        
                         <div class="form-group">
-                            <input id="name" class="form-control input-lg" placeholder="Name" type="text">
+                            <label for="name" class="cols-sm-2 control-label">Your Name</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name"/>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="form-group">
-                            <input id="phone" class="form-control input-lg" placeholder="Phone Number" type="text">
+                            <label for="email" class="cols-sm-2 control-label">Your Email</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="form-group">
-                            <input id="address" class="form-control input-lg" placeholder="Address" type="text">
+                            <label for="username" class="cols-sm-2 control-label">Username</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="username" id="username"  placeholder="Enter your Username"/>
+                                </div>
+                            </div>
                         </div>
+
+                        <div class="form-group">
+                            <label for="password" class="cols-sm-2 control-label">Password</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                    <input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                    <input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <a href="https://deepak646.blogspot.com/" target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button">Register</a>
+                        </div>
+                        
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <div id="adderr" class="text-danger"></div>
+                    
+                    
+                    
+                </div>
+                
+                <div id="regfoot" class="modal-footer">
+                    <div id="regerr" class="text-danger"></div>
                     <button type="button" class="btn btn-default" data-dismiss="modal" onclick="dismissErr();">Close</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" onClick="add(event);">Add</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onClick="next(event);">Add</button>
                 </div>
             </div>
         </div>
