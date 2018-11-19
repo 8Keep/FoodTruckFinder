@@ -26,9 +26,11 @@ $et->address = $data->address;
 $et->city = $data->city;
 $et->state = $data->state;
 $et->zip = $data->zip;
+$et->phonenumber = $data->phonenumber;
+$et->email = $data->email;
 
 // edit the vendor's details
-if($et->edit($et->username, $et->name, $et->address, $et->city, $et->state, $et->zip)){
+if($et->edit($et->username, $et->name, $et->address, $et->city, $et->state, $et->zip, $et->phonenumber, $et->email)){
     echo json_encode(
         array("message" => "Vendor was edited.")
     );
