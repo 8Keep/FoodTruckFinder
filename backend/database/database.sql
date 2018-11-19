@@ -22,6 +22,8 @@ create database largeproject;
     `City` VARCHAR(50) NOT NULL DEFAULT '',
     `State` VARCHAR(25) NOT NULL DEFAULT '',
     `Zip` VARCHAR(5) NOT NULL DEFAULT '',
+    `phonenumber` VARCHAR(15) NOT NULL DEFAULT '',
+    `email` VARCHAR(50) NOT NULL DEFAULT '',
     `FTID` INT,
     FOREIGN KEY (`FTID`)
     REFERENCES `largeproject`.`loginFT`(`FTID`),
@@ -36,6 +38,8 @@ create database largeproject;
     `City` VARCHAR(50) NOT NULL DEFAULT '',
     `State` VARCHAR(25) NOT NULL DEFAULT '',
     `Zip` VARCHAR(5) NOT NULL DEFAULT '',
+    `phonenumber` VARCHAR(15) NOT NULL DEFAULT '',
+    `email` VARCHAR(50) NOT NULL DEFAULT '',
     `ETID` INT,
     FOREIGN KEY (`ETID`)
     REFERENCES `largeproject`.`loginET`(`ETID`),
