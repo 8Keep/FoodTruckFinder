@@ -44,7 +44,7 @@ class FoodTruck{
     }
 
   // edit user details
-  function edit($username, $truck_name, $city, $state, $zip){
+  function edit($username, $truck_name, $city, $state, $zip, $phonenumber, $email){
 
       // query to insert user details
       $query = "INSERT INTO " . $this->table_name . " (TruckName, City, State, Zip, phonenumber, email, FTID) VALUES (?,?,?,?,?,?, (SELECT FTID FROM loginFT WHERE username = ?))";
