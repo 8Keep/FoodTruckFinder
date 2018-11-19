@@ -13,6 +13,8 @@ class FoodTruck{
     public $state;
     public $zip;
     public $range;
+    public $address;
+    public $phonenumber;
 
     // constructor with $db as database connection
     public function __construct($db){
