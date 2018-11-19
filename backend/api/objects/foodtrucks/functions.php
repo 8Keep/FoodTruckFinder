@@ -47,7 +47,7 @@ class FoodTruck{
   function edit($username, $truck_name, $city, $state, $zip){
 
       // query to insert user details
-      $query = "INSERT INTO " . $this->table_name . " (TruckName, City, State, Zip, FTID) VALUES (?,?,?,?, (SELECT FTID FROM loginFT WHERE username = ?))";
+      $query = "INSERT INTO " . $this->table_name . " (TruckName, City, State, Zip, phonenumber, email, FTID) VALUES (?,?,?,?,?,?, (SELECT FTID FROM loginFT WHERE username = ?))";
 
       // prepare query
       $stmt = $this->conn->prepare($query);
@@ -64,16 +64,21 @@ class FoodTruck{
 
       $zip=htmlspecialchars(strip_tags($zip));
       $zip = "{$zip}";
+      
+      $phonenumber=htmlspecialchars(strip_tags($phonenumber));
+      $phonenumber = "{$phonenumber}";
 
-      $username=htmlspecialchars(strip_tags($username));
-      $username = "{$username}";
+      $email=htmlspecialchars(strip_tags($email));
+      $email = "{$email}";
 
       // bind
       $stmt->bindParam(1, $truck_name);
       $stmt->bindParam(2, $city);
       $stmt->bindParam(3, $state);
       $stmt->bindParam(4, $zip);
-      $stmt->bindParam(5, $username);
+      $stmt->bindParam(5, $phonenumber);
+      $stmt->bindParam(6, $email);
+      $stmt->bindParam(7, $username);
 
       // execute query
       if($stmt->execute()){
