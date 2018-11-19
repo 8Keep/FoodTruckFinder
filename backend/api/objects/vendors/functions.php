@@ -20,6 +20,8 @@ class Vendor{
     public $city;
     public $state;
     public $zip;
+    public $phonenumber;
+    public $email;
 
     // constructor with $db as database connection
     public function __construct($db){
@@ -49,10 +51,10 @@ class Vendor{
     }
 
   // edit vendor details
-  function edit($username, $name, $address, $city, $state, $zip){
+  function edit($username, $name, $address, $city, $state, $zip, $phonenumber, $email){
 
       // query to insert vendor details
-      $query = "INSERT INTO " . $this->table_name . " (EntertainerName, address, city, state, zip, ETID) VALUES (?,?,?,?,?, (SELECT ETID from loginET WHERE username = ?))";
+      $query = "INSERT INTO " . $this->table_name . " (EntertainerName, address, city, state, zip, ETID) VALUES (?,?,?,?,?,?,?, (SELECT ETID from loginET WHERE username = ?))";
 
       // prepare query
       $stmt = $this->conn->prepare($query);
@@ -75,6 +77,12 @@ class Vendor{
 
       $zip=htmlspecialchars(strip_tags($zip));
       $zip = "{$zip}";
+    
+      $phonenumber=htmlspecialchars(strip_tags($phonenumber));
+      $phonenumber = "{$phonenumber}";
+    
+      $email=htmlspecialchars(strip_tags($email));
+      $email = "{$email}";
 
 
       // bind
@@ -83,7 +91,9 @@ class Vendor{
       $stmt->bindParam(3, $city);
       $stmt->bindParam(4, $state);
       $stmt->bindParam(5, $zip);
-      $stmt->bindParam(6, $username);
+      $stmt->bindParam(6, $phonenumber);
+      $stmt->bindParam(7, $email);
+      $stmt->bindParam(8, $username);
 
 
       // execute query
