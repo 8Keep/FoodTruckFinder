@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/gradient"
     android:theme="@style/Base.AlertDialog.AppCompat.Light"
     tools:context=".FirstPage">
@@ -21,7 +26,7 @@
         app:srcCompat="@drawable/poopicon" />
 
     <Button
-        android:id="@+id/ft"
+        android:id="@+id/login"
         android:layout_width="0dp"
         android:layout_height="34dp"
         android:layout_marginStart="63dp"
@@ -49,7 +54,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ft" />
+        app:layout_constraintTop_toBottomOf="@+id/login" />
 
     <TextView
         android:id="@+id/textView3"
@@ -60,7 +65,7 @@
         android:text="@string/login_as"
         android:textAlignment="center"
         android:textColor="#ffffff"
-        app:layout_constraintBottom_toTopOf="@+id/ft"
+        app:layout_constraintBottom_toTopOf="@+id/login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
@@ -84,3 +89,4 @@
         app:layout_constraintVertical_bias="0.853" />
 
 </android.support.constraint.ConstraintLayout>
+</ScrollView>

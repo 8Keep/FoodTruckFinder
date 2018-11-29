@@ -6,7 +6,7 @@
     <string name="vendors">VENDOR</string>
     <string name="login_as">Login as:</string>
     <string name="create_account"><u>Register here.</u></string>
-    <string name="create_your_account">Tell us your name</string>
+    <string name="create_your_account">Tell us your name and your company</string>
     <string name="address">Where is your business?</string>
     <string name="ftArea">Available area</string>
     <string name="contact">Contact Information</string>
@@ -31,6 +31,13 @@
     <string name="submit">Submit</string>
     <string name="createsuccess">Your account was successfully created!</string>
     <string name="createfailure">Oops! Fail to create your account. Please check your connection and try again</string>
+    <string name="forgotPass">Forgot password?</string>
+    <string name="login">Login</string>
+    <string name="remember">Remember me?</string>
+    <string name="FTImg">FTimg</string>
+    <string name="description">Description</string>
+    <string name="search">Search...</string>
+    <string name="importIMG">Change profile image</string>
 
 
 </resources>

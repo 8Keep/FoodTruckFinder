@@ -15,7 +15,7 @@ public class CreateVenOrFT extends CreateActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_ven_or_ft);
         vendor = (ToggleButton) findViewById(R.id.vendor);
-        ft = (ToggleButton) findViewById(R.id.ft);
+        ft = (ToggleButton) findViewById(R.id.login);
         next = findViewById(R.id.next);
         if(!vendor.isChecked() && !ft.isChecked())
         {

@@ -15,7 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class CreateName extends CreateActivity {
-    private String gfname, glname, gFTname;
+    private String gfname, glname, gFTname, gETname;
     private TextView header, FTname;
     private EditText FTEdit;
     private boolean isVendor;
@@ -27,7 +27,7 @@ public class CreateName extends CreateActivity {
         bundle = getIntent().getExtras();
         fname = (EditText) findViewById(R.id.fname);
         lname = (EditText) findViewById(R.id.lname);
-        DoneCheck = (EditText) findViewById(R.id.lname);
+        DoneCheck = (EditText) findViewById(R.id.FtEditText);
         isVendor = bundle.getBoolean("isVendor");
         if(!isVendor)
             DoneCheck = findViewById(R.id.FtEditText);
@@ -52,8 +52,8 @@ public class CreateName extends CreateActivity {
         });
         if(isVendor)
         {
-            FTEdit.setVisibility(View.INVISIBLE);
-            FTname.setVisibility(View.INVISIBLE);
+            FTname.setText("Company's Name");
+
         }
         else
         {
@@ -79,6 +79,8 @@ public class CreateName extends CreateActivity {
         bundle.putString("lname", glname);
         if(!isVendor)
             bundle.putString("FTname", gFTname);
+        else
+            bundle.putString("ETname", gETname);
         intent.putExtras(bundle);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
@@ -108,6 +110,10 @@ public class CreateName extends CreateActivity {
             if(!isVendor)
             {
                 gFTname = FTEdit.getText().toString();
+            }
+            else
+            {
+                gETname = FTEdit.getText().toString();
             }
             if(TextUtils.isEmpty(gfname))
             {

@@ -20,8 +20,11 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
@@ -33,7 +36,7 @@ public class CreateUserPass extends CreateActivity {
 
     private TextView passHint, confirmErr;
     private boolean isVendor;
-    private String localhost_ip = "10.0.2.2";
+    private String localhost_ip = "192.168.0.17";
     Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,23 +71,24 @@ public class CreateUserPass extends CreateActivity {
                 try {
                     loginObject.put("username", gUsername);
                     loginObject.put("password", gPassword);
+                    loginObject.put("email", bundle.getString("gEmail"));
+                    infoObject.put("username", gUsername);
+                    infoObject.put("email", bundle.getString("gEmail"));
+                    infoObject.put("phone", bundle.getString("gPhone"));
+                    infoObject.put("first", bundle.getString("fname"));
+                    infoObject.put("last", bundle.getString("lname"));
+                    infoObject.put("city", bundle.getString("gCity"));
+                    infoObject.put("state", bundle.getString("gState"));
+                    infoObject.put("zip", bundle.getString("gZip"));
 
                     if(isVendor)
                     {
-                        infoObject.put("name", bundle.getString("fname") + " " + bundle.getString("lname"));
+                        infoObject.put("ET_name", bundle.getString("ETname"));
                         infoObject.put("address", bundle.getString("gStreet"));
-                        infoObject.put("city", bundle.getString("gCity"));
-                        infoObject.put("state", bundle.getString("gState"));
-                        infoObject.put("zip", bundle.getString("gZip"));
                     }
                     else
                     {
                         infoObject.put("truck_name", bundle.getString("FTname"));
-                        infoObject.put("city", bundle.getString("gCity"));
-                        infoObject.put("state", bundle.getString("gState"));
-                        infoObject.put("zip", bundle.getString("gZip"));
-                        infoObject.put("range", "50-100");
-
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -129,6 +133,7 @@ public class CreateUserPass extends CreateActivity {
 //
 //        return isConnected;
 //    }
+
     @Override
     public void finish() {
         super.finish();
@@ -207,6 +212,8 @@ public class CreateUserPass extends CreateActivity {
 
 
     private class HTTPAsyncTask extends AsyncTask<String, Void, String> {
+        String res;
+        JSONObject resb;
         @Override
         protected String doInBackground(String... urls) {
             // params comes from the execute() call: params[0] is the url.
@@ -224,24 +231,44 @@ public class CreateUserPass extends CreateActivity {
         }
         // onPostExecute displays the results of the AsyncTask.
         @Override
-        protected void onPostExecute(String result) {
+        protected void onPostExecute(String result){
             boolean isCreated = false;
-            ;
+
             if(result.equals("OK"))
             {
                 isCreated = true;
             }
             if(isCreated) {
-                Toast.makeText(CreateUserPass.this, "Your account was successfully created", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(CreateUserPass.this, FirstPage.class);
-                bundle.putBoolean("isCreated", isCreated);
-                intent.putExtras(bundle);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                String resa = null;
+                try {
+                    resa = resb.getString("message");
+                    Log.d("Echo", resa);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                if(resa.equals("Vendor account was created.") || resa.equals("Food Truck account created."))
+                    Toast.makeText(CreateUserPass.this, "Initializing info...", Toast.LENGTH_LONG).show();
+                else if(resa.equals("Vendor was edited.") || resa.equals("Food Truck was edited."))
+                {
+                    Toast.makeText(CreateUserPass.this, "Account is successfully created", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(CreateUserPass.this, FirstPage.class);
+                    bundle.putBoolean("isCreated", isCreated);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                }
+                else if(resa.equals("Unable to create user.") || resa.equals("Unable to create Food Truck account."))
+                {
+                    Toast.makeText(CreateUserPass.this, "Username/Email was already existed", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+
             }
             else
             {
-                Toast.makeText(CreateUserPass.this, "Your account was failed to create", Toast.LENGTH_LONG).show();
+                Toast.makeText(CreateUserPass.this, result, Toast.LENGTH_LONG).show();
+                Log.d("Echo", result);
             }
 
         }
@@ -257,9 +284,11 @@ public class CreateUserPass extends CreateActivity {
             conn.setRequestMethod("POST");
             conn.setRequestProperty("Content-Type", "application/json; charset=utf-8");
             conn.setDoOutput(true);
+            conn.setDoInput(true);
             // 2. build JSON object
             // 3. add JSON content to POST request body
             setPostRequestContent(conn, JSON);
+            getPHPecho(conn);
             // 4. make POST request to the given URL
             conn.connect();
 
@@ -267,10 +296,32 @@ public class CreateUserPass extends CreateActivity {
             return conn.getResponseMessage()+"";
 
         }
+        private void getPHPecho(HttpURLConnection conn)
+        {
+            try {
+
+                InputStream is = conn.getInputStream();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+                StringBuilder sb = new StringBuilder();
+                String line = "";
+                while (line != null) {
+                    line = reader.readLine();
+                    sb.append(line + "\n");
+                }
+                is.close();
+                res = sb.toString();
+                resb = new JSONObject(res);
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
         private void setPostRequestContent(HttpURLConnection conn,
                                           String jsonObject){
             try {
                 OutputStream os = conn.getOutputStream();
+
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
                 writer.write(jsonObject);
                 writer.flush();
@@ -283,5 +334,6 @@ public class CreateUserPass extends CreateActivity {
 
 
     }
+
 
 }

@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -89,7 +94,7 @@
         android:backgroundTint="#ffffff"
         android:ems="10"
         android:fontFamily="@font/asap_bold"
-        android:inputType="textPersonName"
+        android:inputType="textCapCharacters|textPersonName"
         android:labelFor="@id/state"
         android:maxLength="2"
         android:nextFocusRight="@+id/zip"
@@ -133,3 +138,4 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
+</ScrollView>
