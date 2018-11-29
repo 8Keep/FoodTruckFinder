@@ -28,6 +28,7 @@ create database largeproject;
     `Zip` VARCHAR(5) NOT NULL DEFAULT '',
     `email` VARCHAR(50) NOT NULL DEFAULT '' UNIQUE,
     `phone` VARCHAR(50) NOT NULL DEFAULT '',
+    `Description` TEXT,
     `FTID` INT UNIQUE,
     `imgURL` VARCHAR(2000),
     FOREIGN KEY (`FTID`)
@@ -47,6 +48,7 @@ create database largeproject;
     `Zip` VARCHAR(5) NOT NULL DEFAULT '',
     `email` VARCHAR(50) NOT NULL DEFAULT '' UNIQUE,
     `phone` VARCHAR(50) NOT NULL DEFAULT '',
+    `Description` TEXT,
     `ETID` INT UNIQUE,
     `imgURL` VARCHAR(2000),
     FOREIGN KEY (`ETID`)
