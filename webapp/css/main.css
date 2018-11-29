@@ -42,8 +42,6 @@ table {
   border-spacing: 0;
 }
 
-@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
-
 .btn, .btn:hover, .btn:active, .btn:visited {
     background: #c94b4b !important;
     border-color: #8064A2;

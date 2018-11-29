@@ -20,3 +20,7 @@ function back() {
     $("#ven-reg").hide();
     $("#typesel").show();
 }
+
+fuction login() {
+    
+}
