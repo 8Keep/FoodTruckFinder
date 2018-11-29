@@ -1,0 +1,89 @@
+
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+
+.hero-image{ 
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/custom-air-dancer-food-trucks.jpg");
+
+    /* Set a specific height */
+    height: 50%;
+
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+ }
+
+ .hero-text{
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; 
+    margin: 0 auto;
+ }
+
+ h1{
+      font-family: 'Bree Serif', serif;
+ }
+
+
+.btn, .btn:hover, .btn:active, .btn:visited {
+    background: #c94b4b !important;
+    border-color: #8064A2;
+    color: #FFFFFF;
+}
+ 
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+    outline: none !important;
+    box-shadow: none;
+}
+ 
+.btn-primary {
+    background: #c94b4b;
+    color: #ffffff;
+}
+ 
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: #c94b4bc;
+}
+ 
+.btn-primary:active, .btn-primary.active {
+    background: #c94b4b;
+}
+
+
+.navbar {
+    background-color: #450055 !important;
+}
+
+.navbar-brand{
+  font-family: 'Bree Serif', serif;
+
+}
+
+.information
+{
+  margin: 0 auto;
+}
+
+
+.main {
+
+  font-family: 'Bree Serif', serif;
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  margin:0 auto;
+  max-width:700px;
+  background: #FFF5EE; 
+  
+}
+.description{
+  margin:0 auto;
+}
+
