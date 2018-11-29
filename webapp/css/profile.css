@@ -1,7 +1,3 @@
-
-@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
-
-
 .hero-image{ 
 
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/custom-air-dancer-food-trucks.jpg");
@@ -27,10 +23,9 @@
     margin: 0 auto;
  }
 
- h1{
-      font-family: 'Bree Serif', serif;
- }
-
+* {
+    font-family: 'Bree Serif', serif;
+}
 
 .btn, .btn:hover, .btn:active, .btn:visited {
     background: #c94b4b !important;
@@ -62,11 +57,6 @@
     background-color: #450055 !important;
 }
 
-.navbar-brand{
-  font-family: 'Bree Serif', serif;
-
-}
-
 .information
 {
   margin: 0 auto;
@@ -74,8 +64,6 @@
 
 
 .main {
-
-  font-family: 'Bree Serif', serif;
   display: grid;
   grid-template-columns: 1fr 1fr; 
   margin:0 auto;
