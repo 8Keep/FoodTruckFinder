@@ -153,7 +153,7 @@ body {
 
 <div class="modal fade" id="addPopup" tabindex="-1" role="dialog">
     <div class="vertical-alignment-helper">
-        <div class="modal-dialog vertical-align-center">
+        <div class="modal-dialog horizontal-align-center vertical-align-center">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Register</h4>
@@ -180,11 +180,11 @@ body {
                                     <input type="email" id="regem" class="form-control my-2" placeholder="Email">
                                     <label for="regpwd">Password</label>
                                     <input type="password" id="regpwd" class="form-control my-2" placeholder="Password"> 
-                                    <div class="col-xs-6 ml-2 pull-right">  
+                                    <div class="col-xs-6 pull-right">  
                                         <button id="login-submit" class="form-control btn btn-login my-2">Register</button>
                                     </div>
-                                    <div class="col-xs-6 mr-2 pull-right">
-                                        <button id="beg" class="form-control btn btn-login my-2" onClick="back()">Back</button>
+                                    <div class="col-xs-6 pull-right">
+                                        <button id="ft-reg-b" class="form-control btn btn-login my-2" onClick="back()">Back</button>
                                     </div>
                                 </div>
                             </div>
@@ -203,22 +203,16 @@ body {
                                     <input type="email" id="regem" class="form-control my-2" placeholder="Email">
                                     <label for="regpwd">Password</label>
                                     <input type="password" id="regpwd" class="form-control my-2" placeholder="Password">
-                                    <div class="col-xs-6 ml-2 pull-right">  
+                                    <div class="col-xs-6 pull-right">  
                                         <button id="login-submit" class="form-control btn btn-login my-2">Register</button>
                                     </div>
-                                    <div class="col-xs-6 mr-2 pull-right">
-                                        <button id="beg" class="form-control btn btn-login my-2" onClick="back()">Back</button>
+                                    <div class="col-xs-6 pull-right">
+                                        <button id="veg-reg-b" class="form-control btn btn-login my-2" onClick="back()">Back</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                
-                <div id="regfoot" class="modal-footer">
-                    <div id="regerr" class="text-danger"></div>
-                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="dismissErr();">Close</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" onClick="next(event);">Add</button>
                 </div>
             </div>
         </div>

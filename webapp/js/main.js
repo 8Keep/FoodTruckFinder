@@ -21,6 +21,6 @@ function back() {
     $("#typesel").show();
 }
 
-fuction login() {
+function login() {
     
 }
