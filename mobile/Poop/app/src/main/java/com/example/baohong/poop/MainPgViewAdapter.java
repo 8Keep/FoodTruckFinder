@@ -19,6 +19,7 @@ import java.util.List;
 
 public class MainPgViewAdapter extends RecyclerView.Adapter<MainPgViewAdapter.ViewHolder> {
     private List<ListItem> listItems;
+    private final String DEF_IMG = "http://192.168.0.17/images/default.png";
     private Context context;
     int width , height;
 
@@ -60,7 +61,7 @@ public class MainPgViewAdapter extends RecyclerView.Adapter<MainPgViewAdapter.Vi
                     .into(viewHolder.imageView);
         else
             Picasso.get()
-                    .load("http://10.32.254.140/images/default.png")
+                    .load(DEF_IMG)
                     .into(viewHolder.imageView);
 
     }

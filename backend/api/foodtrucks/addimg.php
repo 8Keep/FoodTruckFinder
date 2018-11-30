@@ -30,14 +30,17 @@ $ft = new FoodTruck($db);
 // get keywords from url query string
 //$keywords=isset($_GET["s"]) ? $_GET["s"] : "";
 $data = json_decode(file_get_contents("php://input", true));
-$ft->username = $data->username;
-$ft->imgURL = $data->imgURL;
-
+$username = $data->username;
+$upload_path = "../../images/$username.jpg";
+$img_path = "http://192.168.0.17/images/$username.jpg";
+$image = $data->image;
 
 
 // create the food truck
-if($ft->addimg($ft->imgURL, $ft->username)){
+if($ft->addimg($img_path, $username)){
+  file_put_contents($upload_path, base64_decode($image));
     echo json_encode(
+      
         array("message" => "Food Truck img was added.")
     );
 }
