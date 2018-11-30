@@ -176,7 +176,7 @@ class Vendor{
     //   return;
     // }
       // select all query
-      $query = "SELECT * FROM " . $this->table_name . " WHERE EntertainerName LIKE ? OR address LIKE ? OR City LIKE ? or State LIKE ? or Zip LIKE ?";
+      $query = "SELECT * FROM " . $this->table_name . " WHERE First LIKE ? OR Last LIKE ? OR EntertainerName LIKE ? OR address LIKE ? OR City LIKE ? OR State LIKE ? OR Zip LIKE ? OR email LIKE ? OR phone LIKE ? OR Description LIKE ?";
 
       // prepare query statement
       $stmt = $this->conn->prepare($query);
