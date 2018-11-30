@@ -191,6 +191,11 @@ class Vendor{
       $stmt->bindParam(3, $keywords);
       $stmt->bindParam(4, $keywords);
       $stmt->bindParam(5, $keywords);
+      $stmt->bindParam(6, $keywords);
+      $stmt->bindParam(7, $keywords);
+      $stmt->bindParam(8, $keywords);
+      $stmt->bindParam(9, $keywords);
+      $stmt->bindParam(10, $keywords);
 
       // execute query
       $stmt->execute();
