@@ -1,28 +1,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 <link rel="shortcut icon" type="image/x-icon" href="/favicon48-48.jpg">
-
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 <script type="text/javascript" src="js/main.js"></script>
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<!-- <link rel="stylesheet" type="text/css" href="css/main2.css"> -->
+
+<style>
+body { 
+    padding-top: 65px;
+}
+</style>
 
 </head>
 
 <body>
 <nav class="navbar navbar-icon-top fixed-top navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="">People Order Our Patties </a>
+    <a class="navbar-brand" href="index.html">People Order Our Patties </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -31,28 +31,24 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <i class="fa fa-envelope-o"></i>
+                    <i class="far fa-envelope"></i>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fa fa-user-o"></i>
+                <a class="nav-link" href="profile.html">
+                    <i class="far fa-user"></i>
                 </a>
             </li>
         </ul>
-    
-        <form class="form-inline my-2 my-lg-0">
+        <div class="my-2 my-lg-0">
             <input id="searchbox" class="form-control" type="text" placeholder="Search" aria-label="Search">
-            
-        </form>
-        
+        </div>
         
         <div class="btn-group">
             <button type="button" class="btn m-2 my-sm-0 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Sign in
             </button>
             <div class="dropdown-menu dropdown-menu-right p-4">
-                <form>
                     <div class="form-group">
                         <label for="emailaddr">Email address</label>
                         <input type="email" class="form-control" id="emailaddr" placeholder="Email">
@@ -65,16 +61,12 @@
                         <input type="checkbox" class="form-check-input" id="dropdownCheck">
                         <label class="form-check-label" for="dropdownCheck">Remember me</label>
                     </div>
-                    <button type="submit" class="btn">Sign in</button>
-                </form>
+                    <button class="btn m-2 m-sm-0" type="submit" class="btn">Sign in</button>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Forgot password?</a>
             </div>
-            
         </div>
-        
         <button id="regbtn" class="btn m-2 m-sm-0" type="submit" data-toggle="modal" data-target="#addPopup">Register</button>
-        
     </div>
 </nav>
 
@@ -82,7 +74,7 @@
     
     <div class="card-deck my-4">
         <div class="card">
-            <div class="card-img-wrap"><img class="card-img-top" src="images/ft1.jpg" alt="Card image cap"></div>
+            <div class="card-img-wrap"><img class="card-img-top" src="images/ft1-thumb.jpg" alt="Card image cap"></div>
             <div class="card-body">
                 <h5 class="card-title">Food Truck Name</h5>
                 <p class="card-text">Food truck description</p>
@@ -92,7 +84,7 @@
             </div>
         </div>
         <div class="card">
-            <div class="card-img-wrap"><img class="card-img-top" src="images/ft2.jpg" alt="Card image cap"></div>
+            <div class="card-img-wrap"><img class="card-img-top" src="images/ft2-thumb.jpg" alt="Card image cap"></div>
             <div class="card-body">
                 <h5 class="card-title">Food Truck Name</h5>
                 <p class="card-text">Food truck description</p>
@@ -102,7 +94,7 @@
             </div>
         </div>
         <div class="card">
-            <div class="card-img-wrap"><img class="card-img-top" src="images/ft3.jpg" alt="Card image cap"></div>
+            <div class="card-img-wrap"><img class="card-img-top" src="images/ft3-thumb.jpg" alt="Card image cap"></div>
             <div class="card-body">
                 <h5 class="card-title">Food Truck Name</h5>
                 <p class="card-text">Food truck description</p>
@@ -114,7 +106,7 @@
     </div>
     <div class="card-deck">
         <div class="card">
-            <div class="card-img-wrap"><img class="card-img-top" src="images/ft4.jpg" alt="Card image cap"></div>
+            <div class="card-img-wrap"><img class="card-img-top" src="images/ft4-thumb.jpg" alt="Card image cap"></div>
             <div class="card-body">
                 <h5 class="card-title">Food Truck Name</h5>
                 <p class="card-text">Food truck description</p>
@@ -124,7 +116,7 @@
             </div>
         </div>
         <div class="card">
-            <div class="card-img-wrap"><img class="card-img-top" src="images/ft5.jpg" alt="Card image cap"></div>
+            <div class="card-img-wrap"><img class="card-img-top" src="images/ft5-thumb.jpg" alt="Card image cap"></div>
             <div class="card-body">
                 <h5 class="card-title">Food Truck Name</h5>
                 <p class="card-text">Food truck description</p>
@@ -134,7 +126,7 @@
             </div>
         </div>
         <div class="card">
-            <div class="card-img-wrap"><img class="card-img-top" src="images/ft1.jpg" alt="Card image cap"></div>
+            <div class="card-img-wrap"><img class="card-img-top" src="images/ft1-thumb.jpg" alt="Card image cap"></div>
             <div class="card-body">
                 <h5 class="card-title">Food Truck Name</h5>
                 <p class="card-text">Food truck description</p>
@@ -159,7 +151,7 @@
                     </button>
                 </div>
                 <div class="modal-body container">
-                    <div id="typesel" class="row align-items-center h-100 justify-content-center">
+                    <div id="typesel" class="row align-items-center justify-content-center">
                         <button id="ft" class="btn btn-lg m-4" onClick="regft()">Food Truck</button>
                         <button id="ven" class="btn btn-lg m-4" onClick="regven()">Vender</button>
                     </div>
@@ -176,11 +168,11 @@
                                     <input type="email" id="regem" class="form-control my-2" placeholder="Email">
                                     <label for="regpwd">Password</label>
                                     <input type="password" id="regpwd" class="form-control my-2" placeholder="Password"> 
-                                    <div class="col-xs-6 ml-2 pull-right">  
+                                    <div class="col-xs-6 pull-right">  
                                         <button id="login-submit" class="form-control btn btn-login my-2">Register</button>
                                     </div>
-                                    <div class="col-xs-6 mr-2 pull-right">
-                                        <button id="beg" class="form-control btn btn-login my-2" onClick="back()">Back</button>
+                                    <div class="col-xs-6 pull-right">
+                                        <button id="ft-reg-b" class="form-control btn btn-login my-2" onClick="back()">Back</button>
                                     </div>
                                 </div>
                             </div>
@@ -199,22 +191,16 @@
                                     <input type="email" id="regem" class="form-control my-2" placeholder="Email">
                                     <label for="regpwd">Password</label>
                                     <input type="password" id="regpwd" class="form-control my-2" placeholder="Password">
-                                    <div class="col-xs-6 ml-2 pull-right">  
+                                    <div class="col-xs-6 pull-right">  
                                         <button id="login-submit" class="form-control btn btn-login my-2">Register</button>
                                     </div>
-                                    <div class="col-xs-6 mr-2 pull-right">
-                                        <button id="beg" class="form-control btn btn-login my-2" onClick="back()">Back</button>
+                                    <div class="col-xs-6 pull-right">
+                                        <button id="veg-reg-b" class="form-control btn btn-login my-2" onClick="back()">Back</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                
-                <div id="regfoot" class="modal-footer">
-                    <div id="regerr" class="text-danger"></div>
-                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="dismissErr();">Close</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" onClick="next(event);">Add</button>
                 </div>
             </div>
         </div>

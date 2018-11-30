@@ -1,0 +1,143 @@
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon48-48.jpg">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<script type="text/javascript" src="js/main.js"></script>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/profile.css">
+</head>
+<body class = "profile-page" style = 'background-color: #FFF5EE'>
+
+<nav class="navbar navbar-icon-top fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">People Order Our Patties </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="far fa-envelope"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="profile.html">
+                    <i class="far fa-user"></i>
+                </a>
+            </li>
+        </ul>
+        <div class="my-2 my-lg-0">
+            <input id="searchbox" class="form-control" type="text" placeholder="Search" aria-label="Search">
+        </div>
+        
+        <div class="btn-group">
+            <button type="button" class="btn m-2 my-sm-0 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sign in
+            </button>
+            <div class="dropdown-menu dropdown-menu-right p-4">
+                    <div class="form-group">
+                        <label for="emailaddr">Email address</label>
+                        <input type="email" class="form-control" id="emailaddr" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Password</label>
+                        <input type="password" class="form-control" id="pwd" placeholder="Password">
+                    </div>
+                    <div class="form-check mb-3">
+                        <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                        <label class="form-check-label" for="dropdownCheck">Remember me</label>
+                    </div>
+                    <button class="btn m-2 m-sm-0" type="submit" class="btn">Sign in</button>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Forgot password?</a>
+            </div>
+        </div>
+        <button id="regbtn" class="btn m-2 m-sm-0" type="submit" data-toggle="modal" data-target="#addPopup">Register</button>
+    </div>
+</nav>
+
+<div class = "hero-image">
+
+	<div class = "hero-text"> 
+		<h1 style = "font-size: 50px">Vendor Profile</h1>
+		<br> 
+		<button type = "button" class = "btn btn-primary">Change Profile Picture</button>
+	</div>
+
+</div>
+
+
+<div class = "main"> 
+	<div class = "information"> 
+
+	<br> 
+
+	<div class="col-xs">
+
+    <label for="Telephone Number">
+      <i class="fas fa-phone"></i>
+    Telephone Number
+      <input type="text" class="form-control my-2" name="first_name" id="first_name" placeholder="Telephone Number" title="Enter Telephone Number"></label>
+
+      </div>
+
+    <br> 
+
+	<div class="col-xs">
+    <label for="Email Address">
+       <i class="fas fa-envelope" aria-hidden="true"></i>
+      Email Address
+      <input type="text" class="form-control my-2" name="email_address" id="first_name" placeholder="Email Address" title="Enter Email Address"></label>
+      </div>
+
+     <br> 
+
+      <div class="col-xs">
+        <i class="fas fa-city"></i>
+      City
+      <br>
+      <input type="text" class="form-control my-2" name="city" id="city" placeholder="City" title="Enter City"></label>
+      </div>
+
+
+      <br>
+      <div class="col-xs">
+        <i class="fas fa-flag-usa"></i>
+        State
+        <br> 
+    <!-- <label for="State"><h4>State</h4> -->
+      <input type="text" class="form-control my-2" name="state" id="state" placeholder="State" title="Enter State"></label>
+      </div>
+
+      <br>
+      <br> 
+      <button type="button" class="btn btn-info">Search</button>
+      <button type="button" class="btn btn-info">Home</button>
+
+
+	</div> 
+
+    <div class = "description"> 
+    <br>
+		<div class="form-group">
+        <i class="fas fa-file-alt"></i>
+     	 <label for="comment">Put Description Here:</label>
+      	<textarea class="form-control my-2" rows="6" id="comment"></textarea>
+    	</div>
+
+
+	</div>
+
+</div>
+
+</body>
+
+
