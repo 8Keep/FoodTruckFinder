@@ -17,6 +17,7 @@ class FoodTruck{
     public $first;
     public $last;
     public $imgURL;
+    public $description;
    
 
     // constructor with $db as database connection
@@ -47,10 +48,10 @@ class FoodTruck{
     }
 
   // edit user details
-  function edit($username, $truck_name, $city, $state, $zip, $first, $last, $email, $phone){
+  function edit($username, $truck_name, $city, $state, $zip, $first, $last, $email, $phone, $imgURL, $description){
 
       // query to insert user details
-      $query = "INSERT INTO " . $this->table_name . " (TruckName, City, State, Zip, FTID, First, Last, email, phone) VALUES (?,?,?,?, (SELECT FTID FROM loginFT WHERE username = ?),?,?,?,?)";
+      $query = "INSERT INTO " . $this->table_name . " (TruckName, City, State, Zip, FTID, First, Last, email, phone, imgURL, Description) VALUES (?,?,?,?, (SELECT FTID FROM loginFT WHERE username = ?),?,?,?,?,?,?)";
 
       // prepare query
       $stmt = $this->conn->prepare($query);
@@ -82,6 +83,12 @@ class FoodTruck{
       
       $phone=htmlspecialchars(strip_tags($phone));
       $phone = "{$phone}";
+      
+      $imgURL=htmlspecialchars(strip_tags($imgURL));
+      $imgURL = "{$imgURL}";
+      
+      $description=htmlspecialchars(strip_tags($description));
+      $description = "{$description}";
 
       // bind
       $stmt->bindParam(1, $truck_name);
@@ -93,6 +100,8 @@ class FoodTruck{
       $stmt->bindParam(7, $last);
       $stmt->bindParam(8, $email);
       $stmt->bindParam(9, $phone);
+      $stmt->bindParam(10, $imgURL);
+      $stmt->bindParam(11, $description);
 
       // execute query
       if($stmt->execute()){
@@ -164,7 +173,7 @@ class FoodTruck{
     //   return;
     // }
       // select all query
-      $query = "SELECT * FROM " . $this->table_name . " WHERE TruckName LIKE ? OR City LIKE ? OR State LIKE ? or Zip LIKE ?";
+      $query = "SELECT * FROM " . $this->table_name . " WHERE First LIKE ? OR Last LIKE ? OR TruckName LIKE ? OR City LIKE ? OR State LIKE ? OR Zip LIKE ? OR email LIKE ? OR phone LIKE ? OR Description LIKE ?";
 
       // prepare query statement
       $stmt = $this->conn->prepare($query);
@@ -178,6 +187,11 @@ class FoodTruck{
       $stmt->bindParam(2, $keywords);
       $stmt->bindParam(3, $keywords);
       $stmt->bindParam(4, $keywords);
+      $stmt->bindParam(5, $keywords);
+      $stmt->bindParam(6, $keywords);
+      $stmt->bindParam(7, $keywords);
+      $stmt->bindParam(8, $keywords);
+      $stmt->bindParam(9, $keywords);
 
 
       // execute query

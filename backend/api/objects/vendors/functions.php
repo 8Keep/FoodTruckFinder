@@ -25,6 +25,7 @@ class Vendor{
     public $first;
     public $last;
     public $imgURL;
+    public $description;
 
     // constructor with $db as database connection
     public function __construct($db){
@@ -54,10 +55,10 @@ class Vendor{
     }
 
   // edit vendor details
-  function edit($username, $ET_name, $address, $city, $state, $zip, $first, $last, $email, $phone){
+  function edit($username, $ET_name, $address, $city, $state, $zip, $first, $last, $email, $phone, $imgURL, $description){
 
       // query to insert vendor details
-      $query = "INSERT INTO " . $this->table_name . " (EntertainerName, address, city, state, zip, ETID, First, Last, email, phone) VALUES (?,?,?,?,?, (SELECT ETID from loginET WHERE username = ?),?,?,?,?)";
+      $query = "INSERT INTO " . $this->table_name . " (EntertainerName, address, city, state, zip, ETID, First, Last, email, phone, imgURL, Description) VALUES (?,?,?,?,?, (SELECT ETID from loginET WHERE username = ?),?,?,?,?,?,?)";
 
       // prepare query
       $stmt = $this->conn->prepare($query);
@@ -92,6 +93,12 @@ class Vendor{
       
       $phone=htmlspecialchars(strip_tags($phone));
       $phone = "{$phone}";
+    
+      $imgURL =htmlspecialchars(strip_tags($imgURL));
+      $imgURL = "{$imgURL}";
+      
+      $description=htmlspecialchars(strip_tags($description));
+      $description = "{$description}";
 
 
       // bind
@@ -105,6 +112,8 @@ class Vendor{
       $stmt->bindParam(8, $last);
       $stmt->bindParam(9, $email);
       $stmt->bindParam(10, $phone);
+      $stmt->bindParam(11, $imgURL);
+      $stmt->bindParam(12, $description);
 
 
       // execute query
@@ -176,7 +185,7 @@ class Vendor{
     //   return;
     // }
       // select all query
-      $query = "SELECT * FROM " . $this->table_name . " WHERE EntertainerName LIKE ? OR address LIKE ? OR City LIKE ? or State LIKE ? or Zip LIKE ?";
+      $query = "SELECT * FROM " . $this->table_name . " WHERE First LIKE ? OR Last LIKE ? OR EntertainerName LIKE ? OR address LIKE ? OR City LIKE ? OR State LIKE ? OR Zip LIKE ? OR email LIKE ? OR phone LIKE ? OR Description LIKE ?";
 
       // prepare query statement
       $stmt = $this->conn->prepare($query);
@@ -191,6 +200,11 @@ class Vendor{
       $stmt->bindParam(3, $keywords);
       $stmt->bindParam(4, $keywords);
       $stmt->bindParam(5, $keywords);
+      $stmt->bindParam(6, $keywords);
+      $stmt->bindParam(7, $keywords);
+      $stmt->bindParam(8, $keywords);
+      $stmt->bindParam(9, $keywords);
+      $stmt->bindParam(10, $keywords);
 
       // execute query
       $stmt->execute();
