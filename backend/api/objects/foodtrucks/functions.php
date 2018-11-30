@@ -164,7 +164,7 @@ class FoodTruck{
     //   return;
     // }
       // select all query
-      $query = "SELECT * FROM " . $this->table_name . " WHERE TruckName LIKE ? OR City LIKE ? OR State LIKE ? or Zip LIKE ?";
+      $query = "SELECT * FROM " . $this->table_name . " WHERE First LIKE ? OR Last LIKE ? OR TruckName LIKE ? OR City LIKE ? OR State LIKE ? OR Zip LIKE ? OR email LIKE ? OR phone LIKE ? OR Description LIKE ?";
 
       // prepare query statement
       $stmt = $this->conn->prepare($query);
@@ -178,6 +178,11 @@ class FoodTruck{
       $stmt->bindParam(2, $keywords);
       $stmt->bindParam(3, $keywords);
       $stmt->bindParam(4, $keywords);
+      $stmt->bindParam(5, $keywords);
+      $stmt->bindParam(6, $keywords);
+      $stmt->bindParam(7, $keywords);
+      $stmt->bindParam(8, $keywords);
+      $stmt->bindParam(9, $keywords);
 
 
       // execute query
