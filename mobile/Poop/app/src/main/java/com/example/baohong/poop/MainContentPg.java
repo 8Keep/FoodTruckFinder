@@ -106,6 +106,7 @@ public class MainContentPg extends AppCompatActivity {
 
     }
     private void loadRecyclerViewData(){
+        listItems.clear();
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(false); // if you want user to wait for some process to finish,
         builder.setView(R.layout.layout_loading);

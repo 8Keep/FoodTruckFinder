@@ -23,10 +23,11 @@ $user = new User($db);
 // get user-entered username and password in json format
 $data = json_decode(file_get_contents("php://input", true));
 $user->username = $data->username;
+$user->email = $data->email;
 $user->password = $data->password;
 
 // create the contact
-if($user->create($user->username, $user->password)){
+if($user->create($user->username, $user->email, $user->password)){
     echo json_encode(
         array("message" => "Vendor account was created.")
     );

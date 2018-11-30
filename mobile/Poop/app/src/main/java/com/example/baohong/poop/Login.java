@@ -147,6 +147,7 @@ public class Login extends AppCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     sp.edit().putBoolean("logged", true).apply();
+                                    sp.edit().putString("username", gUsername).apply();
                                     Intent intent = new Intent(Login.this, MainContentPg.class);
                                     finishAffinity();
                                     startActivity(intent);
@@ -157,6 +158,7 @@ public class Login extends AppCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     sp.edit().putBoolean("logged", false).apply();
+                                    sp.edit().putString("username", "Logged out!");
                                     Intent intent = new Intent(Login.this, MainContentPg.class);
                                     finishAffinity();
                                     startActivity(intent);
