@@ -64,7 +64,7 @@ public class Profile_page extends AppCompatActivity implements IPickResult {
 
             Uri path = pickResult.getUri();
             bitmap = pickResult.getBitmap();
-            Picasso.get().load(path).resize(480,320).centerCrop().into(avatar);
+            Picasso.get().load(path).resize(avatar.getWidth(), 480).centerCrop().into(avatar);
         }
         else
         {

@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +50,8 @@ public class MainPgViewAdapter extends RecyclerView.Adapter<MainPgViewAdapter.Vi
 
         viewHolder.heading.setText(listItem.getHead());
         viewHolder.desc.setText(listItem.getDesc());
-        if(!listItem.getImgURL().isEmpty())
+        Log.d("isEmpty", ""+ listItem.getImgURL().isEmpty());
+        if(listItem.getImgURL() != "null" && !listItem.getImgURL().isEmpty())
             Picasso.get()
                     .load(listItem.getImgURL())
                     .placeholder(R.drawable.progress_anim)
@@ -58,7 +60,7 @@ public class MainPgViewAdapter extends RecyclerView.Adapter<MainPgViewAdapter.Vi
                     .into(viewHolder.imageView);
         else
             Picasso.get()
-                    .load("http://192.168.0.17/images/default.png")
+                    .load("http://10.32.254.140/images/default.png")
                     .into(viewHolder.imageView);
 
     }

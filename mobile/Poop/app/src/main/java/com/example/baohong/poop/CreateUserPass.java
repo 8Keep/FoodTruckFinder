@@ -36,7 +36,7 @@ public class CreateUserPass extends CreateActivity {
 
     private TextView passHint, confirmErr;
     private boolean isVendor;
-    private String localhost_ip = "192.168.0.17";
+    private String localhost_ip = "10.32.254.140";
     Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

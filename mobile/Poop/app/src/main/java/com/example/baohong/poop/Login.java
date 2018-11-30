@@ -39,7 +39,7 @@ public class Login extends AppCompatActivity {
     private boolean isVendor;
     //192.168.0.17 for real
     //10.0.2.2 for emu
-    private String localhostip = "192.168.0.17";
+    private String localhostip = "10.32.254.140";
     Bundle bundle;
 
     @Override
