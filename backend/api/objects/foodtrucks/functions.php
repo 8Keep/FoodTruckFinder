@@ -12,9 +12,12 @@ class FoodTruck{
     public $city;
     public $state;
     public $zip;
-    public $range;
-    public $phonenumber;
+    public $phone;
     public $email;
+    public $first;
+    public $last;
+    public $imgURL;
+   
 
     // constructor with $db as database connection
     public function __construct($db){
@@ -22,20 +25,20 @@ class FoodTruck{
     }
 
     // show user profile details
-    function show($username){
+    function show(){
 
         // select all query
-        $query = "SELECT * FROM " . $this->table_name . " WHERE FTID = (SELECT FTID from loginFT WHERE username = ?)";
+        $query = "SELECT * FROM " . $this->table_name  ;
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
 
         // sanitize
-        $username=htmlspecialchars(strip_tags($username));
-        $username = "{$username}";
+        // $username=htmlspecialchars(strip_tags($username));
+        // $username = "{$username}";
 
-        // bind
-        $stmt->bindParam(1, $username);
+        // // bind
+        // $stmt->bindParam(1, $username);
 
         // execute query
         $stmt->execute();
@@ -44,10 +47,10 @@ class FoodTruck{
     }
 
   // edit user details
-  function edit($username, $truck_name, $city, $state, $zip, $phonenumber, $email){
+  function edit($username, $truck_name, $city, $state, $zip, $first, $last, $email, $phone){
 
       // query to insert user details
-      $query = "INSERT INTO " . $this->table_name . " (TruckName, City, State, Zip, phonenumber, email, FTID) VALUES (?,?,?,?,?,?, (SELECT FTID FROM loginFT WHERE username = ?))";
+      $query = "INSERT INTO " . $this->table_name . " (TruckName, City, State, Zip, FTID, First, Last, email, phone) VALUES (?,?,?,?, (SELECT FTID FROM loginFT WHERE username = ?),?,?,?,?)";
 
       // prepare query
       $stmt = $this->conn->prepare($query);
@@ -64,21 +67,32 @@ class FoodTruck{
 
       $zip=htmlspecialchars(strip_tags($zip));
       $zip = "{$zip}";
-      
-      $phonenumber=htmlspecialchars(strip_tags($phonenumber));
-      $phonenumber = "{$phonenumber}";
 
-      $email=htmlspecialchars(strip_tags($email));
+      $username=htmlspecialchars(strip_tags($username));
+      $username = "{$username}";
+
+      $first=htmlspecialchars(strip_tags($first));
+      $first = "{$first}";
+
+      $last=htmlspecialchars(strip_tags($last));
+      $last = "{$last}";
+
+      $email =htmlspecialchars(strip_tags($email));
       $email = "{$email}";
+      
+      $phone=htmlspecialchars(strip_tags($phone));
+      $phone = "{$phone}";
 
       // bind
       $stmt->bindParam(1, $truck_name);
       $stmt->bindParam(2, $city);
       $stmt->bindParam(3, $state);
       $stmt->bindParam(4, $zip);
-      $stmt->bindParam(5, $phonenumber);
-      $stmt->bindParam(6, $email);
-      $stmt->bindParam(7, $username);
+      $stmt->bindParam(5, $username);
+      $stmt->bindParam(6, $first);
+      $stmt->bindParam(7, $last);
+      $stmt->bindParam(8, $email);
+      $stmt->bindParam(9, $phone);
 
       // execute query
       if($stmt->execute()){
@@ -88,26 +102,49 @@ class FoodTruck{
       return false;
 
   }
+  function addimg($imgURL, $username)
+  {
+    //UPDATE ftinfo SET imgURL = "http://localhost/images/ft2.jpg" WHERE FTID = (SELECT FTID FROM loginFT WHERE username = "Phongloz")
+    $query = "UPDATE " . $this->table_name . " SET imgURL = ? WHERE FTID = (SELECT FTID FROM loginFT WHERE username = ?)";
+    $stmt = $this->conn->prepare($query);
+
+    $username=htmlspecialchars(strip_tags($username));
+    $username = "{$username}";
+
+    $imgURL = htmlspecialchars(strip_tags($imgURL));
+    $imgURL = "{$imgURL}";
+
+    $stmt->bindParam(1, $imgURL);
+    $stmt->bindParam(2, $username);
+
+    if($stmt->execute()){
+      return true;
+    }
+
+    return false;
+
+  }
+
 
   // delete current food truck
-  function delete($keyword, $username){
+  function delete(){
 
       // delete query
-      $query = "DELETE FROM " . $this->table_name . " WHERE TruckName = ? AND FTID = (SELECT FTID FROM loginFT WHERE username = ?)";
+      $query = "DELETE FROM " . $this->table_name . " WHERE (FTID IS NULL) ";
 
-      // prepare query
+      //prepare query
       $stmt = $this->conn->prepare($query);
 
       // sanitize
-      $keyword=htmlspecialchars(strip_tags($keyword));
-      $keyword = "{$keyword}";
+      //$keyword=htmlspecialchars(strip_tags($keyword));
+      //$keyword = "{$keyword}";
 
-      $username=htmlspecialchars(strip_tags($username));
-      $username = "{$username}";
+      //$username=htmlspecialchars(strip_tags($username));
+      //$username = "{$username}";
 
       // bind
-      $stmt->bindParam(1, $keyword);
-      $stmt->bindParam(1, $username);
+      //$stmt->bindParam(1, $keyword);
+      //$stmt->bindParam(2, $username);
 
       // execute query
       if($stmt->execute() && $stmt->rowCount() > 0){

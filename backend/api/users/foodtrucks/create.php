@@ -23,10 +23,11 @@ $user = new User($db);
 // get user-entered username and password in json format
 $data = json_decode(file_get_contents("php://input", true));
 $username = $data->username;
+$email = $data->email;
 $password = $data->password;
 
 // create the contact
-if($user->create($username, $password)){
+if($user->create($username, $email, $password)){
 //if($user->create($user->username, $user->password)){
     echo json_encode(
         array("message" => "Food Truck account created.")
