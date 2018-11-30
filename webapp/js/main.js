@@ -1,8 +1,12 @@
- 
+
 $( document ).ready(function() {
     $("#regfoot").hide();
     $("#ven-reg").hide();
     $("#ft-reg").hide();
+    
+    $("#logindrop").click(function(event){
+     event.stopPropagation();
+    });
 });
 
 function regft() {
