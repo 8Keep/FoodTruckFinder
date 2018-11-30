@@ -39,11 +39,13 @@ $ft->first = $data->first;
 $ft->last = $data->last;
 $ft->email = $data->email;
 $ft->phone = $data->phone;
+$ft->imgURL = $data->imgURL;
+$ft->description = $data->description;
 
 
 
 // create the food truck
-if($ft->edit($ft->username, $ft->truck_name, $ft->city, $ft->state, $ft->zip, $ft->first, $ft->last, $ft->email, $ft->phone)){
+if($ft->edit($ft->username, $ft->truck_name, $ft->city, $ft->state, $ft->zip, $ft->first, $ft->last, $ft->email, $ft->phone, $ft->imgURL, $ft->description)){
     echo json_encode(
         array("message" => "Food Truck was edited.")
     );
