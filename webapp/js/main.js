@@ -1,5 +1,5 @@
 var loginFT = true;
-
+var regFT = true;
 
 $( document ).ready(function() {
     $("#regfoot").hide();
@@ -9,23 +9,34 @@ $( document ).ready(function() {
     $("#logindrop").click(function(event){
         event.stopPropagation();
     });
+    
+    $("#regft").click( function() {
+        console.log("register - ft");
+        $(this).addClass('active').siblings().removeClass('active');
+        
+    });
+    
+    $("#regven").click( function() {
+        console.log("register - ven");
+        $(this).addClass('active').siblings().removeClass('active');
+    });
 });
 
-function regft() {
-    $("#typesel").hide();
-    $("#ft-reg").show();
-}
-
-function regven() {
-    $("#typesel").hide();
-    $("#ven-reg").show();
-}
-
-function back() {
-    $("#ft-reg").hide();
-    $("#ven-reg").hide();
-    $("#typesel").show();
-}
+// function regft() {
+//     $("#typesel").hide();
+//     $("#ft-reg").show();
+// }
+// 
+// function regven() {
+//     $("#typesel").hide();
+//     $("#ven-reg").show();
+// }
+// 
+// function back() {
+//     $("#ft-reg").hide();
+//     $("#ven-reg").hide();
+//     $("#typesel").show();
+// }
 
 function toggleBtn(event) {
 //     $("#ven").prop("checked", true);
@@ -65,13 +76,16 @@ function login() {
 function register() {
     console.log("Register!");
     
-    var details = { username: $("#loginUser").val(),
-                    email: $("#loginUser").val(),
-                    password: $("#loginPass").val()};
+    var details = { username: $("#reguser").val(),
+                    email: $("#regemail").val(),
+                    password: $("#regpass").val()};
+                    
+    var url = regFT ? "https://peopleorderourpatties.com/backend/api/users/foodtrucks/create.php" :
+                        "https://peopleorderourpatties.com/backend/api/users/vendors/create.php";
     var response;
     $.post(
-        "https://peopleorderourpatties.com/backend/api/users/foodtrucks/create.php",
-        JSON.stringify(login),
+        url,
+        JSON.stringify(details),
         function(result){
             r = result.message;
             console.log(r);});

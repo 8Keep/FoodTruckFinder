@@ -7,16 +7,21 @@
     border-color: #8064A2;
     color: #FFFFFF;
     outline: none;
+    outline: none !important;
 }
 
 .btn:active, .active, .btn:hover {
     background: #d67676 !important;
     border-color: #8064A2;
     color: #FFFFFF;
+    box-shadow: none !important;
+    outline: none !important;
 }
 
-.active, .btn:hover {
+.active, .btn:hover .btn:focus{
     border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
 }
 
 /*.btn, .btn:hover, .btn:active, .btn:visited {
