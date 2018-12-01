@@ -29,7 +29,7 @@ create database largeproject;
     `email` VARCHAR(50) NOT NULL DEFAULT '',
     `phone` VARCHAR(50) NOT NULL DEFAULT '',
     `Description` TEXT,
-    `FTID` INT UNIQUE,
+    `FTID` INT UNIQUE NOT NULL,
     `imgURL` VARCHAR(2000) NOT NULL DEFAULT '',
     `menuURL` VARCHAR(2000) NOT NULL DEFAULT '',
     FOREIGN KEY (`FTID`)
@@ -50,7 +50,7 @@ create database largeproject;
     `email` VARCHAR(50) NOT NULL DEFAULT '',
     `phone` VARCHAR(50) NOT NULL DEFAULT '',
     `Description` TEXT,
-    `ETID` INT UNIQUE,
+    `ETID` INT UNIQUE NOT NULL,
     `imgURL` VARCHAR(2000) NOT NULL DEFAULT '',
     FOREIGN KEY (`ETID`)
     REFERENCES `largeproject`.`loginET`(`ETID`),
