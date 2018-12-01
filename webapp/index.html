@@ -186,6 +186,17 @@ body {
                                     <input type="email" id="regemail" class="form-control my-2" placeholder="Email">
                                     <label for="regpass">Password</label>
                                     <input type="password" id="regpass" class="form-control my-2" placeholder="Password"> 
+                                    <div id="message">
+                                        <p>Password must contain the following:</p>
+                                        <ul>
+                                            <li id="letter" class="list-group-item list-group-item-danger">A <b>lowercase</b> letter</li>
+                                            <li id="capital" class="list-group-item list-group-item-danger">A <b>uppercase</b> letter</li>
+                                            <li id="number" class="list-group-item list-group-item-danger">A <b>number</b></li>
+                                            <li id="special" class="list-group-item list-group-item-danger">A <b>special character</b></li>
+                                            <li id="length" class="list-group-item list-group-item-danger">Minimum <b>8 characters</b></li>
+                                        </ul>
+                                    </div>
+                                    
                                     <div class="col-xs-6 pull-right">  
                                         <button id="registerBtn" class="form-control btn btn-login my-2" onClick="register()">Register</button>
                                     </div>
