@@ -32,28 +32,28 @@
 
         <activity
             android:name=".CreateName"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".CreateContactInfo"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".CreateUserPass"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".CreateVenAddress"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".CreateVenOrFT"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".CreateFTLocation"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".MainContentPg"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Login"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Profile_page"></activity>
         <provider
             android:name="android.support.v4.content.FileProvider"

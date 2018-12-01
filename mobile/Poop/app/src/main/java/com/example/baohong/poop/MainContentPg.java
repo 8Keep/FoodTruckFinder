@@ -10,8 +10,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -28,7 +31,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainContentPg extends AppCompatActivity {
+public class MainContentPg extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private ImageView logout, menu;
     SharedPreferences sp;
     private RecyclerView recyclerView;
@@ -44,16 +47,16 @@ public class MainContentPg extends AppCompatActivity {
         setContentView(R.layout.activity_main_content_pg);
         logout = findViewById(R.id.logout);
         sp = getSharedPreferences("POOP", MODE_PRIVATE);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainContentPg.this, FirstPage.class);
-                startActivity(intent);
-                sp.edit().putBoolean("logged", false).apply();
-                finish();
-
-            }
-        });
+//        logout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainContentPg.this, FirstPage.class);
+//                startActivity(intent);
+//                sp.edit().putBoolean("logged", false).apply();
+//                finish();
+//
+//            }
+//        });
         menu = findViewById(R.id.menu);
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -150,5 +153,34 @@ public class MainContentPg extends AppCompatActivity {
                 });
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+    }
+
+    public void showPopUp(View view) {
+        PopupMenu popup = new PopupMenu(this, view);
+        popup.setOnMenuItemClickListener(MainContentPg.this);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.logout_popup, popup.getMenu());
+        popup.show();
+
+    }
+    public void logout()
+    {
+        Intent intent = new Intent(MainContentPg.this, FirstPage.class);
+        startActivity(intent);
+        sp.edit().putBoolean("logged", false).apply();
+        finish();
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.logout_id:
+                logout();
+                Toast.makeText(MainContentPg.this, "Logging out...", Toast.LENGTH_LONG).show();
+                return true;
+            default:
+                return false;
+        }
+
     }
 }

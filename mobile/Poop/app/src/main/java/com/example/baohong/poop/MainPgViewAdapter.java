@@ -13,6 +13,8 @@ import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -55,6 +57,8 @@ public class MainPgViewAdapter extends RecyclerView.Adapter<MainPgViewAdapter.Vi
         if(listItem.getImgURL() != "null" && !listItem.getImgURL().isEmpty())
             Picasso.get()
                     .load(listItem.getImgURL())
+                    .networkPolicy(NetworkPolicy.NO_CACHE)
+                    .memoryPolicy(MemoryPolicy.NO_CACHE)
                     .placeholder(R.drawable.progress_anim)
                     .resize(width, 550)
                     .centerCrop()

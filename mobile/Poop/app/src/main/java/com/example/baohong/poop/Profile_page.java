@@ -1,5 +1,6 @@
 package com.example.baohong.poop;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -28,6 +29,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 import com.vansuita.pickimage.bean.PickResult;
 import com.vansuita.pickimage.bundle.PickSetup;
@@ -36,6 +39,7 @@ import com.vansuita.pickimage.enums.EPickType;
 import com.vansuita.pickimage.listeners.IPickClick;
 import com.vansuita.pickimage.listeners.IPickResult;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -50,7 +54,10 @@ public class Profile_page extends AppCompatActivity implements IPickResult {
     private Button importIMG;
     private Bitmap bitmap;
     private String username;
+    private String avaURL;
     SharedPreferences sp;
+    private final String DEF_IMG = "http://192.168.0.17/images/default.png";
+    private final String SHOW_IMG = "http://192.168.0.17/api/foodtrucks/showUserImg.php";
     private String uploadURL = "http://192.168.0.17/api/foodtrucks/addimg.php";
 
     @Override
@@ -62,7 +69,8 @@ public class Profile_page extends AppCompatActivity implements IPickResult {
         username = sp.getString("username","");
         Log.d("username", username);
         importIMG = findViewById(R.id.importIMG);
-        Picasso.get().load(R.drawable.cam).into(avatar);
+        loadProfileIMG();
+
 
         importIMG.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +78,70 @@ public class Profile_page extends AppCompatActivity implements IPickResult {
                 setupDialog();
             }
         });
+
+    }
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        loadProfileIMG();
+//    }
+
+    private void loadProfileIMG(){
+
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("username", username);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, SHOW_IMG, jsonObject,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONArray array = response.getJSONArray("records");
+                            for(int i=0; i<array.length(); i++)
+                            {
+                                JSONObject o = array.getJSONObject(i);
+                                avaURL = o.getString("imgURL");
+                                Log.d("Error1", avaURL);
+
+                                if(avaURL.isEmpty())
+                                {
+                                    Picasso.get().load(DEF_IMG).resize(avatar.getWidth(), 480).centerCrop().into(avatar);
+                                }
+                                else
+                                {
+                                    Picasso.get().load(avaURL).memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE).networkPolicy(NetworkPolicy.NO_CACHE, NetworkPolicy.NO_STORE).resize(avatar.getWidth(), 480).centerCrop().into(avatar);
+                                }
+
+                            }
+
+                        } catch (JSONException e) {
+                            Log.d("Error1", e.getMessage());
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("Error2", error.getMessage());
+                Toast.makeText(Profile_page.this, error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        })
+        {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String,String> headers = new HashMap<>();
+                headers.put("Content-Type", "application/json; charset=UTF-8");
+                return headers;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(jsonObjectRequest);
 
     }
     private void setupDialog()
@@ -84,10 +156,10 @@ public class Profile_page extends AppCompatActivity implements IPickResult {
         if(pickResult.getError() == null)
         {
 
-            Uri path = pickResult.getUri();
             bitmap = pickResult.getBitmap();
-            Picasso.get().load(path).resize(avatar.getWidth(), 480).centerCrop().into(avatar);
             uploadImage();
+            loadProfileIMG();
+
         }
         else
         {
