@@ -56,9 +56,11 @@ public class Profile_page extends AppCompatActivity implements IPickResult {
     private String username;
     private String avaURL;
     SharedPreferences sp;
-    private final String DEF_IMG = "http://192.168.0.17/images/default.png";
-    private final String SHOW_IMG = "http://192.168.0.17/api/foodtrucks/showUserImg.php";
-    private String uploadURL = "http://192.168.0.17/api/foodtrucks/addimg.php";
+    //https://www.peopleorderourpatties.com/backend
+    //http://192.168.0.17
+    private final String DEF_IMG = "https://www.peopleorderourpatties.com/backend/images/default.png";
+    private final String SHOW_IMG = "https://www.peopleorderourpatties.com/backend/api/foodtrucks/showUserImg.php";
+    private String uploadURL = "https://www.peopleorderourpatties.com/backend/api/foodtrucks/addimg.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

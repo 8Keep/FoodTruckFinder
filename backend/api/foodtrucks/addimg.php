@@ -32,7 +32,7 @@ $ft = new FoodTruck($db);
 $data = json_decode(file_get_contents("php://input", true));
 $username = $data->username;
 $upload_path = "../../images/$username.jpg";
-$img_path = "http://192.168.0.17/images/$username.jpg";
+$img_path = "https://www.peopleorderourpatties.com/backend/images/$username.jpg";
 $image = $data->image;
 
 

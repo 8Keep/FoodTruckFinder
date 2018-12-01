@@ -21,7 +21,9 @@ import java.util.List;
 
 public class MainPgViewAdapter extends RecyclerView.Adapter<MainPgViewAdapter.ViewHolder> {
     private List<ListItem> listItems;
-    private final String DEF_IMG = "http://192.168.0.17/images/default.png";
+    //https://www.peopleorderourpatties.com/backend
+    //http://192.168.0.17/images/default.png
+    private final String DEF_IMG = "https://www.peopleorderourpatties.com/backend/images/default.png";
     private Context context;
     int width , height;
 

@@ -39,7 +39,9 @@ public class Login extends AppCompatActivity {
     private boolean isVendor;
     //192.168.0.17 for real
     //10.0.2.2 for emu
-    private String localhostip = "192.168.0.17";
+    private String onlineURL = "https://www.peopleorderourpatties.com/backend";
+
+    private String localhostURL = "http://192.168.0.17";
     Bundle bundle;
 
     @Override
@@ -75,9 +77,9 @@ public class Login extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 if(isVendor)
-                    new HTTPAsyncTask().execute("http://"+localhostip+"/api/users/vendors/authenticate.php", logging.toString());
+                    new HTTPAsyncTask().execute(onlineURL+"/api/users/vendors/authenticate.php", logging.toString());
                 else
-                    new HTTPAsyncTask().execute("http://"+localhostip+"/api/users/foodtrucks/authenticate.php", logging.toString());
+                    new HTTPAsyncTask().execute(onlineURL+"/api/users/foodtrucks/authenticate.php", logging.toString());
 
 
 
