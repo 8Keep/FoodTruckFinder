@@ -56,7 +56,7 @@ class Vendor{
   function edit($username, $ET_name, $address, $city, $state, $zip, $first, $last, $email, $phone){
 
       // query to insert vendor details
-      $query = "INSERT INTO " . $this->table_name . " (EntertainerName, address, city, state, zip, ETID, First, Last, email, phone, imgURL, Description) VALUES (?,?,?,?,?, (SELECT ETID from loginET WHERE username = ?),?,?,?,?)";
+      $query = "INSERT INTO " . $this->table_name . " (EntertainerName, address, city, state, zip, ETID, First, Last, email, phone) VALUES (?,?,?,?,?, (SELECT ETID from loginET WHERE username = ?),?,?,?,?)";
 
       // prepare query
       $stmt = $this->conn->prepare($query);
