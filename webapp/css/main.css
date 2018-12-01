@@ -2,6 +2,10 @@
     font-family: 'Bree Serif', serif;
 }
 
+body {
+    background: #FFF5EE; 
+}
+
 .btn {
     background: #c94b4b;
     border-color: #8064A2;
