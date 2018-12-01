@@ -16,8 +16,6 @@ class FoodTruck{
     public $email;
     public $first;
     public $last;
-    public $imgURL;
-    public $description;
    
 
     // constructor with $db as database connection
@@ -48,10 +46,10 @@ class FoodTruck{
     }
 
   // edit user details
-  function edit($username, $truck_name, $city, $state, $zip, $first, $last, $email, $phone, $imgURL, $description){
+  function edit($username, $truck_name, $city, $state, $zip, $first, $last, $email, $phone){
 
       // query to insert user details
-      $query = "INSERT INTO " . $this->table_name . " (TruckName, City, State, Zip, FTID, First, Last, email, phone, imgURL, Description) VALUES (?,?,?,?, (SELECT FTID FROM loginFT WHERE username = ?),?,?,?,?,?,?)";
+      $query = "INSERT INTO " . $this->table_name . " (TruckName, City, State, Zip, FTID, First, Last, email, phone) VALUES (?,?,?,?, (SELECT FTID FROM loginFT WHERE username = ?),?,?,?,?)";
 
       // prepare query
       $stmt = $this->conn->prepare($query);
@@ -83,12 +81,6 @@ class FoodTruck{
       
       $phone=htmlspecialchars(strip_tags($phone));
       $phone = "{$phone}";
-      
-      $imgURL=htmlspecialchars(strip_tags($imgURL));
-      $imgURL = "{$imgURL}";
-      
-      $description=htmlspecialchars(strip_tags($description));
-      $description = "{$description}";
 
       // bind
       $stmt->bindParam(1, $truck_name);
@@ -100,8 +92,6 @@ class FoodTruck{
       $stmt->bindParam(7, $last);
       $stmt->bindParam(8, $email);
       $stmt->bindParam(9, $phone);
-      $stmt->bindParam(10, $imgURL);
-      $stmt->bindParam(11, $description);
 
       // execute query
       if($stmt->execute()){

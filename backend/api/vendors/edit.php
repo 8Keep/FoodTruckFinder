@@ -30,11 +30,9 @@ $et->first = $data->first;
 $et->last = $data->last;
 $et->email = $data->email;
 $et->phone = $data->phone;
-$et->imgURL = $data->imgURL;
-$et->description = $data->description;
 
 // edit the vendor's details
-if($et->edit($et->username, $et->ET_name, $et->address, $et->city, $et->state, $et->zip, $et->first, $et->last, $et->email, $et->phone, $et->imgURL, $et->description)){
+if($et->edit($et->username, $et->ET_name, $et->address, $et->city, $et->state, $et->zip, $et->first, $et->last, $et->email, $et->phone)){
     echo json_encode(
         array("message" => "Vendor was edited.")
     );

@@ -24,8 +24,6 @@ class Vendor{
     public $email;
     public $first;
     public $last;
-    public $imgURL;
-    public $description;
 
     // constructor with $db as database connection
     public function __construct($db){
@@ -55,10 +53,10 @@ class Vendor{
     }
 
   // edit vendor details
-  function edit($username, $ET_name, $address, $city, $state, $zip, $first, $last, $email, $phone, $imgURL, $description){
+  function edit($username, $ET_name, $address, $city, $state, $zip, $first, $last, $email, $phone){
 
       // query to insert vendor details
-      $query = "INSERT INTO " . $this->table_name . " (EntertainerName, address, city, state, zip, ETID, First, Last, email, phone, imgURL, Description) VALUES (?,?,?,?,?, (SELECT ETID from loginET WHERE username = ?),?,?,?,?,?,?)";
+      $query = "INSERT INTO " . $this->table_name . " (EntertainerName, address, city, state, zip, ETID, First, Last, email, phone) VALUES (?,?,?,?,?, (SELECT ETID from loginET WHERE username = ?),?,?,?,?)";
 
       // prepare query
       $stmt = $this->conn->prepare($query);
@@ -93,12 +91,6 @@ class Vendor{
       
       $phone=htmlspecialchars(strip_tags($phone));
       $phone = "{$phone}";
-    
-      $imgURL =htmlspecialchars(strip_tags($imgURL));
-      $imgURL = "{$imgURL}";
-      
-      $description=htmlspecialchars(strip_tags($description));
-      $description = "{$description}";
 
 
       // bind
@@ -112,8 +104,6 @@ class Vendor{
       $stmt->bindParam(8, $last);
       $stmt->bindParam(9, $email);
       $stmt->bindParam(10, $phone);
-      $stmt->bindParam(11, $imgURL);
-      $stmt->bindParam(12, $description);
 
 
       // execute query
