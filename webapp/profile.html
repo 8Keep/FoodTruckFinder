@@ -1,103 +1,94 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
     <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon48-48.jpg">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/profile.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/profile.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-
+    <link rel="stylesheet" type="text/css" href="css/profile.css">
 </head>
 
 <body class="profile-page" style='background-color: #FFF5EE'>
 
-    <nav class="navbar navbar-icon-top fixed-top navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="">People Order Our Patties </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<nav class="navbar navbar-icon-top fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">People Order Our Patties </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fa fa-envelope-o"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fa fa-user-o"></i>
-                    </a>
-                </li>
-            </ul>
-
-            <form class="form-inline my-2 my-lg-0">
-                <input id="searchbox" class="form-control" type="text" placeholder="Search" aria-label="Search">
-
-            </form>
-
-            <div class="btn-group">
-                <button type="button" class="btn m-2 my-sm-0 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Sign in
-                </button>
-                <div class="dropdown-menu dropdown-menu-right p-4">
-                    <form>
-                        <div class="form-group">
-                            <label for="emailaddr">Email address</label>
-                            <input type="email" class="form-control" id="emailaddr" placeholder="Email">
-                        </div>
-                        <div class="form-group">
-                            <label for="pwd">Password</label>
-                            <input type="password" class="form-control" id="pwd" placeholder="Password">
-                        </div>
-                        <div class="form-check mb-3">
-                            <input type="checkbox" class="form-check-input" id="dropdownCheck">
-                            <label class="form-check-label" for="dropdownCheck">Remember me</label>
-                        </div>
-                        <button type="submit" class="btn">Sign in</button>
-                    </form>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Forgot password?</a>
-                </div>
-
-            </div>
-
-            <button id="regbtn" class="btn m-2 m-sm-0" type="submit" data-toggle="modal" data-target="#addPopup">Register</button>
-
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="far fa-envelope"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="profile.html">
+                    <i class="far fa-user"></i>
+                </a>
+            </li>
+        </ul>
+        <div class="my-2 my-lg-0">
+            <input id="searchbox" class="form-control" type="text" placeholder="Search" aria-label="Search">
         </div>
-    </nav>
+        
+        <div id="loginGroup" class="btn-group">
+            <button type="button" class="btn m-2 my-sm-0 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sign in
+            </button>
+            <div id="logindrop" class="dropdown-menu dropdown-menu-right p-4">
+                    <form>  
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn">
+                            <input id="ft" type="radio" name="options" id="option1" autocomplete="off" onClick="ftcheck(event)">Food Truck</input>
+                        </label>
+                        <label class="btn">
+                            <input id="ven" type="radio" name="options" id="option2" autocomplete="off" onClick="vencheck(event);">Vendor</input>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginUser">Username</label>
+                        <input id="loginUser" type="username" class="form-control" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPass">Password</label>
+                        <input id="loginPass" type="password" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="form-check mb-3">
+                        <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                        <label class="form-check-label" for="dropdownCheck">Remember me</label>
+                    </div>
+                    <button class="btn m-2 m-sm-0" type="submit" class="btn" onClick="login();">Sign in</button>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Forgot password?</a>
+                
+                </form>
+            </div>
+        </div>
+        <button id="regButton" class="btn m-2 m-sm-0" type="submit" data-toggle="modal" data-target="#modalRegister">Register</button>
+    </div>
+</nav>
 
     <div class="hero-image">
-
         <div class="hero-text">
             <h1 style="font-size: 50px">Vendor Profile</h1>
             <br>
-
             <label class="btn btn-default">
             Change Profile Picture <input type="file" hidden>
             </label>
-
         </div>
-
     </div>
 
     <div class="main">
-
         <div class="information my-3">
-
             <div class="col-xs">
                 <label for="Telephone Number"><i class="fas fa-phone" aria-hidden="true"></i> Telephone Number
                 </label>
@@ -105,8 +96,6 @@
                 <br>
                 <label id="telephoneField">11111</label>
             </div>
-
-
             <div class="col-xs">
                 <label for="Email Address"><i class="fas fa-envelope" aria-hidden="true"></i> Email Address
                 </label>
@@ -114,11 +103,9 @@
                 <br>
                 <label id="emailField">example@example.com</label>
             </div>
-
             <div class="col-xs">
                 <label for="City"><i class="fas fa-city" aria-hidden="true"></i> City
                 </label>
-
                 <select class="custom-select my-2" id="city">
                     <option value="1">Orlando</option>
                     <option value="2">Tampa</option>
@@ -126,11 +113,9 @@
                     <option value="4">Gainesville</option>
                     <option value="5">Tallahassee</option>
                 </select>
-            
                 <br>
                 <label id="cityField">Orlando</label>
             </div>
-
            <div class="col-xs">
 
                 <label for="City"><i class="fas fa-flag-usa" aria-hidden="true"></i> State
@@ -143,19 +128,13 @@
                 <option value="5">Georgia</option>
                 </select>
                 <br>
-
                 <label id="stateField">Florida</label>
             </div>
-
             <br>
             <button type="button" class="btn btn-info" onClick="editData()" id="editbutton">Edit</button>
             <button type="button" class="btn btn-info" id="submitbutton" onClick = "submitData()">Submit</button>
-
-
         </div>
-
         <div class="description my-3">
-
            <div class="col-xs">
                 <label for="State"><i class="fas fa-file-alt" aria-hidden="true"></i> Description
                 </label>
@@ -163,15 +142,61 @@
                 <br>
                 <label id="descriptionField">Info goes here</label>
             </div>
-
-
         </div>
-
     </div>
-
-            <hr align="center">
-            <p align="center"><img src="favicon.ico">Developers of People Order Our Patties</p>
-
-
-
+    
+<div class="modal fade" id="modalRegister" tabindex="-1" role="dialog">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Register</h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                </div>
+                <div class="modal-body container">
+                    <div id="typesel" class="row align-items-center justify-content-center">
+                        <div class="btn-group btn-group-justified">
+                            <button id="regft" class="btn btn-lg my-4" type="button">Food Truck</button>
+                            <button id="regven" class="btn btn-lg my-4" type="button">Vendor</button>
+                        </div>
+                    </div>
+                    
+                    <div class="row box" id="reg">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="reguser">Username</label>
+                                    <input type="user" id="reguser" class="form-control my-2" placeholder="Name">
+                                    <label for="regemail">Email address</label>
+                                    <input type="email" id="regemail" class="form-control my-2" placeholder="Email">
+                                    <label for="regpass">Password</label>
+                                    <input type="password" id="regpass" class="form-control my-2" placeholder="Password"> 
+                                    <div id="message">
+                                        <p>Password must contain the following:</p>
+                                        <ul>
+                                            <li id="letter" class="list-group-item list-group-item-danger">A <b>lowercase</b> letter</li>
+                                            <li id="capital" class="list-group-item list-group-item-danger">A <b>uppercase</b> letter</li>
+                                            <li id="number" class="list-group-item list-group-item-danger">A <b>number</b></li>
+                                            <li id="special" class="list-group-item list-group-item-danger">A <b>special character</b></li>
+                                            <li id="length" class="list-group-item list-group-item-danger">Minimum <b>8 characters</b></li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="col-xs-6 pull-right">  
+                                        <button id="registerBtn" class="form-control btn btn-login my-2" onClick="register()">Register</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr align="center">
+<p align="center"><img src="favicon.ico">Developers of People Order Our Patties</p>
 </body>
