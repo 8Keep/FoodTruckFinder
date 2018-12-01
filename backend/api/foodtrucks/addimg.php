@@ -35,10 +35,12 @@ $upload_path = "../../images/$username.jpg";
 $img_path = "https://www.peopleorderourpatties.com/backend/images/$username.jpg";
 $image = $data->image;
 
+$options = array('ftp' => array('overwrite' => true)); 
+$stream = stream_context_create($options);
 
 // create the food truck
 if($ft->addimg($img_path, $username)){
-  file_put_contents($upload_path, base64_decode($image));
+  file_put_contents($upload_path, base64_decode($image), 0 ,$stream);
     echo json_encode(
       
         array("message" => "Food Truck img was added.")
