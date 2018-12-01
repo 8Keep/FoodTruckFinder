@@ -3,7 +3,6 @@ create database largeproject;
   CREATE TABLE `largeproject`.`loginFT` (
     `FTID` INT NOT NULL AUTO_INCREMENT,
     `username` VARCHAR(50) NOT NULL DEFAULT '' UNIQUE,
-    `email` VARCHAR(50) NOT NULL DEFAULT '' UNIQUE,
     `password` VARCHAR(50) NOT NULL DEFAULT '',
     PRIMARY KEY (`FTID`)
   );
@@ -12,7 +11,6 @@ create database largeproject;
   CREATE TABLE `largeproject`.`loginET` (
     `ETID` INT NOT NULL AUTO_INCREMENT,
     `username` VARCHAR(50) NOT NULL DEFAULT '' UNIQUE,
-    `email` VARCHAR(50) NOT NULL DEFAULT '' UNIQUE,
     `password` VARCHAR(50) NOT NULL DEFAULT '',
     PRIMARY KEY (`ETID`)
   );
@@ -26,11 +24,12 @@ create database largeproject;
     `City` VARCHAR(50) NOT NULL DEFAULT '',
     `State` VARCHAR(25) NOT NULL DEFAULT '',
     `Zip` VARCHAR(5) NOT NULL DEFAULT '',
-    `email` VARCHAR(50) NOT NULL DEFAULT '' UNIQUE,
+    `email` VARCHAR(50) NOT NULL DEFAULT '',
     `phone` VARCHAR(50) NOT NULL DEFAULT '',
     `Description` TEXT,
     `FTID` INT UNIQUE,
-    `imgURL` VARCHAR(2000),
+    `imgURL` VARCHAR(2000) NOT NULL DEFAULT '',
+    `menuURL` VARCHAR(2000) NOT NULL DEFAULT '',
     FOREIGN KEY (`FTID`)
     REFERENCES `largeproject`.`loginFT`(`FTID`),
     PRIMARY KEY (`FTinfoID`)
@@ -46,24 +45,12 @@ create database largeproject;
     `City` VARCHAR(50) NOT NULL DEFAULT '',
     `State` VARCHAR(25) NOT NULL DEFAULT '',
     `Zip` VARCHAR(5) NOT NULL DEFAULT '',
-    `email` VARCHAR(50) NOT NULL DEFAULT '' UNIQUE,
+    `email` VARCHAR(50) NOT NULL DEFAULT '',
     `phone` VARCHAR(50) NOT NULL DEFAULT '',
     `Description` TEXT,
     `ETID` INT UNIQUE,
-    `imgURL` VARCHAR(2000),
+    `imgURL` VARCHAR(2000) NOT NULL DEFAULT '',
     FOREIGN KEY (`ETID`)
     REFERENCES `largeproject`.`loginET`(`ETID`),
     PRIMARY KEY (`ETinfoID`)
-  );
-
-
-  CREATE TABLE `largeproject`.`Menu` (
-    `FoodID` INT NOT NULL AUTO_INCREMENT,
-    `DishName` VARCHAR(100) NOT NULL DEFAULT '',
-    `Description` VARCHAR(1000) NOT NULL DEFAULT '',
-    `Price` VARCHAR(10) NOT NULL DEFAULT '',
-    `FTID` INT,
-    FOREIGN KEY (`FTID`)
-    REFERENCES `largeproject`.`loginFT`(`FTID`),
-    PRIMARY KEY (`FoodID`)
   );

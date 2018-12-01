@@ -12,13 +12,12 @@
         android:gravity="center">
 
 
-
         <ImageView
             android:id="@+id/avatar"
-            android:layout_marginTop="100dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scaleType="fitCenter" />
+            android:layout_marginTop="0dp"
+            android:contentDescription="@string/todo" />
         <Button
             android:id="@+id/importIMG"
             android:layout_width="match_parent"

@@ -30,29 +30,25 @@ $ft = new FoodTruck($db);
 // get keywords from url query string
 //$keywords=isset($_GET["s"]) ? $_GET["s"] : "";
 $data = json_decode(file_get_contents("php://input", true));
-$ft->username = $data->username;
-$ft->truck_name = $data->truck_name;
-$ft->city = $data->city;
-$ft->state = $data->state;
-$ft->zip = $data->zip;
-$ft->first = $data->first;
-$ft->last = $data->last;
-$ft->email = $data->email;
-$ft->phone = $data->phone;
-
+$username = $data->username;
+$upload_path = "../../images/$username.jpg";
+$img_path = "http://192.168.0.17/images/$username.jpg";
+$image = $data->image;
 
 
 // create the food truck
-if($ft->edit($ft->username, $ft->truck_name, $ft->city, $ft->state, $ft->zip, $ft->first, $ft->last, $ft->email, $ft->phone)){
+if($ft->addimg($img_path, $username)){
+  file_put_contents($upload_path, base64_decode($image));
     echo json_encode(
-        array("message" => "Food Truck was edited.")
+      
+        array("message" => "Food Truck img was added.")
     );
 }
 
 // if unable to create the food truck, tell the front end
 else{
     echo json_encode(
-        array("message" => "Unable to edit Food Truck.")
+        array("message" => "Unable to add img Food Truck.")
     );
 }
 ?>

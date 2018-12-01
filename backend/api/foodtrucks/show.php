@@ -16,10 +16,10 @@ $ft = new FoodTruck($db);
 
 // get keywords from JSON
 $data = json_decode(file_get_contents("php://input", true));
-$ft->username = $data->username;
+//$ft->username = $data->username;
 
 // query FTinfo in database
-$stmt = $ft->show($ft->username);
+$stmt = $ft->show();
 $num = $stmt->rowCount();
 
 // check if more than 0 record found
@@ -43,6 +43,7 @@ if($num>0){
             "city" => $City,
             "state" => $State,
             "zip" => $Zip,
+            "imgURL" => $imgURL
         );
 
         array_push($ft_arr["records"], $ft_item);

@@ -1,7 +1,34 @@
+* {
+    font-family: 'Bree Serif', serif;
+}
 
-@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+body {
+    background: #FFF5EE; 
+}
 
-.btn, .btn:hover, .btn:active, .btn:visited {
+.btn {
+    background: #c94b4b;
+    border-color: #8064A2;
+    color: #FFFFFF;
+    outline: none;
+    outline: none !important;
+}
+
+.btn:active, .active, .btn:hover {
+    background: #d67676 !important;
+    border-color: #8064A2;
+    color: #FFFFFF;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.active, .btn:hover .btn:focus{
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/*.btn, .btn:hover, .btn:active, .btn:visited {
     background: #c94b4b !important;
     border-color: #8064A2;
     color: #FFFFFF;
@@ -24,16 +51,10 @@
  
 .btn-primary:active, .btn-primary.active {
     background: #c94b4b;
-}
-
+}*/
 
 .navbar {
     background-color: #450055 !important;
-}
-
-body { 
-    padding-top: 0px;
-
 }
 
 .navbar-icon-top .navbar-nav .nav-link > .fa {
@@ -42,16 +63,16 @@ body {
   font-size: 24px;
 }
 
+.navbar-icon-top .navbar-nav .nav-link > .fa {
+    top: 3px;
+    line-height: 12px;
+}
+
 .navbar-icon-top .navbar-nav .nav-link > .fa > .badge {
   font-size: 0.75rem;
   position: absolute;
   right: 0;
   font-family: sans-serif;
-}
-
-.navbar-icon-top .navbar-nav .nav-link > .fa {
-  top: 3px;
-  line-height: 12px;
 }
 
 .navbar-icon-top .navbar-nav .nav-link > .fa > .badge {
@@ -88,38 +109,3 @@ body {
     height: auto;
     background-position:center;
 }
-
-
-
-
-/*input[type="text"], input[type="email"], input[type="password"],
-select.form-control {
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #000000;
-  box-shadow: none;
-  border-radius: 0;
-}
-
-input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus,
-select.form-control:focus {
-  box-shadow: none;
-}
-
-#searchbox {
-  
-}
-
-#searchbox:active {
-    background:transparent;
-    border:none;
-    border-bottom: 1px solid #000000;
-    box-shadow: none;
-    border-radius: 0;
-    color:#FFFFFF
-    
-}
-
-#searchbox:hover {
-    
-}*/
