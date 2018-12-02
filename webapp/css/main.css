@@ -28,6 +28,11 @@ body {
     outline: none !important;
 }
 
+.modal-header {
+    background-color: #800080;
+    color:#FFF;
+}
+
 /*.btn, .btn:hover, .btn:active, .btn:visited {
     background: #c94b4b !important;
     border-color: #8064A2;
