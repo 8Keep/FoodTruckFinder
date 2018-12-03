@@ -17,11 +17,13 @@ $( document ).ready(function() {
     
     if (getIfLoggedIn())
     {
-        $("#labUsername").text(Cookies.get("username")) ;
+        $("#labUsername").text("Logged in as: " + Cookies.get("username")) ;
         hideLoginRegister();
+        $("#logout").show();
     }
     else
     {
+        $("#logout").hide();
         $("#labUsername").hide();
     }
     $("#regfoot").hide();
@@ -30,6 +32,11 @@ $( document ).ready(function() {
     
     $("#logindrop").click(function(event){
         event.stopPropagation();
+    });
+    
+    $("#logout").click( function() {
+        Cookies.remove("username");
+        location.reload();
     });
     
     $("#regft").click( function() {
@@ -143,7 +150,7 @@ function login() {
     
     Cookies.set("username", login.username);
     $("#labUsername").show();
-    $("#labUsername").text(login.username);
+    $("#labUsername").text("Logged in as: " + login.username);
     hideLoginRegister();
 }
 
@@ -165,7 +172,7 @@ function register() {
             console.log(r);});
     Cookies.set("username", details.username);
     $("#labUsername").show();
-    $("#labUsername").text(details.username);
+    $("#labUsername").text("Logged in as: " + details.username);
     hideLoginRegister();
 }
 
