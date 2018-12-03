@@ -8,7 +8,22 @@ var number;
 var special;
 var length;
 
+var username;
+
 $( document ).ready(function() {
+    console.log("Username: " + Cookies.get("username"));
+    
+    console.log(getIfLoggedIn());
+    
+    if (getIfLoggedIn())
+    {
+        $("#labUsername").text(Cookies.get("username")) ;
+        hideLoginRegister();
+    }
+    else
+    {
+        $("#labUsername").hide();
+    }
     $("#regfoot").hide();
     $("#ven-reg").hide();
     $("#ft-reg").hide();
@@ -100,38 +115,14 @@ $( document ).ready(function() {
     }
 });
 
-// function regft() {
-//     $("#typesel").hide();
-//     $("#ft-reg").show();
-// }
-// 
-// function regven() {
-//     $("#typesel").hide();
-//     $("#ven-reg").show();
-// }
-// 
-// function back() {
-//     $("#ft-reg").hide();
-//     $("#ven-reg").hide();
-//     $("#typesel").show();
-// }
-
-function toggleBtn(event) {
-//     $("#ven").prop("checked", true);
-}
-
 function ftcheck(event) {
     console.log("Food truck selected for login");
-//     $("#ven").prop("checked", false);
-//     $("#ft").prop("checked", true);
     event.stopPropagation();
     loginFT = true;
 }
 
 function vencheck(event) {
     console.log("Vendor selected for login");
-//     $("#ven").prop("checked", true);
-//     $("#ft").prop("checked", false);
     event.stopPropagation();
     loginFT = false;
 }
@@ -149,6 +140,11 @@ function login() {
         function(result){
             r = result.message;
             console.log(r);});
+    
+    Cookies.set("username", login.username);
+    $("#labUsername").show();
+    $("#labUsername").text(login.username);
+    hideLoginRegister();
 }
 
 function register() {
@@ -167,6 +163,14 @@ function register() {
         function(result){
             r = result.message;
             console.log(r);});
+    Cookies.set("username", details.username);
+    $("#labUsername").show();
+    $("#labUsername").text(details.username);
+    hideLoginRegister();
+}
+
+function getIfLoggedIn() {
+    return Cookies.get("username") != undefined;
 }
 
 function hideLoginRegister() {
