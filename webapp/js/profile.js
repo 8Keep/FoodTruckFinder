@@ -63,11 +63,11 @@ function submitData() {
     
     if (Cookies.get("type") == "foodtruck")
     {
-        url = "https://peopleorderourpatties.com/backend/api/users/vendors/edit.php";
+        url = "https://peopleorderourpatties.com/backend/api/vendors/edit.php";
     }
     else
     {
-        url = "https://peopleorderourpatties.com/backend/api/users/foodtrucks/edit.php";
+        url = "https://peopleorderourpatties.com/backend/api/foodtrucks/edit.php";
     }
     if (Cookies.get("profile") == Cookies.get("username"))
     {
@@ -85,14 +85,13 @@ function submitData() {
     var response;
     
     $.post(
-            url,
-            JSON.stringify(submit),
-            function(result)
-            {
-                    r = result.message;
-                    console.log(r);
-                });
-
+        url,
+        JSON.stringify(submit),
+        function(result)
+        {
+            r = result.message;
+            console.log(r);
+        });
 }
 
 function cancelData() {

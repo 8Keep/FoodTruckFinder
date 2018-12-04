@@ -10,6 +10,126 @@ var length;
 
 var username;
 
+
+
+function ftcheck(event) {
+    console.log("Food truck selected for login");
+    event.stopPropagation();
+    loginFT = true;
+}
+
+function vencheck(event) {
+    console.log("Vendor selected for login");
+    event.stopPropagation();
+    loginFT = false;
+}
+
+function login() {
+    var login = { username: $("#loginUser").val(),
+                    password: $("#loginPass").val()};
+
+    var url;
+    
+    if (loginFT)
+    {
+        Cookies.set("type", "foodtruck");
+        url = "https://peopleorderourpatties.com/backend/api/users/foodtrucks/authenticate.php"
+    }
+    else
+    {
+        Cookies.set("type", "vendor");
+        url = "https://peopleorderourpatties.com/backend/api/users/vendors/authenticate.php"
+    }
+    
+    var response;
+    $.post(
+        url,
+        JSON.stringify(login),
+        function(result){
+            r = result.message;
+            console.log(r);});
+    
+    Cookies.set("username", login.username);
+    $("#labUsername").show();
+    $("#labUsername").text("Logged in as: " + login.username);
+    hideLoginRegister();
+    $("#logout").show();
+}
+
+function register() {
+    console.log("Register!");
+    
+    var details = { username: $("#reguser").val(),
+                    email: $("#regemail").val(),
+                    password: $("#regpass").val()};
+                    
+    var url;
+    
+    if (regFT)
+    {
+        Cookies.set("type", "foodtruck");
+        url = "https://peopleorderourpatties.com/backend/api/users/foodtrucks/create.php"
+    }
+    else
+    {
+        Cookies.set("type", "vendor");
+        url = "https://peopleorderourpatties.com/backend/api/users/vendors/create.php"
+    }
+    
+    var response;
+    $.post(
+        url,
+        JSON.stringify(details),
+        function(result){
+            r = result.message;
+            console.log(r);});
+    Cookies.set("username", details.username);
+    $("#labUsername").show();
+    $("#labUsername").text("Logged in as: " + details.username);
+    hideLoginRegister();
+    $("#logout").show();
+}
+
+function getIfLoggedIn() {
+    return Cookies.get("username") != undefined;
+}
+
+function hideLoginRegister() {
+    $("#loginGroup").hide();
+    $("#regButton").hide();
+}
+
+function search() {
+    var data = $("#searchbox").val();
+    if(window.location.href.indexOf("profile") != -1) {
+        Cookies.set("search", data);
+        window.location = "https://peopleorderourpatties.com/webapp/index.html";
+    }
+    var json = { keyword: data };
+    
+    var url;
+    
+    if (Cookies.get("type") == "foodtruck")
+    {
+        url = "https://peopleorderourpatties.com/backend/api/users/vendors/search.php"
+    }
+    else
+    {
+        url = "https://peopleorderourpatties.com/backend/api/users/foodtrucks/search.php"
+    }
+    
+    var response;
+    $.post(
+        url,
+        JSON.stringify(json),
+        function(result){
+            r = result.message;
+            console.log(r);
+            var jsonObject = JSON.parse(r);
+            console.log(jsonObject);});
+}
+
+
 $( document ).ready(function() {
     
     $("#searchbox").keyup(function(event) {
@@ -135,123 +255,3 @@ $( document ).ready(function() {
         }
     }
 });
-
-function ftcheck(event) {
-    console.log("Food truck selected for login");
-    event.stopPropagation();
-    loginFT = true;
-}
-
-function vencheck(event) {
-    console.log("Vendor selected for login");
-    event.stopPropagation();
-    loginFT = false;
-}
-
-function login() {
-    var login = { username: $("#loginUser").val(),
-                    password: $("#loginPass").val()};
-
-    var url;
-    
-    if (loginFT)
-    {
-        Cookies.set("type", "foodtruck");
-        url = "https://peopleorderourpatties.com/backend/api/users/foodtrucks/authenticate.php"
-    }
-    else
-    {
-        Cookies.set("type", "vendor");
-        url = "https://peopleorderourpatties.com/backend/api/users/vendors/authenticate.php"
-    }
-    
-    var response;
-    $.post(
-        url,
-        JSON.stringify(login),
-        function(result){
-            r = result.message;
-            console.log(r);});
-    
-    Cookies.set("username", login.username);
-    $("#labUsername").show();
-    $("#labUsername").text("Logged in as: " + login.username);
-    hideLoginRegister();
-    $("#logout").show();
-}
-
-function register() {
-    console.log("Register!");
-    
-    var details = { username: $("#reguser").val(),
-                    email: $("#regemail").val(),
-                    password: $("#regpass").val()};
-                    
-    var url;
-    
-    if (regFT)
-    {
-        Cookies.set("type", "foodtruck");
-        url = "https://peopleorderourpatties.com/backend/api/users/foodtrucks/create.php"
-    }
-    else
-    {
-        Cookies.set("type", "vendor");
-        url = "https://peopleorderourpatties.com/backend/api/users/vendors/create.php"
-    }
-    
-    var response;
-    $.post(
-        url,
-        JSON.stringify(details),
-        function(result){
-            r = result.message;
-            console.log(r);});
-    Cookies.set("username", details.username);
-    $("#labUsername").show();
-    $("#labUsername").text("Logged in as: " + details.username);
-    hideLoginRegister();
-    $("#logout").show();
-}
-
-function getIfLoggedIn() {
-    return Cookies.get("username") != undefined;
-}
-
-function hideLoginRegister() {
-    $("#loginGroup").hide();
-    $("#regButton").hide();
-}
-
-function search()
-{
-    var search = $("#searchbox").val();
-    if(window.location.href.indexOf("profile") != -1) {
-        Cookies.set("search", search);
-        window.location = "https://peopleorderourpatties.com/webapp/index.html";
-    }
-    var json = { keyword: search };
-    
-    var url;
-    
-    if (Cookies.get("type") == "foodtruck")
-    {
-        url = "https://peopleorderourpatties.com/backend/api/users/vendors/search.php"
-    }
-    else
-    {
-        url = "https://peopleorderourpatties.com/backend/api/users/foodtrucks/search.php"
-    }
-    
-    var response;
-    $.post(
-        url,
-        JSON.stringify(json),
-        function(result){
-            r = result.message;
-            console.log(r);
-            var jsonObject = JSON.parse(r);
-            console.log(jsonObject);});
-}
-
-
