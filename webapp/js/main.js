@@ -11,6 +11,13 @@ var length;
 var username;
 
 $( document ).ready(function() {
+    
+    $("#searchbox").keyup(function(event) {
+        if (event.keyCode == 13) {
+            search();
+        }
+    });
+    
     console.log("Username: " + Cookies.get("username"));
     
     console.log(getIfLoggedIn());
@@ -138,8 +145,19 @@ function login() {
     var login = { username: $("#loginUser").val(),
                     password: $("#loginPass").val()};
 
-    var url = loginFT ? "https://peopleorderourpatties.com/backend/api/users/foodtrucks/authenticate.php" :
-                        "https://peopleorderourpatties.com/backend/api/users/vendors/authenticate.php";
+    var url;
+    
+    if (loginFT)
+    {
+        Cookies.set("type", "foodtruck");
+        url = "https://peopleorderourpatties.com/backend/api/users/foodtrucks/authenticate.php"
+    }
+    else
+    {
+        Cookies.set("type", "vendor");
+        url = "https://peopleorderourpatties.com/backend/api/users/vendors/authenticate.php"
+    }
+    
     var response;
     $.post(
         url,
@@ -161,8 +179,19 @@ function register() {
                     email: $("#regemail").val(),
                     password: $("#regpass").val()};
                     
-    var url = regFT ? "https://peopleorderourpatties.com/backend/api/users/foodtrucks/create.php" :
-                        "https://peopleorderourpatties.com/backend/api/users/vendors/create.php";
+    var url;
+    
+    if (regFT)
+    {
+        Cookies.set("type", "foodtruck");
+        url = "https://peopleorderourpatties.com/backend/api/users/foodtrucks/create.php"
+    }
+    else
+    {
+        Cookies.set("type", "vendor");
+        url = "https://peopleorderourpatties.com/backend/api/users/vendors/create.php"
+    }
+    
     var response;
     $.post(
         url,
@@ -184,3 +213,32 @@ function hideLoginRegister() {
     $("#loginGroup").hide();
     $("#regButton").hide();
 }
+
+function search()
+{
+    var json = { keyword: $("#searchbox").val() };
+    
+    var url;
+    
+    if (Cookies.get("type") == "foodtruck")
+    {
+        url = "https://peopleorderourpatties.com/backend/api/users/vendors/create.php"
+    }
+    else
+    {
+        url = "https://peopleorderourpatties.com/backend/api/users/foodtrucks/create.php"
+    }
+    
+    var response;
+    $.post(
+        url,
+        JSON.stringify(json),
+        function(result){
+            r = result.message;
+            
+            var jsonObject = JSON.parse(r);
+            console.log(r);
+            console.log(jsonObject);});
+}
+
+
