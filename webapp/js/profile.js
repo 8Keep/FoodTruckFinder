@@ -5,6 +5,7 @@ $( document ).ready(function() {
 	$("#state").hide(); 
 	$("#description").hide(); 
 	$("#submitbutton").hide(); 
+    $("#cancelbutton").hide();
 });
 
 
@@ -12,6 +13,7 @@ $( document ).ready(function() {
 function editData() {
 
 	$("#editbutton").hide(); 
+    $("#cancelbutton").show();
 
 	$("#telephoneField").hide(); 
 	$("#telephone").show(); 
@@ -47,4 +49,6 @@ function submitData() {
 
 }
 
-
+function cancelData() {
+    location.reload();
+}
