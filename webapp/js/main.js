@@ -18,6 +18,13 @@ $( document ).ready(function() {
         }
     });
     
+    var search = $("#searchbox").val();
+    if(window.location.href.indexOf("profile") == -1 && Cookies.get("search")) {
+        console.log("using search data from cookie");
+        $("#searchbox").val(Cookies.get("search"));
+        Cookies.remove("search");
+    }
+    
     console.log("Username: " + Cookies.get("username"));
     
     console.log(getIfLoggedIn());
@@ -170,6 +177,7 @@ function login() {
     $("#labUsername").show();
     $("#labUsername").text("Logged in as: " + login.username);
     hideLoginRegister();
+    $("#logout").show();
 }
 
 function register() {
@@ -203,6 +211,7 @@ function register() {
     $("#labUsername").show();
     $("#labUsername").text("Logged in as: " + details.username);
     hideLoginRegister();
+    $("#logout").show();
 }
 
 function getIfLoggedIn() {
@@ -216,17 +225,22 @@ function hideLoginRegister() {
 
 function search()
 {
-    var json = { keyword: $("#searchbox").val() };
+    var search = $("#searchbox").val();
+    if(window.location.href.indexOf("profile") != -1) {
+        Cookies.set("search", search);
+        window.location = "https://peopleorderourpatties.com/webapp/index.html";
+    }
+    var json = { keyword: search };
     
     var url;
     
     if (Cookies.get("type") == "foodtruck")
     {
-        url = "https://peopleorderourpatties.com/backend/api/users/vendors/create.php"
+        url = "https://peopleorderourpatties.com/backend/api/users/vendors/search.php"
     }
     else
     {
-        url = "https://peopleorderourpatties.com/backend/api/users/foodtrucks/create.php"
+        url = "https://peopleorderourpatties.com/backend/api/users/foodtrucks/search.php"
     }
     
     var response;
@@ -235,9 +249,8 @@ function search()
         JSON.stringify(json),
         function(result){
             r = result.message;
-            
-            var jsonObject = JSON.parse(r);
             console.log(r);
+            var jsonObject = JSON.parse(r);
             console.log(jsonObject);});
 }
 
