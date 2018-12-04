@@ -6,11 +6,13 @@ $( document ).ready(function() {
 	$("#description").hide(); 
 	$("#submitbutton").hide(); 
 	$("#zipcode").hide(); 
+    $("#cancelbutton").hide();
 });
 
 function editData() {
 
 	$("#editbutton").hide(); 
+    $("#cancelbutton").show();
 
 	$("#telephoneField").hide(); 
 	$("#telephone").show(); 
@@ -73,4 +75,6 @@ function submitData() {
 
 }
 
-
+function cancelData() {
+    location.reload();
+}
