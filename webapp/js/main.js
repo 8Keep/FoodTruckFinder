@@ -111,11 +111,11 @@ function search() {
     
     if (Cookies.get("type") == "foodtruck")
     {
-        url = "https://peopleorderourpatties.com/backend/api/users/vendors/search.php"
+        url = "https://peopleorderourpatties.com/backend/api/vendors/search.php"
     }
     else
     {
-        url = "https://peopleorderourpatties.com/backend/api/users/foodtrucks/search.php"
+        url = "https://peopleorderourpatties.com/backend/api/foodtrucks/search.php"
     }
     
     var response;

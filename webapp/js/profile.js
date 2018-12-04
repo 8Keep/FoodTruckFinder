@@ -71,7 +71,7 @@ function submitData() {
     }
     if (Cookies.get("profile") == Cookies.get("username"))
     {
-        url = "https://peopleorderourpatties.com/backend/api/users/" + Cookies.get("type") + "s/edit.php";
+        url = "https://peopleorderourpatties.com/backend/api/" + Cookies.get("type") + "s/edit.php";
     }
     
     var submit = {  username : Cookies.get("username"),
