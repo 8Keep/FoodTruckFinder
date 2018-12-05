@@ -45,6 +45,7 @@ if($num>0){
         extract($row);
 
         $ft_item=array(
+            "FTinfoID" => $FTinfoID, // using FTinfoID so that we can query FoodTruck table with this ID and get this FoodTruck's full details
             "TruckName" => $TruckName,
             "City" => $City,
             "State" => $State,
