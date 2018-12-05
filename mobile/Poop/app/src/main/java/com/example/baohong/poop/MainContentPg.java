@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -35,10 +36,12 @@ public class MainContentPg extends AppCompatActivity implements PopupMenu.OnMenu
     private ImageView logout, menu;
     SharedPreferences sp;
     private RecyclerView recyclerView;
+    private SearchView search;
     private RecyclerView.Adapter adapter;
     //192.168.0.17 for real
     //10.0.2.2 for emu
-    private static final String URL_DATA = "https://www.peopleorderourpatties.com/backend/api/foodtrucks/show.php";
+    //private static final String URL_DATA = "https://www.peopleorderourpatties.com/backend/api/foodtrucks/show.php";
+    private static final String URL_DATA = "http://192.168.0.17/api/foodtrucks/show.php";
     private List<ListItem> listItems;
 
     @Override

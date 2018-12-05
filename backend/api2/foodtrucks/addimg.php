@@ -31,16 +31,14 @@ $ft = new FoodTruck($db);
 //$keywords=isset($_GET["s"]) ? $_GET["s"] : "";
 $data = json_decode(file_get_contents("php://input", true));
 $username = $data->username;
-$upload_path = "spongebob7:spongebob7@cop4331.cm0oj9xyv2kx.us-east-2.rds.amazonaws.com/../../images/$username.jpg";
-$img_path = "https://www.peopleorderourpatties.com/backend/images/$username.jpg";
+$upload_path = "../../images/$username.jpg";
+$img_path = "http://192.168.0.17/images/$username.jpg";
 $image = $data->image;
 
-$options = array('ftp' => array('overwrite' => true)); 
-$stream = stream_context_create($options);
 
 // create the food truck
 if($ft->addimg($img_path, $username)){
-  file_put_contents($upload_path, base64_decode($image), 0 ,$stream);
+  file_put_contents($upload_path, base64_decode($image));
     echo json_encode(
       
         array("message" => "Food Truck img was added.")

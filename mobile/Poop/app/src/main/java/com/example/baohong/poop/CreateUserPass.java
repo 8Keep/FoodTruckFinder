@@ -37,8 +37,8 @@ public class CreateUserPass extends CreateActivity {
     private TextView passHint, confirmErr;
     private boolean isVendor;
     private String localhost_ip = "192.168.0.17";
-    private String onlineURL = "https://www.peopleorderourpatties.com/backend";
-
+    //private String onlineURL = "https://www.peopleorderourpatties.com/backend";
+    private String onlineURL = "http://192.168.0.17";
     private String localhostURL = "http://192.168.0.17";
     Bundle bundle;
     @Override
@@ -78,6 +78,7 @@ public class CreateUserPass extends CreateActivity {
                     infoObject.put("username", gUsername);
                     infoObject.put("email", bundle.getString("gEmail"));
                     infoObject.put("phone", bundle.getString("gPhone"));
+                    infoObject.put("address", bundle.getString("gStreet"));
                     infoObject.put("first", bundle.getString("fname"));
                     infoObject.put("last", bundle.getString("lname"));
                     infoObject.put("city", bundle.getString("gCity"));
@@ -87,7 +88,7 @@ public class CreateUserPass extends CreateActivity {
                     if(isVendor)
                     {
                         infoObject.put("ET_name", bundle.getString("ETname"));
-                        infoObject.put("address", bundle.getString("gStreet"));
+
                     }
                     else
                     {

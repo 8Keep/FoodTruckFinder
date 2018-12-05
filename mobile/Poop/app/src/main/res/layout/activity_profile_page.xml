@@ -31,17 +31,432 @@
             android:text="@string/importIMG"
             android:textAllCaps="false"
             android:textColor="@color/white"/>
+
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="45dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="left"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/asap_bold"
+            android:text="Name"
+            android:textColor="@color/green"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            android:layout_gravity="left"
+            android:layout_marginLeft="16dp"
+            android:textColor="@color/white"
+            android:text="Bao Hong"
+            android:textSize="18sp"
+            android:fontFamily="@font/asap_bold"/>
+        <EditText
+            android:id="@+id/nameED"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            android:layout_gravity="left"
+            android:visibility="gone"
+            android:backgroundTint="@color/white"
+            android:layout_marginLeft="16dp"
+            android:textColor="@color/white"
+            android:text="Bao Hong"
+            android:textSize="18sp"
+            android:fontFamily="@font/asap_bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Entity"
+            android:layout_gravity="left"
+            android:layout_marginLeft="16dp"
+            android:textColor="@color/green"
+            android:fontFamily="@font/asap_bold"
+            android:textSize="18sp"/>
+        <TextView
+            android:id="@+id/entity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:textColor="@color/white"
+            android:layout_marginLeft="16dp"
+            android:paddingBottom="16dp"
+            android:text="Vendor"
+            android:textSize="18sp"
+            android:fontFamily="@font/asap_bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/asap_bold"
+            android:layout_gravity="left"
+            android:textColor="@color/green"
+            android:textSize="18sp"
+            android:text="Entity Name"
+            android:layout_marginLeft="16dp"/>
+        <TextView
+            android:id="@+id/entityName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            android:textColor="@color/white"
+            android:text="Bao Truck"
+            android:layout_gravity="left"
+            android:layout_marginLeft="16dp"
+            android:textSize="18sp"
+            android:fontFamily="@font/asap_bold"/>
+        <EditText
+            android:id="@+id/entityNameED"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:visibility="gone"
+            android:paddingBottom="16dp"
+            android:textColor="@color/white"
+            android:text="Bao Truck"
+            android:layout_gravity="left"
+            android:layout_marginLeft="16dp"
+            android:textSize="18sp"
+            android:fontFamily="@font/asap_bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username"
+
+            android:layout_gravity="left"
+            android:textColor="@color/green"
+            android:layout_marginLeft="16dp"
+            android:fontFamily="@font/asap_bold"
+            android:textSize="18sp"/>
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:textColor="@color/white"
+            android:layout_marginLeft="16dp"
+            android:textSize="18sp"
+            android:paddingBottom="16dp"
+            android:text="baohong98"
+            android:fontFamily="@font/asap_bold" />
+        <EditText
+            android:id="@+id/usernameED"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            android:layout_marginLeft="16dp"
+            android:textSize="18sp"
+            android:paddingBottom="16dp"
+            android:text="baohong98"
+            android:fontFamily="@font/asap_bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/green"
+            android:layout_gravity="left"
+            android:layout_marginLeft="16dp"
+            android:text="Password"
+            android:fontFamily="@font/asap_bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:paddingBottom="16dp"
+            android:textSize="18sp"
+            android:text="@string/changePass"
+            android:fontFamily="@font/asap_bold"
+            android:layout_gravity="left"
+            android:layout_marginLeft="16dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:layout_gravity="left"
+            android:layout_marginLeft="16dp"
+            android:textColor="@color/green"
+            android:textSize="18sp"
+            android:fontFamily="@font/asap_bold" />
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
             android:textSize="18sp"
             android:textColor="@color/white"
-            android:layout_marginTop="20dp"
+            android:fontFamily="@font/asap_bold"
+            android:text="baohong@gmail.com"
+            android:layout_gravity="left"
+            android:layout_marginLeft="16dp"/>
+
+        <EditText
+            android:id="@+id/emailED"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/white"
+            android:text="baohong@gmailsdf"
+            android:visibility="gone"
             android:layout_marginLeft="16dp"
-            android:text="Name:"
-            />
+            android:textSize="18sp"
+            android:paddingBottom="16dp"
+
+            android:fontFamily="@font/asap_bold" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone"
+            android:layout_gravity="left"
+            android:layout_marginLeft="16dp"
+            android:textColor="@color/green"
+            android:textSize="18sp"
+            android:fontFamily="@font/asap_bold" />
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/asap_bold"
+            android:text="3214408647"
+            android:layout_gravity="left"
+            android:layout_marginLeft="16dp"/>
+        <EditText
+            android:id="@+id/phoneED"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            android:textSize="18sp"
+            android:backgroundTint="@color/white"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:fontFamily="@font/asap_bold"
+            android:text="3214408647"
+            android:layout_gravity="left"
+            android:layout_marginLeft="16dp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/addressTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="16dp"
+            android:fontFamily="@font/asap_bold"
+            android:text="Address"
+            android:textColor="@color/green"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:visibility="visible"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/asap_bold"
+            android:text="911 Mesa Oak Ct"
+            android:paddingBottom="16dp"
+            android:layout_below="@id/addressTV"/>
+
+            <EditText
+                android:id="@+id/addressED"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:backgroundTint="@color/white"
+                android:textSize="18sp"
+                android:visibility="invisible"
+                android:textColor="@color/white"
+                android:fontFamily="@font/asap_bold"
+                android:text="911 Mesa Oak Ct"
+                android:layout_below="@id/addressTV"/>
+
+
+            <TextView
+            android:id="@+id/CityTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="175dp"
+            android:textColor="@color/green"
+            android:layout_toRightOf="@id/addressTV"
+            android:text="City"
+            android:textSize="18sp"
+            android:fontFamily="@font/asap_bold"/>
+        <TextView
+            android:id="@+id/city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/address"
+            android:layout_alignLeft="@id/CityTV"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_below="@id/CityTV"
+            android:fontFamily="@font/asap_bold"
+            android:text="Kissimmee"
+            android:paddingBottom="16dp"
+            android:layout_gravity="left"/>
+            <EditText
+                android:id="@+id/cityED"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/address"
+                android:layout_alignLeft="@id/CityTV"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:visibility="invisible"
+                android:layout_below="@id/CityTV"
+                android:fontFamily="@font/asap_bold"
+                android:backgroundTint="@color/white"
+                android:text="Kissimmee"
+                android:layout_gravity="left"/>
+        <TextView
+            android:id="@+id/stateTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_below="@+id/address"
+            android:textColor="@color/green"
+            android:text="State"
+            android:textSize="18sp"
+            android:fontFamily="@font/asap_bold"/>
+        <TextView
+            android:id="@+id/state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:textColor="@color/white"
+            android:layout_below="@id/stateTV"
+            android:textSize="18sp"
+            android:fontFamily="@font/asap_bold"
+            android:text="FL"
+            android:paddingBottom="16dp"
+            android:layout_gravity="left"/>
+
+            <EditText
+                android:id="@+id/stateED"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:textColor="@color/white"
+                android:layout_below="@id/stateTV"
+                android:backgroundTint="@color/white"
+                android:visibility="invisible"
+                android:textSize="18sp"
+                android:fontFamily="@font/asap_bold"
+                android:text="FL"
+                android:layout_gravity="left"/>
+        <TextView
+            android:id="@+id/zipTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/stateTV"
+            android:layout_alignLeft="@id/city"
+            android:layout_below="@id/city"
+            android:textColor="@color/green"
+            android:text="Zip code"
+            android:textSize="18sp"
+            android:fontFamily="@font/asap_bold"/>
+        <TextView
+            android:id="@+id/zip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/zipTV"
+            android:layout_toRightOf="@id/state"
+            android:textColor="@color/white"
+            android:layout_alignLeft="@id/zipTV"
+            android:textSize="18sp"
+            android:fontFamily="@font/asap_bold"
+            android:text="34744"
+            android:paddingBottom="16dp"
+            android:layout_gravity="left"/>
+            <EditText
+                android:id="@+id/zipED"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/zipTV"
+                android:layout_toRightOf="@id/state"
+                android:textColor="@color/white"
+                android:layout_alignLeft="@id/zipTV"
+                android:backgroundTint="@color/white"
+                android:textSize="18sp"
+                android:fontFamily="@font/asap_bold"
+                android:text="34744"
+                android:visibility="invisible"
+                android:layout_gravity="left"/>
+        </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_gravity="left"
+            android:textColor="@color/green"
+            android:text="@string/description"
+            android:fontFamily="@font/asap_bold"
+            android:layout_marginLeft="16dp"/>
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="16dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:fontFamily="@font/asap_bold"
+            android:text="No description yet"/>
+        <EditText
+            android:id="@+id/descriptionED"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="16dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:backgroundTint="@color/white"
+            android:visibility="gone"
+            android:fontFamily="@font/asap_bold"
+            android:text="No description yet"/>
+        <Button
+            android:id="@+id/edit"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="63dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="63dp"
+            android:background="@drawable/btn_rnd_sel"
+            android:fontFamily="@font/asap_bold"
+            android:textSize="18sp"
+            android:text="Edit profile"
+            android:textAllCaps="false"
+            android:textColor="@color/white"/>
+        <Button
+            android:id="@+id/editDone"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="63dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="63dp"
+            android:background="@drawable/btn_rnd_sel"
+            android:fontFamily="@font/asap_bold"
+            android:textSize="18sp"
+            android:visibility="gone"
+            android:text="Edit done"
+            android:textAllCaps="false"
+            android:textColor="@color/white"/>
+
+
 
 
 

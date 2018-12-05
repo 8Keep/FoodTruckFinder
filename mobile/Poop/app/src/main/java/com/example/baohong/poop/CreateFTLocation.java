@@ -15,8 +15,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class CreateFTLocation extends CreateActivity{
-    private String gCity,gState,gZip;
+    private String gCity,gState,gZip, gStreet;
     Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,7 @@ public class CreateFTLocation extends CreateActivity{
         {
             Log.d("Bundle Debug", key + " = \"" + bundle.get(key) + "\"");
         }
+        street = findViewById(R.id.addressED);
         city = (EditText) findViewById(R.id.city);
         state = (EditText) findViewById(R.id.state);
         zip = (EditText) findViewById(R.id.zip);
@@ -34,9 +37,10 @@ public class CreateFTLocation extends CreateActivity{
         next = findViewById(R.id.next);
         next.setEnabled(false);
         next.setVisibility(View.GONE);
-        city.requestFocus();
+        street.requestFocus();
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+        street.addTextChangedListener(emptyCheck);
         city.addTextChangedListener(emptyCheck);
         state.addTextChangedListener(emptyCheck);
         zip.addTextChangedListener(emptyCheck);
@@ -50,6 +54,7 @@ public class CreateFTLocation extends CreateActivity{
     public void sendToNext()
     {
         Intent intent = new Intent(CreateFTLocation.this,CreateUserPass.class);
+        bundle.putString("gStreet", gStreet);
         bundle.putString("gCity", gCity);
         bundle.putString("gState", gState);
         bundle.putString("gZip", gZip);
@@ -80,16 +85,19 @@ public class CreateFTLocation extends CreateActivity{
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
+            gStreet = street.getText().toString();
             gCity = city.getText().toString();
             gState = state.getText().toString();
             gZip = zip.getText().toString();
+            if(TextUtils.isEmpty(gStreet))
+                street.setError("Please enter your address");
             if(TextUtils.isEmpty(gCity))
                 city.setError("Please enter your city");
             if(TextUtils.isEmpty(gState))
                 state.setError("Please enter your state");
             if(TextUtils.isEmpty(gZip))
                 zip.setError("Please enter your zip");
-            if(!TextUtils.isEmpty(gCity) && !TextUtils.isEmpty(gState) && !TextUtils.isEmpty(gZip))
+            if(!TextUtils.isEmpty(gStreet) && !TextUtils.isEmpty(gCity) && !TextUtils.isEmpty(gState) && !TextUtils.isEmpty(gZip))
             {
                 next.setVisibility(View.VISIBLE);
                 next.setEnabled(true);
