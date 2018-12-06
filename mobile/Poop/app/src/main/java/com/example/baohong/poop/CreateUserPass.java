@@ -38,7 +38,7 @@ public class CreateUserPass extends CreateActivity {
     private boolean isVendor;
     private String localhost_ip = "192.168.0.17";
     //private String onlineURL = "https://www.peopleorderourpatties.com/backend";
-    private String onlineURL = "http://192.168.0.17";
+    private String onlineURL = "https://www.peopleorderourpatties.com/backend";
     private String localhostURL = "http://192.168.0.17";
     Bundle bundle;
     @Override

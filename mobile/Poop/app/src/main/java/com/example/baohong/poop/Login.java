@@ -40,9 +40,8 @@ public class Login extends AppCompatActivity {
     //192.168.0.17 for real
     //10.0.2.2 for emu
     //private String onlineURL = "https://www.peopleorderourpatties.com/backend";
-    private String onlineURL = "http://192.168.0.17";
-
-    private String localhostURL = "http://192.168.0.17";
+    private String onlineURL = "https://www.peopleorderourpatties.com/backend";
+    private String localhostURL = "https://www.peopleorderourpatties.com/backend/";
     Bundle bundle;
 
     @Override

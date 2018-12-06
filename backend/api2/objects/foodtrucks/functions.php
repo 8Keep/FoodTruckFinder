@@ -48,19 +48,18 @@ class FoodTruck{
 
         return $stmt;
     }
-    function showProfile($ftid)
+    function showProfile($username)
     {
       //SELECT ftinfo.First, ftinfo.Last, ftinfo.TruckName, ftinfo.email, ftinfo.phone, ftinfo.address, ftinfo.City, ftinfo.State, ftinfo.Zip, ftinfo.Description, loginft.username FROM ftinfo, loginft WHERE ftinfo.FTID = (SELECT FTID FROM loginft WHERE username = "baohong1") AND loginft.username = "baohong1"
-      //$query = "SELECT ftinfo.First, ftinfo.Last, ftinfo.TruckName, ftinfo.email, ftinfo.phone, ftinfo.address, ftinfo.City, ftinfo.State, ftinfo.Zip, ftinfo.Description, loginft.username FROM ftinfo, loginft WHERE ftinfo.FTID = (SELECT FTID FROM loginft WHERE username = ?) AND loginft.username = ?";
-      $query = "SELECT ftinfo.First, ftinfo.Last, ftinfo.TruckName, ftinfo.email, ftinfo.phone, ftinfo.address, ftinfo.City, ftinfo.State, ftinfo.Zip, ftinfo.Description, loginft.username FROM ftinfo, loginft WHERE ftinfo.FTID = ? AND loginft.FTID = ?";
+      $query = "SELECT FTinfo.First, FTinfo.Last, FTinfo.TruckName, FTinfo.email, FTinfo.phone, FTinfo.address, FTinfo.City, FTinfo.State, FTinfo.Zip, FTinfo.Description, loginFT.username FROM ftinfo, loginft WHERE FTinfo.FTID = (SELECT FTID FROM loginft WHERE username = ?) AND loginFT.username = ?";
 
       $stmt = $this->conn->prepare($query);
 
-      $ftid=htmlspecialchars(strip_tags($ftid));
-      $ftid = "{$ftid}";
+      $username=htmlspecialchars(strip_tags($username));
+      $username = "{$username}";
 
-      $stmt->bindParam(1, $ftid);
-      $stmt->bindParam(2, $ftid);
+      $stmt->bindParam(1, $username);
+      $stmt->bindParam(2, $username);
 
       $stmt->execute();
       return $stmt; 
@@ -130,7 +129,7 @@ class FoodTruck{
   function editProfile($usernameBefore, $username, $truck_name, $first, $last, $email, $phone, $address, $city, $state, $zip, $description)
   {
     // UPDATE ftinfo SET First = "Bao", Last = "Hong", `TruckName` = "Bao dep trai", `email` = "bao_mu2012@yahoo.com.vn", `phone` = "3214408647", `address` = "911 Mesa Oak Ct" , `City`= "Kissimmee", `State` = "FL", `Zip` = "34744", Description = "I want to end this semester right fking now" WHERE `FTID` = (SELECT FTID FROM loginft WHERE username = "baohong98")
-    $query = "UPDATE ftinfo SET First = ?, Last = ?, TruckName = ?, email = ?, phone = ?, address = ?, City = ?, State = ?, Zip = ?, Description = ? WHERE FTID = (SELECT FTID FROM loginft WHERE username = ?)";
+    $query = "UPDATE FTinfo SET First = ?, Last = ?, TruckName = ?, email = ?, phone = ?, address = ?, City = ?, State = ?, Zip = ?, Description = ? WHERE FTID = (SELECT FTID FROM loginFT WHERE username = ?)";
 
     $stmt = $this->conn->prepare($query);
 
@@ -188,7 +187,7 @@ class FoodTruck{
   }
   function editLoginTab($usernameBefore,$username, $email)
   {
-    $query = "UPDATE loginft SET username = ?, email = ? WHERE username = ?";
+    $query = "UPDATE loginFT SET username = ?, email = ? WHERE username = ?";
     $stmt = $this->conn->prepare($query);
 
     $usernameBefore= htmlspecialchars(strip_tags($usernameBefore));
