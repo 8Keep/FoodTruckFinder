@@ -68,10 +68,10 @@ public class Profile_page extends AppCompatActivity implements IPickResult {
 //    private final String SHOW_IMG = "https://www.peopleorderourpatties.com/backend/api/foodtrucks/showUserImg.php";
 //    private String uploadURL = "https://www.peopleorderourpatties.com/backend/api/foodtrucks/addimg.php";
     private final String DEF_IMG = "https://www.peopleorderourpatties.com/backend/images/default.png";
-    private final String SHOW_IMG = "https://www.peopleorderourpatties.com/backend/api/foodtrucks/showUserImg.php";
-    private String uploadURL = "https://www.peopleorderourpatties.com/backend/api/foodtrucks/addimg.php";
-    private String editProfileURL = "https://www.peopleorderourpatties.com/backend/api/foodtrucks/editProfile.php";
-    private String showProfileURL = "https://www.peopleorderourpatties.com/backend/api/foodtrucks/showProfile.php";
+    private final String SHOW_IMG = "https://www.peopleorderourpatties.com/backend/api2/foodtrucks/showUserImg.php";
+    private String uploadURL = "https://www.peopleorderourpatties.com/backend/api2/foodtrucks/addimg.php";
+    private String editProfileURL = "https://www.peopleorderourpatties.com/backend/api2/foodtrucks/editProfile.php";
+    private String showProfileURL = "https://www.peopleorderourpatties.com/backend/api2/foodtrucks/showProfile.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -226,9 +226,15 @@ public class Profile_page extends AppCompatActivity implements IPickResult {
                                 zip.setText(o.getString("zip"));
                                 String des = o.getString("description");
                                 if(des != "null" && !des.isEmpty())
+                                {
                                     description.setText(des);
+                                    descriptionED.setText(des);
+                                }
                                 else
+                                {
                                     description.setText("No description yet.");
+                                    descriptionED.setText("No description yet.");
+                                }
 
                                 nameED.setText(o.getString("first") +" "+ o.getString("last"));
                                 entityNameED.setText(o.getString("TruckName"));
@@ -239,7 +245,7 @@ public class Profile_page extends AppCompatActivity implements IPickResult {
                                 cityED.setText(o.getString("city"));
                                 stateED.setText(o.getString("state"));
                                 zipED.setText(o.getString("zip"));
-                                descriptionED.setText(o.getString("description"));
+
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -343,7 +349,7 @@ public class Profile_page extends AppCompatActivity implements IPickResult {
                                 avaURL = o.getString("imgURL");
                                 Log.d("Error1", avaURL);
 
-                                if(avaURL.isEmpty())
+                                if(avaURL.isEmpty() && avaURL != "null")
                                 {
                                     Picasso.get().load(DEF_IMG).resize(avatar.getWidth(), 480).centerCrop().into(avatar);
                                 }
