@@ -43,7 +43,8 @@ if($num>0){
             "city" => $City,
             "state" => $State,
             "zip" => $Zip,
-            "imgURL" => $imgURL
+            "imgURL" => $imgURL,
+            "username" => $username
         );
 
         array_push($ft_arr["records"], $ft_item);

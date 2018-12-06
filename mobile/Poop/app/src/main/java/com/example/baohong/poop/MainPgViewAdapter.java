@@ -1,6 +1,8 @@
 package com.example.baohong.poop;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.CardView;
@@ -12,6 +14,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
@@ -43,8 +46,8 @@ public class MainPgViewAdapter extends RecyclerView.Adapter<MainPgViewAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final MainPgViewAdapter.ViewHolder viewHolder, int i) {
-        ListItem listItem = listItems.get(i);
+    public void onBindViewHolder(@NonNull final MainPgViewAdapter.ViewHolder viewHolder, final int i) {
+        final ListItem listItem = listItems.get(i);
 
         viewHolder.cardView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
@@ -53,7 +56,18 @@ public class MainPgViewAdapter extends RecyclerView.Adapter<MainPgViewAdapter.Vi
                 width = viewHolder.cardView.getWidth();
             }
         });
+        viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(context, listItems.get(i).getUserName(), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(context, SearchProfile.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("SearchedUser", listItems.get(i).getUserName());
+                intent.putExtras(bundle);
+                context.startActivity(intent);
 
+            }
+        });
         viewHolder.heading.setText(listItem.getHead());
         viewHolder.desc.setText(listItem.getDesc());
         Log.d("isEmpty", ""+ listItem.getImgURL().isEmpty());
@@ -70,6 +84,8 @@ public class MainPgViewAdapter extends RecyclerView.Adapter<MainPgViewAdapter.Vi
             Picasso.get()
                     .load(DEF_IMG)
                     .into(viewHolder.imageView);
+
+
 
     }
 

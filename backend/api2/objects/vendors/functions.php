@@ -36,8 +36,8 @@ class Vendor{
     // show user profile details
     function show(){
 
-        // select all query
-        $query = "SELECT * FROM " . $this->table_name . " ORDER BY ETID DESC";
+        // SELECT * FROM FTinfo, loginFT WHERE FTinfo.FTID = loginFT.FTID ORDER BY FTinfo.FTID DESC
+        $query = "SELECT * FROM " . $this->table_name . ", loginET WHERE ETinfo.ETID = loginET.ETID ORDER BY ETinfo.ETID DESC";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);

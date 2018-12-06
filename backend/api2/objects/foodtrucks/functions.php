@@ -30,8 +30,8 @@ class FoodTruck{
     // show user profile details
     function show(){
 
-        // select all query
-        $query = "SELECT * FROM " . $this->table_name . " ORDER BY FTID DESC";
+        // SELECT * FROM FTinfo, loginFT WHERE FTinfo.FTID = loginFT.FTID ORDER BY FTinfo.FTID DESC
+        $query = "SELECT * FROM " . $this->table_name . ", loginFT WHERE FTinfo.FTID = loginFT.FTID ORDER BY FTinfo.FTID DESC";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
