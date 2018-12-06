@@ -136,7 +136,7 @@ function searchData() {
                 return;
             }
             
-            console.log(result.results[0]);
+            console.log(result.results[1]);
             updateItems(result);
         });
 }
@@ -172,22 +172,28 @@ function updateItems(json) {
             currentDeck = $("#deck" + i);
         }
         
-        
-        
         var obj = json.results[i];
         
         currentDeck.append("<div class=\"card\">" +
-                                "<div class=\"card-img-wrap\"><img class=\"card-img-top\" src=\"" + obj.imgURL + "\" alt=\"Image loading failed :)\" id=\"" + obj.FTID + "\" onClick=\"goToProfile(event);\"></div>" +
+                                "<div class=\"card-img-wrap\"><img class=\"card-img-top\" src=\"" + obj.imgURL + "\" alt=\"Image loading failed :)\" id=\"" + obj.username + "\" onClick=\"goToProfile(event);\"></div>" +
                                 "<div class=\"card-body\">" +
                                     "<h5 class=\"card-title\">" + name + "</h5>" +
-                                    "<p class=\"card-text\">Description</p>" +
+                                    "<p class=\"card-text\">Click image for more info</p>" +
                                 "</div>" +
                                 "<div class=\"card-footer\">" +
                                     "<small class=\"text-muted\">" + obj.City + ", " + obj.State + ", " + obj.Zip + "</small>" +
                                 "</div>" +
                             "</div>");
-        
     }
+}
+
+function goToProfile(event) {
+    event.stopPropagation();
+    console.log("Saving cookies and going to selected profile");
+    var id = $(event.currentTarget).attr("id");
+    console.log($(event.currentTarget));
+    console.log(id);
+    
 }
 
 
