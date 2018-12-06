@@ -205,13 +205,13 @@ $( document ).ready(function() {
     $("#regft").click( function() {
         console.log("register - ft");
         $(this).addClass('active').siblings().removeClass('active');
-        ftreg = true;
+        regFT = true;
     });
     
     $("#regven").click( function() {
         console.log("register - ven");
         $(this).addClass('active').siblings().removeClass('active');
-        ftreg = false;
+        regFT = false;
     });
     
     pass = document.getElementById("regpass");
