@@ -60,6 +60,7 @@ class FoodTruck{
       $ftid = "{$ftid}";
 
       $stmt->bindParam(1, $ftid);
+      $stmt->bindParam(2, $ftid);
 
       $stmt->execute();
       return $stmt; 
