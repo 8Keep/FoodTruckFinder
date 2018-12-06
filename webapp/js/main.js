@@ -27,7 +27,7 @@ function vencheck(event) {
 function login() {
     var login = { username: $("#loginUser").val(),
                     password: $("#loginPass").val()};
-
+    console.log(JSON.stringify(login));
     var url;
     
     if (loginFT)
@@ -62,7 +62,7 @@ function register() {
     var details = { username: $("#reguser").val(),
                     email: $("#regemail").val(),
                     password: $("#regpass").val()};
-                    
+    console.log(JSON.stringify(details));      
     var url;
     
     if (regFT)
@@ -99,7 +99,7 @@ function hideLoginRegister() {
     $("#regButton").hide();
 }
 
-function search() {
+function searchData() {
     var data = $("#searchbox").val();
     if(window.location.href.indexOf("profile") != -1) {
         Cookies.set("search", data);
@@ -137,7 +137,7 @@ function updateItems(json) {
     
     var currentDeck;
     
-    for (int i = 0; i < json.results.length; i++) {
+    for (var i = 0; i < json.results.length; i++) {
         
         if (i % 3 == 0)
         {
@@ -165,7 +165,7 @@ $( document ).ready(function() {
     
     $("#searchbox").keyup(function(event) {
         if (event.keyCode == 13) {
-            search();
+            searchData();
         }
     });
     
@@ -207,12 +207,13 @@ $( document ).ready(function() {
     $("#regft").click( function() {
         console.log("register - ft");
         $(this).addClass('active').siblings().removeClass('active');
-        
+        ftreg = true;
     });
     
     $("#regven").click( function() {
         console.log("register - ven");
         $(this).addClass('active').siblings().removeClass('active');
+        ftreg = false;
     });
     
     pass = document.getElementById("regpass");
