@@ -100,13 +100,13 @@ public class CreateUserPass extends CreateActivity {
                 if(isVendor)
                 {
                     //10.0.2.2 only work on emulator. Need to change if work on real phone. Please google this.
-                    new HTTPAsyncTask().execute(onlineURL+"/api/users/vendors/create.php", loginObject.toString());
-                    new HTTPAsyncTask().execute(onlineURL+"/api/vendors/edit.php", infoObject.toString());
+                    new HTTPAsyncTask().execute(onlineURL+"/api2/users/vendors/create.php", loginObject.toString());
+                    new HTTPAsyncTask().execute(onlineURL+"/api2/vendors/edit.php", infoObject.toString());
                 }
                 else
                 {
-                    new HTTPAsyncTask().execute(onlineURL+"/api/users/foodtrucks/create.php", loginObject.toString());
-                    new HTTPAsyncTask().execute(onlineURL+"/api/foodtrucks/edit.php", infoObject.toString());
+                    new HTTPAsyncTask().execute(onlineURL+"/api2/users/foodtrucks/create.php", loginObject.toString());
+                    new HTTPAsyncTask().execute(onlineURL+"/api2/foodtrucks/edit.php", infoObject.toString());
                 }
 
             }

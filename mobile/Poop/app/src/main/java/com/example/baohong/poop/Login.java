@@ -77,9 +77,9 @@ public class Login extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 if(isVendor)
-                    new HTTPAsyncTask().execute(onlineURL+"/api/users/vendors/authenticate.php", logging.toString());
+                    new HTTPAsyncTask().execute(onlineURL+"/api2/users/vendors/authenticate.php", logging.toString());
                 else
-                    new HTTPAsyncTask().execute(onlineURL+"/api/users/foodtrucks/authenticate.php", logging.toString());
+                    new HTTPAsyncTask().execute(onlineURL+"/api2/users/foodtrucks/authenticate.php", logging.toString());
 
 
 

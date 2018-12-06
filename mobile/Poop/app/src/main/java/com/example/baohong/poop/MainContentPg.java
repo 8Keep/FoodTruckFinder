@@ -40,8 +40,8 @@ public class MainContentPg extends AppCompatActivity implements PopupMenu.OnMenu
     private RecyclerView.Adapter adapter;
     //192.168.0.17 for real
     //10.0.2.2 for emu
-    //private static final String URL_DATA = "https://www.peopleorderourpatties.com/backend/api/foodtrucks/show.php";
-    private static final String URL_DATA = "http://10.0.2.2/api/foodtrucks/show.php";
+    private static final String URL_DATA = "https://www.peopleorderourpatties.com/backend/api2/foodtrucks/show.php";
+    //private static final String URL_DATA = "http://10.0.2.2/api/foodtrucks/show.php";
     private List<ListItem> listItems;
 
     @Override
