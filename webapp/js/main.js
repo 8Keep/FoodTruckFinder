@@ -105,17 +105,17 @@ function search() {
         Cookies.set("search", data);
         window.location = "https://peopleorderourpatties.com/webapp/index.html";
     }
-    var json = { keyword: data };
+    var json = { keywords: data };
     
     var url;
     
     if (Cookies.get("type") == "foodtruck")
     {
-        url = "https://peopleorderourpatties.com/backend/api/vendors/search.php"
+        url = "https://peopleorderourpatties.com/backend/api2/vendors/search.php"
     }
     else
     {
-        url = "https://peopleorderourpatties.com/backend/api/foodtrucks/search.php"
+        url = "https://peopleorderourpatties.com/backend/api2/foodtrucks/search.php"
     }
     
     var response;
