@@ -40,7 +40,7 @@ if($num>0){
 
         $et_item=array(
             "imgURL" => $imgURL,
-            "TruckName" => $EntertainerName,
+            "ET_Name" => $EntertainerName,
             "city" => $City,
             "state" => $State,
             "zip" => $Zip,

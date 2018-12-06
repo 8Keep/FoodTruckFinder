@@ -57,7 +57,7 @@ class Vendor{
     function showProfile($username)
     {
       //SELECT ftinfo.First, ftinfo.Last, ftinfo.TruckName, ftinfo.email, ftinfo.phone, ftinfo.address, ftinfo.City, ftinfo.State, ftinfo.Zip, ftinfo.Description, loginft.username FROM ftinfo, loginft WHERE ftinfo.FTID = (SELECT FTID FROM loginft WHERE username = "baohong1") AND loginft.username = "baohong1"
-      $query = "SELECT ETinfo.First, ETinfo.Last, ETinfo.TruckName, ETinfo.email, ETinfo.phone, ETinfo.address, ETinfo.City, ETinfo.State, ETinfo.Zip, ETinfo.Description, ETinfo.imgURL, loginET.username FROM ETinfo, loginET WHERE ETinfo.ETID = (SELECT ETID FROM loginET WHERE username = ?) AND loginET.username = ?";
+      $query = "SELECT ETinfo.First, ETinfo.Last, ETinfo.EntertainerName, ETinfo.email, ETinfo.phone, ETinfo.address, ETinfo.City, ETinfo.State, ETinfo.Zip, ETinfo.Description, ETinfo.imgURL, loginET.username FROM ETinfo, loginET WHERE ETinfo.ETID = (SELECT ETID FROM loginET WHERE username = ?) AND loginET.username = ?";
 
       $stmt = $this->conn->prepare($query);
 
@@ -136,13 +136,13 @@ class Vendor{
   }
   function editProfile($usernameBefore, $username, $ET_name, $first, $last, $email, $phone, $address, $city, $state, $zip, $description)
   {
-    // UPDATE ftinfo SET First = "Bao", Last = "Hong", `TruckName` = "Bao dep trai", `email` = "bao_mu2012@yahoo.com.vn", `phone` = "3214408647", `address` = "911 Mesa Oak Ct" , `City`= "Kissimmee", `State` = "FL", `Zip` = "34744", Description = "I want to end this semester right fking now" WHERE `FTID` = (SELECT FTID FROM loginft WHERE username = "baohong98")
-    $query = "UPDATE ETinfo SET First = ?, Last = ?, EntertainerName = ?, email = ?, phone = ?, address = ?, City = ?, State = ?, Zip = ?, Description = ? WHERE FTID = (SELECT FTID FROM loginET WHERE username = ?)";
+    // UPDATE ftinfo SET First = "Bao", Last = "Hong", `EntertainerName` = "Bao dep trai", `email` = "bao_mu2012@yahoo.com.vn", `phone` = "3214408647", `address` = "911 Mesa Oak Ct" , `City`= "Kissimmee", `State` = "FL", `Zip` = "34744", Description = "I want to end this semester right fking now" WHERE `FTID` = (SELECT FTID FROM loginft WHERE username = "baohong98")
+    $query = "UPDATE ETinfo SET First = ?, Last = ?, EntertainerName = ?, email = ?, phone = ?, address = ?, City = ?, State = ?, Zip = ?, Description = ? WHERE ETID = (SELECT ETID FROM loginET WHERE username = ?)";
 
     $stmt = $this->conn->prepare($query);
 
-    $truck_name=htmlspecialchars(strip_tags($truck_name));
-    $truck_name = "{$ET_name}";
+    $ET_name=htmlspecialchars(strip_tags($ET_name));
+    $ET_name = "{$ET_name}";
 
     $address = htmlspecialchars(strip_tags($address));
     $address = "{$address}";

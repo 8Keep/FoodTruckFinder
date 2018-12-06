@@ -34,6 +34,7 @@ import java.util.List;
 
 public class MainContentPg extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private ImageView logout, menu;
+    private Boolean isVendor;
     SharedPreferences sp;
     private RecyclerView recyclerView;
     private SearchView search;
@@ -41,7 +42,8 @@ public class MainContentPg extends AppCompatActivity implements PopupMenu.OnMenu
     //192.168.0.17 for real
     //10.0.2.2 for emu
     private static final String URL_DATA = "https://www.peopleorderourpatties.com/backend/api2/foodtrucks/show.php";
-    private static final String URL_DATA2 = "https://www.peopleorderourpatties.com/backend/api2/vendors/show.php";
+    private static final String URL_DATAET = "https://www.peopleorderourpatties.com/backend/api2/vendors/show.php";
+    private static final String URL_SEARCH = "https://www.peopleorderourpatties.com/backend/api2/foodtrucks/search.php";
     //private static final String URL_DATA = "http://10.0.2.2/api/foodtrucks/show.php";
     private List<ListItem> listItems;
 
@@ -51,6 +53,7 @@ public class MainContentPg extends AppCompatActivity implements PopupMenu.OnMenu
         setContentView(R.layout.activity_main_content_pg);
         logout = findViewById(R.id.logout);
         sp = getSharedPreferences("POOP", MODE_PRIVATE);
+        isVendor = sp.getBoolean("isVendor", false);
 //        logout.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -64,6 +67,7 @@ public class MainContentPg extends AppCompatActivity implements PopupMenu.OnMenu
         menu = findViewById(R.id.menu);
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
+        search = findViewById(R.id.searchView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         listItems = new ArrayList<>();
@@ -110,6 +114,18 @@ public class MainContentPg extends AppCompatActivity implements PopupMenu.OnMenu
             }
         });
 
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
 
     }
     private void loadRecyclerViewData(){
@@ -120,8 +136,14 @@ public class MainContentPg extends AppCompatActivity implements PopupMenu.OnMenu
         final AlertDialog dialog = builder.create();
         dialog.show();
 
+        String sendingURL;
+        if(isVendor)
+            sendingURL = URL_DATA;
+        else
+            sendingURL = URL_DATAET;
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                URL_DATA,
+                sendingURL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -133,8 +155,13 @@ public class MainContentPg extends AppCompatActivity implements PopupMenu.OnMenu
                             for(int i=0; i<array.length(); i++)
                             {
                                 JSONObject o = array.getJSONObject(i);
+                                String EntityName;
+                                if(isVendor)
+                                    EntityName = o.getString("TruckName");
+                                else
+                                    EntityName = o.getString("ETname");
                                 ListItem item = new ListItem(
-                                        o.getString("TruckName"),
+                                        EntityName,
                                         o.getString("city") +", "+ o.getString("state"),
                                         o.getString("imgURL"));
                                 listItems.add(item);

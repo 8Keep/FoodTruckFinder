@@ -33,7 +33,7 @@ $data = json_decode(file_get_contents("php://input", true));
 
 $et->usernameBefore = $data->usernameBefore;
 $et->username = $data->username;
-$et->truck_name = $data->truck_name;
+$et->ET_name = $data->ET_name;
 $et->address = $data->address;
 $et->city = $data->city;
 $et->state = $data->state;
@@ -47,7 +47,7 @@ $et->description = $data->description;
 
 
 // function editProfile($usernameBefore, $username, $truck_name, $first, $last, $email, $phone, $address, $city, $state, $zip, $description)
-if($et->editProfile($et->usernameBefore, $et->username, $et->truck_name, $et->first, $et->last, $et->email, $et->phone, $et->address, $et->city, $et->state, $et->zip, $et->description)){
+if($et->editProfile($et->usernameBefore, $et->username, $et->ET_name, $et->first, $et->last, $et->email, $et->phone, $et->address, $et->city, $et->state, $et->zip, $et->description)){
     echo json_encode(
         array("message" => "Your profile was edited.")
     );

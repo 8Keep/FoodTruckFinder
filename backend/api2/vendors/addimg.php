@@ -20,13 +20,14 @@ $et = new Vendor($db);
 // get keywords from url query string
 //$keywords=isset($_GET["s"]) ? $_GET["s"] : "";
 $data = json_decode(file_get_contents("php://input", true));
-$username = $data->username
+$username = $data->username;
 $upload_path = "../../imagesET/$username.jpg";
 $img_path = "https://www.peopleorderourpatties.com/backend/imagesET/$username.jpg";
 $image = $data->image;
 
 // edit the vendor's details
 if($et->addimg($img_path, $username)){
+	file_put_contents($upload_path, base64_decode($image));
     echo json_encode(
         array("message" => "Vendor image was added.")
     );

@@ -73,6 +73,12 @@ public class Profile_page extends AppCompatActivity implements IPickResult {
     private String editProfileURL = "https://www.peopleorderourpatties.com/backend/api2/foodtrucks/editProfile.php";
     private String showProfileURL = "https://www.peopleorderourpatties.com/backend/api2/foodtrucks/showProfile.php";
 
+    private final String DEF_IMGET = "https://www.peopleorderourpatties.com/backend/imagesET/default.png";
+    private final String SHOW_IMGET = "https://www.peopleorderourpatties.com/backend/api2/vendors/showUserImg.php";
+    private String uploadURLET = "https://www.peopleorderourpatties.com/backend/api2/vendors/addimg.php";
+    private String editProfileURLET = "https://www.peopleorderourpatties.com/backend/api2/vendors/editProfile.php";
+    private String showProfileURLET = "https://www.peopleorderourpatties.com/backend/api2/vendors/showProfile.php";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -206,7 +212,15 @@ public class Profile_page extends AppCompatActivity implements IPickResult {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, showProfileURL, jsonObject,
+        String sendingURL;
+        if(isVendor)
+        {
+            sendingURL = showProfileURLET;
+        }
+        else
+            sendingURL = showProfileURL;
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, sendingURL, jsonObject,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -216,7 +230,10 @@ public class Profile_page extends AppCompatActivity implements IPickResult {
                             {
                                 JSONObject o = array.getJSONObject(i);
                                 name.setText(o.getString("first") +" "+ o.getString("last"));
-                                entityName.setText(o.getString("TruckName"));
+                                if(isVendor)
+                                    entityName.setText(o.getString("ET_Name"));
+                                else
+                                    entityName.setText(o.getString("TruckName"));
                                 usernameTV.setText(o.getString("username"));
                                 email.setText(o.getString("email"));
                                 phone.setText(o.getString("phone"));
@@ -237,7 +254,10 @@ public class Profile_page extends AppCompatActivity implements IPickResult {
                                 }
 
                                 nameED.setText(o.getString("first") +" "+ o.getString("last"));
-                                entityNameED.setText(o.getString("TruckName"));
+                                if (isVendor)
+                                    entityNameED.setText(o.getString("ETName"));
+                                else
+                                    entityNameED.setText(o.getString("TruckName"));
                                 usernameED.setText(o.getString("username"));
                                 emailED.setText(o.getString("email"));
                                 phoneED.setText(o.getString("phone"));
@@ -274,7 +294,13 @@ public class Profile_page extends AppCompatActivity implements IPickResult {
     private void editProfile()
     {
         JSONObject jsonObject = prepareEditJSON();
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, editProfileURL, jsonObject,
+        String sendindURL;
+        if(isVendor)
+            sendindURL = editProfileURLET;
+        else
+            sendindURL = editProfileURL;
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, sendindURL, jsonObject,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -312,7 +338,11 @@ public class Profile_page extends AppCompatActivity implements IPickResult {
             jsonObject.put("first", name[0]);
             jsonObject.put("last", name[1]);
             jsonObject.put("usernameBefore", username);
-            jsonObject.put("truck_name", entityNameED.getText().toString());
+            if(isVendor)
+                jsonObject.put("ET_name", entityNameED.getText().toString());
+            else
+                jsonObject.put("truck_name", entityNameED.getText().toString());
+
             jsonObject.put("username", usernameED.getText().toString());
             jsonObject.put("email", emailED.getText().toString());
             jsonObject.put("phone", phoneED.getText().toString());
@@ -337,7 +367,13 @@ public class Profile_page extends AppCompatActivity implements IPickResult {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, SHOW_IMG, jsonObject,
+        String sendingURL;
+        if(isVendor)
+            sendingURL = SHOW_IMGET;
+        else
+            sendingURL = SHOW_IMG;
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, sendingURL, jsonObject,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -414,7 +450,13 @@ public class Profile_page extends AppCompatActivity implements IPickResult {
     private void uploadImage()
     {
         JSONObject data = prepareJSON(username, imageToString(bitmap));
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, uploadURL, data,
+        String sendingURL;
+        if(isVendor)
+            sendingURL = uploadURLET;
+        else
+            sendingURL = uploadURL;
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, sendingURL, data,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
