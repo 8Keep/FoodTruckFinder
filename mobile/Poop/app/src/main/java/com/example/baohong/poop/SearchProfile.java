@@ -164,7 +164,7 @@ public class SearchProfile extends AppCompatActivity {
                                 avaURL = o.getString("imgURL");
                                 Log.d("Error1", avaURL);
 
-                                if(avaURL.isEmpty() && avaURL != "null")
+                                if(avaURL.isEmpty() || avaURL == "null")
                                 {
                                     Picasso.get().load(DEF_IMG).resize(avatar.getWidth(), 480).centerCrop().into(avatar);
                                 }
