@@ -122,7 +122,8 @@ function submitData() {
 
 	$("#submitbutton").hide(); 
 	$("#editbutton").show(); 
-
+    $("#cancelbutton").hide();
+    
     var url;
     
     if (Cookies.get("profile") == Cookies.get("username"))
@@ -164,7 +165,7 @@ $ft->description = $data->description;*/
         function(result)
         {
             console.log(result);
-            //location.reload();
+            location.reload();
         });
 }
 
