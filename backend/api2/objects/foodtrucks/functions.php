@@ -48,18 +48,18 @@ class FoodTruck{
 
         return $stmt;
     }
-    function showProfile($username)
+    function showProfile($ftid)
     {
       //SELECT ftinfo.First, ftinfo.Last, ftinfo.TruckName, ftinfo.email, ftinfo.phone, ftinfo.address, ftinfo.City, ftinfo.State, ftinfo.Zip, ftinfo.Description, loginft.username FROM ftinfo, loginft WHERE ftinfo.FTID = (SELECT FTID FROM loginft WHERE username = "baohong1") AND loginft.username = "baohong1"
-      $query = "SELECT ftinfo.First, ftinfo.Last, ftinfo.TruckName, ftinfo.email, ftinfo.phone, ftinfo.address, ftinfo.City, ftinfo.State, ftinfo.Zip, ftinfo.Description, loginft.username FROM ftinfo, loginft WHERE ftinfo.FTID = (SELECT FTID FROM loginft WHERE username = ?) AND loginft.username = ?";
+      //$query = "SELECT ftinfo.First, ftinfo.Last, ftinfo.TruckName, ftinfo.email, ftinfo.phone, ftinfo.address, ftinfo.City, ftinfo.State, ftinfo.Zip, ftinfo.Description, loginft.username FROM ftinfo, loginft WHERE ftinfo.FTID = (SELECT FTID FROM loginft WHERE username = ?) AND loginft.username = ?";
+      $query = "SELECT ftinfo.First, ftinfo.Last, ftinfo.TruckName, ftinfo.email, ftinfo.phone, ftinfo.address, ftinfo.City, ftinfo.State, ftinfo.Zip, ftinfo.Description, loginft.username FROM ftinfo, loginft WHERE ftinfo.FTID = ? AND loginft.FTID = ?";
 
       $stmt = $this->conn->prepare($query);
 
-      $username=htmlspecialchars(strip_tags($username));
-      $username = "{$username}";
+      $ftid=htmlspecialchars(strip_tags($ftid));
+      $ftid = "{$ftid}";
 
-      $stmt->bindParam(1, $username);
-      $stmt->bindParam(2, $username);
+      $stmt->bindParam(1, $ftid);
 
       $stmt->execute();
       return $stmt; 
