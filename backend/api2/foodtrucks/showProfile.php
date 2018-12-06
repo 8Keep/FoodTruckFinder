@@ -16,10 +16,10 @@ $ft = new FoodTruck($db);
 
 // get keywords from JSON
 $data = json_decode(file_get_contents("php://input", true));
-$ft->ftinfoid = $data->ftinfoid;
+$ft->ftid = $data->ftid;
 
 // query FTinfo in database
-$stmt = $ft->showProfile($ft->ftinfoid);
+$stmt = $ft->showProfile($ft->ftid);
 $num = $stmt->rowCount();
 
 // check if more than 0 record found
