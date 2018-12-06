@@ -45,6 +45,7 @@ if($num>0){
         extract($row);
 
         $et_item=array(
+            "username" => $username,
             "ETID" => $ETID, // using ETID from ETinfo table so that frontend can use this unique ID to query this Entertainer's info
             "EntertainerName" => $EntertainerName,
             "address" => $address,
