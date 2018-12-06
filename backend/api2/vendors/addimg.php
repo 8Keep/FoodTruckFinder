@@ -23,7 +23,6 @@ $data = json_decode(file_get_contents("php://input", true));
 $et->username = $data->username;
 $et->imgURL = $data->imgURL;
 
-
 // edit the vendor's details
 if($et->addimg($et->imgURL, $et->username)){
     echo json_encode(

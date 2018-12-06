@@ -38,6 +38,7 @@
     <string name="description">Description</string>
     <string name="search">Search...</string>
     <string name="importIMG">Change profile image</string>
+    <string name="changePass"><u>Change password?</u></string>
 
 
 </resources>

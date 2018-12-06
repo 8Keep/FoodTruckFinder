@@ -21,20 +21,27 @@ $et = new Vendor($db);
 //$keywords=isset($_GET["s"]) ? $_GET["s"] : "";
 $data = json_decode(file_get_contents("php://input", true));
 $et->username = $data->username;
-$et->imgURL = $data->imgURL;
-
+$et->ET_name = $data->ET_name;
+$et->address = $data->address;
+$et->city = $data->city;
+$et->state = $data->state;
+$et->zip = $data->zip;
+$et->first = $data->first;
+$et->last = $data->last;
+$et->email = $data->email;
+$et->phone = $data->phone;
 
 // edit the vendor's details
-if($et->addimg($et->imgURL, $et->username)){
+if($et->edit($et->username, $et->ET_name, $et->address, $et->city, $et->state, $et->zip, $et->first, $et->last, $et->email, $et->phone)){
     echo json_encode(
-        array("message" => "Vendor img was added.")
+        array("message" => "Vendor was edited.")
     );
 }
 
 // if unable to create the vendor, tell the user
 else{
     echo json_encode(
-        array("message" => "Unable to add img vendor.")
+        array("message" => "Unable to edit vendor.")
     );
 }
 ?>

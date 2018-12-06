@@ -30,27 +30,30 @@ $ft = new FoodTruck($db);
 // get keywords from url query string
 //$keywords=isset($_GET["s"]) ? $_GET["s"] : "";
 $data = json_decode(file_get_contents("php://input", true));
-$username = $data->username;
-$upload_path = "spongebob7:spongebob7@cop4331.cm0oj9xyv2kx.us-east-2.rds.amazonaws.com/../../images/$username.jpg";
-$img_path = "https://www.peopleorderourpatties.com/backend/images/$username.jpg";
-$image = $data->image;
+$ft->username = $data->username;
+$ft->truck_name = $data->truck_name;
+$ft->address = $data->address;
+$ft->city = $data->city;
+$ft->state = $data->state;
+$ft->zip = $data->zip;
+$ft->first = $data->first;
+$ft->last = $data->last;
+$ft->email = $data->email;
+$ft->phone = $data->phone;
 
-$options = array('ftp' => array('overwrite' => true)); 
-$stream = stream_context_create($options);
+
 
 // create the food truck
-if($ft->addimg($img_path, $username)){
-  file_put_contents($upload_path, base64_decode($image), 0 ,$stream);
+if($ft->edit($ft->username, $ft->address, $ft->truck_name, $ft->city, $ft->state, $ft->zip, $ft->first, $ft->last, $ft->email, $ft->phone)){
     echo json_encode(
-      
-        array("message" => "Food Truck img was added.")
+        array("message" => "Food Truck was edited.")
     );
 }
 
 // if unable to create the food truck, tell the front end
 else{
     echo json_encode(
-        array("message" => "Unable to add img Food Truck.")
+        array("message" => "Unable to edit Food Truck.")
     );
 }
 ?>

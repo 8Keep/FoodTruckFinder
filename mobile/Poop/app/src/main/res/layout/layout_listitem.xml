@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/asap_bold"
                 android:text="@string/description"
-                android:textColor="#66e04e"
+                android:textColor="@color/green"
                 android:textSize="20sp" />
             <TextView
                 android:id="@+id/description"

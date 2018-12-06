@@ -14,7 +14,16 @@ $( document ).ready(function() {
         //this profile is logged in user. Allow editing.
         $("#editButton").show();
     }
+    
+    var profileToLoad = Cookies.get("profile");
+    loadData(profileToLoad);
 });
+
+function loadData(profileToLoad) {
+    //connect to show.php -> send username in json
+    
+    //from response, fill in label datas.
+}
 
 function editData() {
 
@@ -85,14 +94,14 @@ function submitData() {
     var response;
     
     $.post(
-            url,
-            JSON.stringify(submit),
-            function(result)
-            {
-                    r = result.message;
-                    console.log(r);
-                });
-
+        url,
+        JSON.stringify(submit),
+        function(result)
+        {
+            r = result.message;
+            console.log(r);
+            location.reload();
+        });
 }
 
 function cancelData() {

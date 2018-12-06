@@ -23,6 +23,7 @@ create database largeproject;
     `First` VARCHAR(50) NOT NULL DEFAULT '',
     `Last` VARCHAR(50) NOT NULL DEFAULT '',
     `TruckName` VARCHAR(100) NOT NULL DEFAULT '',
+    `address` VARCHAR(100) NOT NULL DEFAULT '',
     `City` VARCHAR(50) NOT NULL DEFAULT '',
     `State` VARCHAR(25) NOT NULL DEFAULT '',
     `Zip` VARCHAR(5) NOT NULL DEFAULT '',

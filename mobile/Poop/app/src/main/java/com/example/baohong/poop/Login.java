@@ -39,7 +39,8 @@ public class Login extends AppCompatActivity {
     private boolean isVendor;
     //192.168.0.17 for real
     //10.0.2.2 for emu
-    private String onlineURL = "https://www.peopleorderourpatties.com/backend";
+    //private String onlineURL = "https://www.peopleorderourpatties.com/backend";
+    private String onlineURL = "http://192.168.0.17";
 
     private String localhostURL = "http://192.168.0.17";
     Bundle bundle;
@@ -150,6 +151,7 @@ public class Login extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int which) {
                                     sp.edit().putBoolean("logged", true).apply();
                                     sp.edit().putString("username", gUsername).apply();
+                                    sp.edit().putBoolean("isVendor", isVendor).apply();
                                     Intent intent = new Intent(Login.this, MainContentPg.class);
                                     finishAffinity();
                                     startActivity(intent);
