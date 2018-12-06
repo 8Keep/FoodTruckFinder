@@ -147,7 +147,7 @@ public class SearchProfile extends AppCompatActivity {
             e.printStackTrace();
         }
         String sendingURL;
-        if(isVendor)
+        if(!isVendor)
             sendingURL = SHOW_IMGET;
         else
             sendingURL = SHOW_IMG;
