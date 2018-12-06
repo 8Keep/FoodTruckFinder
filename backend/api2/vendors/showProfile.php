@@ -11,15 +11,15 @@ include_once '../objects/vendors/functions.php';
 $database = new Database();
 $db = $database->getConnection();
 
-// initialize vendor object
+// initialize FoodTruck object
 $et = new Vendor($db);
 
 // get keywords from JSON
 $data = json_decode(file_get_contents("php://input", true));
-//$et->username = $data->username;
+$et->username = $data->username;
 
-// query ETinfo in database
-$stmt = $et->show();
+// query FTinfo in database
+$stmt = $et->showProfile($et->username);
 $num = $stmt->rowCount();
 
 // check if more than 0 record found
@@ -39,11 +39,18 @@ if($num>0){
         extract($row);
 
         $et_item=array(
-            "ETname" => $EntertainerName,
+            "imgURL" => $imgURL,
+            "TruckName" => $EntertainerName,
             "city" => $City,
             "state" => $State,
             "zip" => $Zip,
-            "imgURL" => $imgURL
+            "first" => $First,
+            "last" => $Last,
+            "email" => $email,
+            "phone" => $phone,
+            "address" => $address,
+            "description" => $Description,
+            "username" => $username
         );
 
         array_push($et_arr["records"], $et_item);

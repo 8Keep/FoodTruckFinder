@@ -20,20 +20,22 @@ $et = new Vendor($db);
 // get keywords from url query string
 //$keywords=isset($_GET["s"]) ? $_GET["s"] : "";
 $data = json_decode(file_get_contents("php://input", true));
-$et->username = $data->username;
-$et->imgURL = $data->imgURL;
+$username = $data->username
+$upload_path = "../../imagesET/$username.jpg";
+$img_path = "https://www.peopleorderourpatties.com/backend/imagesET/$username.jpg";
+$image = $data->image;
 
 // edit the vendor's details
-if($et->addimg($et->imgURL, $et->username)){
+if($et->addimg($img_path, $username)){
     echo json_encode(
-        array("message" => "Vendor img was added.")
+        array("message" => "Vendor image was added.")
     );
 }
 
 // if unable to create the vendor, tell the user
 else{
     echo json_encode(
-        array("message" => "Unable to add img vendor.")
+        array("message" => "Unable to add image vendor.")
     );
 }
 ?>

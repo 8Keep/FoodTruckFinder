@@ -49,6 +49,7 @@ if($num>0){
             "imgURL" => $imgURL,
             "FTID" => $FTID, // using FTID so that we can query FoodTruck table with this ID and get this FoodTruck's full details
             "TruckName" => $TruckName,
+            "address" => $address,
             "City" => $City,
             "State" => $State,
             "Zip" => $Zip,
