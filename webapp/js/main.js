@@ -178,8 +178,6 @@ $( document ).ready(function() {
     
     console.log("Username: " + Cookies.get("username"));
     
-    console.log(getIfLoggedIn());
-    
     if (getIfLoggedIn())
     {
         $("#labUsername").text("Logged in as: " + Cookies.get("username")) ;
