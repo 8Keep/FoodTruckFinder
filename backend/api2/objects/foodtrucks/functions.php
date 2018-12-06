@@ -273,7 +273,7 @@ class FoodTruck{
     //   return;
     // }
       // select all query
-      $query = "SELECT * FROM " . $this->table_name . " WHERE First LIKE ? OR Last LIKE ? OR TruckName LIKE ? OR City LIKE ? OR State LIKE ? OR Zip LIKE ? OR email LIKE ? OR phone LIKE ? OR Description LIKE ?";
+      $query = "SELECT * FROM ftinfo Left JOIN loginFT ON ftinfo.FTID = loginft.FTID WHERE First LIKE ? OR Last LIKE ? OR TruckName LIKE ? OR City LIKE ? OR State LIKE ? OR Zip LIKE ? OR email LIKE ? OR phone LIKE ? OR Description LIKE ?";
 
       // prepare query statement
       $stmt = $this->conn->prepare($query);
