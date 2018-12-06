@@ -39,6 +39,7 @@ if($num>0){
         extract($row);
 
         $ft_item=array(
+            "imgURL" => $imgURL,
             "TruckName" => $TruckName,
             "city" => $City,
             "state" => $State,
