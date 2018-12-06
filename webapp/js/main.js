@@ -175,7 +175,7 @@ function updateItems(json) {
         var obj = json.results[i];
         
         currentDeck.append("<div class=\"card\">" +
-                                "<div class=\"card-img-wrap\"><img class=\"card-img-top\" src=\"" + obj.imgURL + "\" alt=\"Image loading failed :)\" id=\"" + obj.username + "\" onClick=\"goToProfile(event);\"></div>" +
+                                "<div id=\"" + obj.username + "\" onClick=\"goToProfile(event);\" class=\"card-img-wrap\"><img class=\"card-img-top\" src=\"" + obj.imgURL + "\" alt=\"Image loading failed :)\"></div>" +
                                 "<div class=\"card-body\">" +
                                     "<h5 class=\"card-title\">" + name + "</h5>" +
                                     "<p class=\"card-text\">Click image for more info</p>" +
