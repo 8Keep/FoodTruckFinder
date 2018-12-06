@@ -51,7 +51,7 @@ class FoodTruck{
     function showProfile($username)
     {
       //SELECT ftinfo.First, ftinfo.Last, ftinfo.TruckName, ftinfo.email, ftinfo.phone, ftinfo.address, ftinfo.City, ftinfo.State, ftinfo.Zip, ftinfo.Description, loginft.username FROM ftinfo, loginft WHERE ftinfo.FTID = (SELECT FTID FROM loginft WHERE username = "baohong1") AND loginft.username = "baohong1"
-      $query = "SELECT FTinfo.First, FTinfo.Last, FTinfo.TruckName, FTinfo.email, FTinfo.phone, FTinfo.address, FTinfo.City, FTinfo.State, FTinfo.Zip, FTinfo.Description, FTinfo.imgURL, loginFT.username FROM ftinfo, loginft WHERE FTinfo.FTID = (SELECT FTID FROM loginft WHERE username = ?) AND loginFT.username = ?";
+      $query = "SELECT FTinfo.First, FTinfo.Last, FTinfo.TruckName, FTinfo.email, FTinfo.phone, FTinfo.address, FTinfo.City, FTinfo.State, FTinfo.Zip, FTinfo.Description, loginFT.username FROM ftinfo, loginft WHERE FTinfo.FTID = (SELECT FTID FROM loginft WHERE username = ?) AND loginFT.username = ?";
 
       $stmt = $this->conn->prepare($query);
 

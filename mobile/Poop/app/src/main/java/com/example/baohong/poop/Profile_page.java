@@ -224,12 +224,7 @@ public class Profile_page extends AppCompatActivity implements IPickResult {
                                 city.setText(o.getString("city"));
                                 state.setText(o.getString("state"));
                                 zip.setText(o.getString("zip"));
-                                String des = o.getString("description");
-                                if(des != "null" && !des.isEmpty())
-                                    description.setText(des);
-                                else
-                                    description.setText("No description yet.");
-
+                                description.setText(o.getString("description"));
                                 nameED.setText(o.getString("first") +" "+ o.getString("last"));
                                 entityNameED.setText(o.getString("TruckName"));
                                 usernameED.setText(o.getString("username"));
