@@ -20,9 +20,39 @@ $( document ).ready(function() {
 });
 
 function loadData(profileToLoad) {
-    //connect to show.php -> send username in json
+    //connect to showprofile.php -> send username in json
+    //post 
+    var url;
+
+    if (Cookies.get("type") == "foodtruck")
+    {
+        url = "https://peopleorderourpatties.com/backend/api/foodtrucks/edit.php";
+    }
+    else
+    {
+        url = "https://peopleorderourpatties.com/backend/api/vendors/edit.php";
+    }
+
+    var data = { ftid : Cookies.get("profile")};
+
+    var response;
+    
+    $.post(
+        url,
+        JSON.stringify(data),
+        function(result)
+        {
+            r = result.message;
+            console.log(r);
+            //location.reload();
+        });
+
+    
+
+
     
     //from response, fill in label datas.
+
 }
 
 function editData() {
