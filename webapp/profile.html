@@ -27,7 +27,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="profile.html">
+                <a class="nav-link" onClick=showUserProfile();>
                     <i class="far fa-user"></i>
                 </a>
             </li>
@@ -88,13 +88,23 @@
 
     <div class="main">
         <div class="information my-3">
+        
             <div class="col-xs">
-                <label for="Telephone Number"><i class="fas fa-phone" aria-hidden="true"></i> Name
+                <label for="Name"><i class="fas fa-user" aria-hidden="true"></i> Name
                 </label>
-                <input type="text" class="form-control my-2" id="telephone"  title="Enter Name">
+                <input type="text" class="form-control my-2" id="name"  title="Enter Name">
                 <br>
-                <label id="telephoneField">Name</label>
+                <label id="nameField">Name</label>
             </div>
+            
+            <div class="col-xs">
+                <label for="Telephone Number"><i class="fas fa-phone" aria-hidden="true"></i> Phone
+                </label>
+                <input type="text" class="form-control my-2" id="telephone"  title="Enter Phone">
+                <br>
+                <label id="telephoneField">Phone</label>
+            </div>
+            
             <div class="col-xs">
                 <label for="Email Address"><i class="fas fa-envelope" aria-hidden="true"></i> Email Address
                 </label>

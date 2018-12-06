@@ -33,12 +33,12 @@ function login() {
     if (loginFT)
     {
         Cookies.set("type", "foodtruck");
-        url = "https://peopleorderourpatties.com/backend/api/users/foodtrucks/authenticate.php"
+        url = "https://peopleorderourpatties.com/backend/api2/users/foodtrucks/authenticate.php"
     }
     else
     {
         Cookies.set("type", "vendor");
-        url = "https://peopleorderourpatties.com/backend/api/users/vendors/authenticate.php"
+        url = "https://peopleorderourpatties.com/backend/api2/users/vendors/authenticate.php"
     }
     
     var response;
@@ -68,12 +68,12 @@ function register() {
     if (regFT)
     {
         Cookies.set("type", "foodtruck");
-        url = "https://peopleorderourpatties.com/backend/api/users/foodtrucks/create.php"
+        url = "https://peopleorderourpatties.com/backend/api2/users/foodtrucks/create.php"
     }
     else
     {
         Cookies.set("type", "vendor");
-        url = "https://peopleorderourpatties.com/backend/api/users/vendors/create.php"
+        url = "https://peopleorderourpatties.com/backend/api2/users/vendors/create.php"
     }
     
     var response;
@@ -99,12 +99,17 @@ function hideLoginRegister() {
     $("#regButton").hide();
 }
 
+function showUserProfile() {
+    Cookies.set("profile", Cookies.get("username"));
+    window.location.href = "/webapp/profile.html";
+}
+
 function searchData() {
-    var data = $("#searchbox").val();
     if(window.location.href.indexOf("profile") != -1) {
-        Cookies.set("search", data);
-        window.location = "https://peopleorderourpatties.com/webapp/index.html";
+        return;
     }
+    
+    var data = $("#searchbox").val();
     
     var json = { keywords: data };
     
@@ -165,7 +170,7 @@ function updateItems(json) {
             name = json.results[i].TruckName;
         }
         
-        if (i % 3 == 0)
+        if (i % 5 == 0)
         {
             mainc.append("<div id=\"deck" + i + "\" class=\"card-deck my-4\">");
             mainc.append("</div");
@@ -175,7 +180,7 @@ function updateItems(json) {
         var obj = json.results[i];
         
         currentDeck.append("<div class=\"card\">" +
-                                "<div id=\"" + obj.username + "\" onClick=\"goToProfile(event);\" class=\"card-img-wrap\"><img class=\"card-img-top\" src=\"" + obj.imgURL + "\" alt=\"Image loading failed :)\"></div>" +
+                                "<div id=\"" + obj.username + "\" class=\"card-img-wrap\"><img class=\"card-img-top\" src=\"" + obj.imgURL + "\" alt=\"Image loading failed :)\"></div>" +
                                 "<div class=\"card-body\">" +
                                     "<h5 class=\"card-title\">" + name + "</h5>" +
                                     "<p class=\"card-text\">Click image for more info</p>" +
@@ -184,6 +189,10 @@ function updateItems(json) {
                                     "<small class=\"text-muted\">" + obj.City + ", " + obj.State + ", " + obj.Zip + "</small>" +
                                 "</div>" +
                             "</div>");
+        
+        $("#" + obj.username).click(function(event) {
+            goToProfile(event);
+        });
     }
 }
 
@@ -194,6 +203,8 @@ function goToProfile(event) {
     console.log($(event.currentTarget));
     console.log(id);
     
+    Cookies.set("profile", id);
+    window.location.href = "/webapp/profile.html";
 }
 
 
@@ -201,6 +212,12 @@ $( document ).ready(function() {
     
     $("#searchbox").keyup(function(event) {
         if (event.keyCode == 13) {
+            
+            if(window.location.href.indexOf("profile") != -1) {
+                Cookies.set("search", data);
+                window.location = "https://peopleorderourpatties.com/webapp/index.html";
+            }
+            
             searchData();
         }
     });
@@ -214,7 +231,7 @@ $( document ).ready(function() {
     
     console.log("Username: " + Cookies.get("username"));
     
-    console.log(getIfLoggedIn());
+    //console.log(getIfLoggedIn());
     
     if (getIfLoggedIn())
     {
@@ -322,4 +339,6 @@ $( document ).ready(function() {
             length.classList.add("list-group-item-danger");
         }
     }
+    
+    searchData();
 });

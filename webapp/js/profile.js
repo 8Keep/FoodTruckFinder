@@ -1,4 +1,5 @@
 $( document ).ready(function() {
+    $("#name").hide();
 	$("#email").hide();
 	$("#telephone").hide(); 
 	$("#city").hide(); 
@@ -7,15 +8,18 @@ $( document ).ready(function() {
 	$("#submitbutton").hide(); 
 	$("#zipcode").hide(); 
     $("#cancelbutton").hide();
-    $("#editButton").hide();
+    $("#editbutton").hide();
+    console.log(Cookies.get("profile") === Cookies.get("username"));
     
-    if (Cookies.get("profile") == Cookies.get("username"))
+    if (Cookies.get("profile") === Cookies.get("username"))
     {
         //this profile is logged in user. Allow editing.
-        $("#editButton").show();
+        $("#editbutton").show();
+        //console.log(Cookies.get("profile") === Cookies.get("username"));
     }
     
     var profileToLoad = Cookies.get("profile");
+    console.log(profileToLoad);
     loadData(profileToLoad);
 });
 
@@ -26,15 +30,21 @@ function loadData(profileToLoad) {
 
     if (Cookies.get("type") == "foodtruck")
     {
-        url = "https://peopleorderourpatties.com/backend/api/foodtrucks/edit.php";
+        url = "https://peopleorderourpatties.com/backend/api2/vendors/showProfile.php";
     }
     else
     {
-        url = "https://peopleorderourpatties.com/backend/api/vendors/edit.php";
+        url = "https://peopleorderourpatties.com/backend/api2/foodtrucks/showProfile.php";
+    }
+    if (Cookies.get("profile") == Cookies.get("username"))
+    {
+        url = "https://peopleorderourpatties.com/backend/api/" + Cookies.get("type") + "s/showProfile.php";
     }
 
-    var data = { ftid : Cookies.get("profile")};
+    var data = { username : Cookies.get("profile")};
 
+    console.log(url);
+    console.log(data);
     var response;
     
     $.post(
@@ -42,9 +52,17 @@ function loadData(profileToLoad) {
         JSON.stringify(data),
         function(result)
         {
-            r = result.message;
-            console.log(r);
-            //location.reload();
+            console.log(result);
+            console.log(result.records[0].imgURL);
+            
+            $(".hero-image").css("background-image", "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(" + result.records[0].imgURL + ") !important;");
+            $("#nameField").text(result.records[0].first + " " + result.records[0].last);
+            $("#telephoneField").text(result.records[0].phone);
+            $("#emailField").text(result.records[0].email);
+            $("#cityField").text(result.records[0].city);
+            $("#stateField").text(result.records[0].state);
+            $("#zipcodeField").text(result.records[0].zip);
+            $("#descriptionField").text(result.records[0].description);
         });
 
     
@@ -59,6 +77,10 @@ function editData() {
 
 	$("#editbutton").hide(); 
     $("#cancelbutton").show();
+    
+    $("#nameField").hide(); 
+	$("#name").show(); 
+	$("#name").val($("#nameField").text()); 
 
 	$("#telephoneField").hide(); 
 	$("#telephone").show(); 
@@ -100,26 +122,19 @@ function submitData() {
 
     var url;
     
-    if (Cookies.get("type") == "foodtruck")
-    {
-        url = "https://peopleorderourpatties.com/backend/api/vendors/edit.php";
-    }
-    else
-    {
-        url = "https://peopleorderourpatties.com/backend/api/foodtrucks/edit.php";
-    }
     if (Cookies.get("profile") == Cookies.get("username"))
     {
-        url = "https://peopleorderourpatties.com/backend/api/" + Cookies.get("type") + "s/edit.php";
+        url = "https://peopleorderourpatties.com/backend/api2/" + Cookies.get("type") + "s/editProfile.php";
     }
     
     var submit = {  username : Cookies.get("username"),
+                        firstname : $("#name").val(),
                         telephone : $("#telephone").val(),
                         email : $("#email").val(),
                         city : $("#city").val(),
                         state : $("#state").val(),
                         zipcode : $("#zipcode").val(), 
-                        description : $("#description").val()};
+                        description : $("#description").val() };
 
     var response;
     
@@ -128,8 +143,7 @@ function submitData() {
         JSON.stringify(submit),
         function(result)
         {
-            r = result.message;
-            console.log(r);
+            console.log(result);
             location.reload();
         });
 }
