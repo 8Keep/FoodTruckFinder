@@ -245,26 +245,23 @@ public class Profile_page extends AppCompatActivity implements IPickResult {
                                 if(des != "null" && !des.isEmpty())
                                 {
                                     description.setText(des);
-                                    descriptionED.setText(des);
                                 }
                                 else
                                 {
                                     description.setText("No description yet.");
-                                    descriptionED.setText("No description yet.");
+
                                 }
 
                                 nameED.setText(o.getString("first") +" "+ o.getString("last"));
-                                if (isVendor)
-                                    entityNameED.setText(o.getString("ETName"));
-                                else
-                                    entityNameED.setText(o.getString("TruckName"));
-                                usernameED.setText(o.getString("username"));
-                                emailED.setText(o.getString("email"));
-                                phoneED.setText(o.getString("phone"));
-                                addressED.setText(o.getString("address"));
-                                cityED.setText(o.getString("city"));
-                                stateED.setText(o.getString("state"));
-                                zipED.setText(o.getString("zip"));
+                                entityNameED.setText(entityName.getText().toString());
+                                usernameED.setText(usernameTV.getText().toString());
+                                emailED.setText(email.getText().toString());
+                                phoneED.setText(phone.getText().toString());
+                                addressED.setText(address.getText().toString());
+                                cityED.setText(city.getText().toString());
+                                stateED.setText(state.getText().toString());
+                                zipED.setText(zip.getText().toString());
+                                descriptionED.setText(description.getText().toString());
 
                             }
                         } catch (JSONException e) {

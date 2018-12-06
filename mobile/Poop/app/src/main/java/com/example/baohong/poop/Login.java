@@ -52,7 +52,6 @@ public class Login extends AppCompatActivity {
         isVendor = bundle.getBoolean("isVendor");
         username = findViewById(R.id.username_login);
         password = findViewById(R.id.password_login);
-        forgot = findViewById(R.id.forgotPass);
         register = findViewById(R.id.creAcc);
         login = findViewById(R.id.login);
         username.addTextChangedListener(textwatcher);

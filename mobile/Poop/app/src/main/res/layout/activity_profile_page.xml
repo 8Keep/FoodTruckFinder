@@ -153,25 +153,7 @@
             android:paddingBottom="16dp"
             android:text="baohong98"
             android:fontFamily="@font/asap_bold" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="@color/green"
-            android:layout_gravity="left"
-            android:layout_marginLeft="16dp"
-            android:text="Password"
-            android:fontFamily="@font/asap_bold"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:paddingBottom="16dp"
-            android:textSize="18sp"
-            android:text="@string/changePass"
-            android:fontFamily="@font/asap_bold"
-            android:layout_gravity="left"
-            android:layout_marginLeft="16dp"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
