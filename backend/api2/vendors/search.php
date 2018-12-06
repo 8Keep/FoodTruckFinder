@@ -22,10 +22,10 @@ $et = new Vendor($db);
 
 //get data from front end json
 $data = json_decode(file_get_contents("php://input", true));
-$keyword = $data->$keyword;
+$keywords = $data->keywords;
 
 // query ETinfo table in database for search results
-$stmt = $et->search($keyword);
+$stmt = $et->search($keywords);
 $num = $stmt->rowCount();
 
 // check if more than 0 record found
