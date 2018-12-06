@@ -62,18 +62,33 @@ function register() {
     var details = { username: $("#reguser").val(),
                     email: $("#regemail").val(),
                     password: $("#regpass").val()};
-    console.log(JSON.stringify(details));      
+    console.log(JSON.stringify(details));
+    
+    var details2 = { username: $("#reguser").val(),
+                    email: $("#regemail").val(),
+                    truck_name : " ",
+                    address : " ",
+                    city : " ",
+                    state : " ",
+                    zip : " ",
+                    first : " ",
+                    last : " ",
+                    phone : " " };
+    
     var url;
+    var url2;
     
     if (regFT)
     {
         Cookies.set("type", "foodtruck");
-        url = "https://peopleorderourpatties.com/backend/api2/users/foodtrucks/create.php"
+        url = "https://peopleorderourpatties.com/backend/api2/users/foodtrucks/create.php";
+        url2 = "https://peopleorderourpatties.com/backend/api2/foodtrucks/edit.php";
     }
     else
     {
         Cookies.set("type", "vendor");
-        url = "https://peopleorderourpatties.com/backend/api2/users/vendors/create.php"
+        url = "https://peopleorderourpatties.com/backend/api2/users/vendors/create.php";
+        url2 = "https://peopleorderourpatties.com/backend/api2/vendors/edit.php";
     }
     
     var response;
@@ -82,7 +97,19 @@ function register() {
         JSON.stringify(details),
         function(result){
             r = result.message;
-            console.log(r);});
+            console.log(r);
+            
+            $.post(
+                url2,
+                JSON.stringify(details2),
+                function(result){
+                    r = result.message;
+                    console.log(r);});
+                    
+            });
+    
+    
+    
     Cookies.set("username", details.username);
     $("#labUsername").show();
     $("#labUsername").text("Logged in as: " + details.username);

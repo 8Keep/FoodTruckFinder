@@ -40,7 +40,7 @@ function loadData(profileToLoad) {
     }
     if (Cookies.get("profile") == Cookies.get("username"))
     {
-        url = "https://peopleorderourpatties.com/backend/api/" + Cookies.get("type") + "s/showProfile.php";
+        url = "https://peopleorderourpatties.com/backend/api2/" + Cookies.get("type") + "s/showProfile.php";
     }
 
     var data = { username : Cookies.get("profile")};
@@ -57,8 +57,13 @@ function loadData(profileToLoad) {
             console.log(result);
             console.log(result.records[0].imgURL);
             
+            
             //$(".hero-image").css("background-image", "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(" + result.records[0].imgURL + ") !important;");
             $(".hero-image").css("background-image", "url(" + result.records[0].imgURL + ")");
+            if (!result.records[0].imgURL)
+            {
+                $(".hero-image").css("background-image", "url(" + "https://peopleorderourpatties.com/webapp/images/custom-air-dancer-food-trucks.jpg");
+            }
             $("#nameField").text(result.records[0].first + " " + result.records[0].last);
             $("#telephoneField").text(result.records[0].phone);
             $("#emailField").text(result.records[0].email);
@@ -66,6 +71,11 @@ function loadData(profileToLoad) {
             $("#stateField").text(result.records[0].state);
             $("#zipcodeField").text(result.records[0].zip);
             $("#descriptionField").text(result.records[0].description);
+            $("#venprof").text(result.records[0].TruckName);
+            if (result.records[0].TruckName === " ")
+            {
+                $("#venprof").text("Vendor Profile");
+            }
         });
 
     
