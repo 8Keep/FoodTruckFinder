@@ -105,6 +105,7 @@ function searchData() {
         Cookies.set("search", data);
         window.location = "https://peopleorderourpatties.com/webapp/index.html";
     }
+    
     var json = { keywords: data };
     
     console.log(JSON.stringify(json));
@@ -127,41 +128,66 @@ function searchData() {
         function(result){
             console.log(result);
             //var jsonObject = JSON.parse(result);
+            if (typeof result.results === "undefined")
+            {
+                //no items were found
+                updateItems(result);
+                console.log("No items were found!");
+                return;
+            }
+            
             console.log(result.results[0]);
             updateItems(result);
         });
 }
 
 function updateItems(json) {
+    
+    var name = "No name";
+    
     console.log("Updating items");
     var mainc = $("#maincontent")
     mainc.empty();
+    
+    if (typeof json.results === "undefined")
+        return;
     
     var currentDeck;
     
     for (var i = 0; i < json.results.length; i++) {
         
+        if (Cookies.get("type") == "foodtruck")
+        {
+            name = json.results[i].EntertainerName;
+        }
+        else
+        {
+            name = json.results[i].TruckName;
+        }
+        
         if (i % 3 == 0)
         {
+            mainc.append("<div id=\"deck" + i + "\" class=\"card-deck my-4\">");
             mainc.append("</div");
-            currentDeck = mainc.append("<div class=\"card-deck my-4\">");
+            currentDeck = $("#deck" + i);
         }
+        
+        
         
         var obj = json.results[i];
         
         currentDeck.append("<div class=\"card\">" +
-                        "<div class=\"card-img-wrap\"><img class=\"card-img-top\" src=\"" + json.results[i].imgURL + "\" alt=\"Image loading failed :)\" id=\"" + json.results[i].FTID + "\" onClick=\"goToProfile(event);\"></div>" +
-                        "<div class=\"card-body\">" +
-                            "<h5 class=\"card-title\">" + json.results[i].TruckName + "</h5>" +
-                            "<p class=\"card-text\">Description</p>" +
-                        "</div>" +
-                        "<div class=\"card-footer\">" +
-                            "<small class=\"text-muted\">" + json.results[i].City + ", " + json.results[i].State + ", " + json.results[i].Zip + "</small>" +
-                        "</div>" +
-                    "</div>");
+                                "<div class=\"card-img-wrap\"><img class=\"card-img-top\" src=\"" + obj.imgURL + "\" alt=\"Image loading failed :)\" id=\"" + obj.FTID + "\" onClick=\"goToProfile(event);\"></div>" +
+                                "<div class=\"card-body\">" +
+                                    "<h5 class=\"card-title\">" + name + "</h5>" +
+                                    "<p class=\"card-text\">Description</p>" +
+                                "</div>" +
+                                "<div class=\"card-footer\">" +
+                                    "<small class=\"text-muted\">" + obj.City + ", " + obj.State + ", " + obj.Zip + "</small>" +
+                                "</div>" +
+                            "</div>");
         
     }
-    currentDeck.append("</div");
 }
 
 
