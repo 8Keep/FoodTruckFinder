@@ -126,7 +126,38 @@ function search() {
             r = result.message;
             console.log(r);
             var jsonObject = JSON.parse(r);
-            console.log(jsonObject);});
+            console.log(jsonObject);
+            updateItems(jsonObject);
+        });
+}
+
+function updateItems(json) {
+    var mainc = $("#maincontent")
+    mainc.clear();
+    
+    var currentDeck;
+    
+    for (int i = 0; i < json.results.length; i++) {
+        
+        if (i % 3 == 0)
+        {
+            currentDeck = mainc.append("<div class=\"card-deck my-4\">");
+        }
+        
+        var obj = json.results[i];
+        
+        mainc.append("<div class=\"card\"> \
+                        <div class=\"card-img-wrap\"><img class=\"card-img-top\" src=\"" + json.results[i].imgURL + "\" alt=\"Image loading failed :)\" id=\"" + json.results[i].FTID + "\" onClick=\"goToProfile(event);\"></div> \
+                        <div class=\"card-body\"> \
+                            <h5 class=\"card-title\">" + json.results[i].TruckName + "</h5> \
+                            <p class=\"card-text\">Description</p> \
+                        </div> \
+                        <div class=\"card-footer\"> \
+                            <small class=\"text-muted\">" + json.results[i].City + ", " + json.results[i].State + ", " + json.results[i].Zip + "</small> \
+                        </div> \
+                    </div>");
+        
+    }
 }
 
 
