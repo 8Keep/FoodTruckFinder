@@ -107,6 +107,8 @@ function searchData() {
     }
     var json = { keywords: data };
     
+    console.log(JSON.stringify(json));
+    
     var url;
     
     if (Cookies.get("type") == "foodtruck")
@@ -123,17 +125,17 @@ function searchData() {
         url,
         JSON.stringify(json),
         function(result){
-            r = result.message;
-            console.log(r);
-            var jsonObject = JSON.parse(r);
-            console.log(jsonObject);
-            updateItems(jsonObject);
+            console.log(result);
+            //var jsonObject = JSON.parse(result);
+            console.log(result.results[0]);
+            updateItems(result);
         });
 }
 
 function updateItems(json) {
+    console.log("Updating items");
     var mainc = $("#maincontent")
-    mainc.clear();
+    mainc.empty();
     
     var currentDeck;
     
@@ -141,23 +143,25 @@ function updateItems(json) {
         
         if (i % 3 == 0)
         {
+            mainc.append("</div");
             currentDeck = mainc.append("<div class=\"card-deck my-4\">");
         }
         
         var obj = json.results[i];
         
-        mainc.append("<div class=\"card\"> \
-                        <div class=\"card-img-wrap\"><img class=\"card-img-top\" src=\"" + json.results[i].imgURL + "\" alt=\"Image loading failed :)\" id=\"" + json.results[i].FTID + "\" onClick=\"goToProfile(event);\"></div> \
-                        <div class=\"card-body\"> \
-                            <h5 class=\"card-title\">" + json.results[i].TruckName + "</h5> \
-                            <p class=\"card-text\">Description</p> \
-                        </div> \
-                        <div class=\"card-footer\"> \
-                            <small class=\"text-muted\">" + json.results[i].City + ", " + json.results[i].State + ", " + json.results[i].Zip + "</small> \
-                        </div> \
-                    </div>");
+        currentDeck.append("<div class=\"card\">" +
+                        "<div class=\"card-img-wrap\"><img class=\"card-img-top\" src=\"" + json.results[i].imgURL + "\" alt=\"Image loading failed :)\" id=\"" + json.results[i].FTID + "\" onClick=\"goToProfile(event);\"></div>" +
+                        "<div class=\"card-body\">" +
+                            "<h5 class=\"card-title\">" + json.results[i].TruckName + "</h5>" +
+                            "<p class=\"card-text\">Description</p>" +
+                        "</div>" +
+                        "<div class=\"card-footer\">" +
+                            "<small class=\"text-muted\">" + json.results[i].City + ", " + json.results[i].State + ", " + json.results[i].Zip + "</small>" +
+                        "</div>" +
+                    "</div>");
         
     }
+    currentDeck.append("</div");
 }
 
 
@@ -177,6 +181,8 @@ $( document ).ready(function() {
     }
     
     console.log("Username: " + Cookies.get("username"));
+    
+    console.log(getIfLoggedIn());
     
     if (getIfLoggedIn())
     {
@@ -205,13 +211,13 @@ $( document ).ready(function() {
     $("#regft").click( function() {
         console.log("register - ft");
         $(this).addClass('active').siblings().removeClass('active');
-        ftreg = true;
+        regFT = true;
     });
     
     $("#regven").click( function() {
         console.log("register - ven");
         $(this).addClass('active').siblings().removeClass('active');
-        ftreg = false;
+        regFT = false;
     });
     
     pass = document.getElementById("regpass");
